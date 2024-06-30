@@ -5,14 +5,14 @@ import { Input, LayoutAuth } from "../../components"
 import { AiOutlineMail, FcGoogle, MdLockOutline } from "../../assets/icons";
 import { loginSchema } from "../../assets/validations"
 import { ILogin } from "../../utils/interfaces"
-// import { useAuth } from "../../hooks"
 import { useEffect, useState } from "react";
+// import { useAuth } from "../../hooks"
 
 const storage = 'login-lb-digital';
 
 const Login = () => {
   // const { mutate } = useAuth({ path: '/login' });
-  const [isSelected, changeIsSelected] = useState(false);
+  const [isSelected, changeIsSelected] = useState(!!localStorage.getItem(storage));
   const [initial, changeInitial] = useState({ email: '', password: '' });
 
   useEffect(() => {

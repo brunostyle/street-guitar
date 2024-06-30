@@ -1,11 +1,12 @@
 import { Spacer } from "@nextui-org/react";
 import { DashboardCards, Sells, LayoutAdmin, Chart, FullScreenLoading } from "../../components";
 import { SectionTitle } from "../../styles";
-import { useDashboard } from "../../hooks";
-// import { dashboard } from "../../assets/database.json";
+// import { useDashboard } from "../../hooks";
+import { dashboard as data } from "../../assets/database.json";
+const isLoading = false;
 
 const Dashboard = () => {
-   const { data, isLoading } = useDashboard({ key: "dashboard", path: "/dashboard" });
+   // const { data, isLoading } = useDashboard({ key: "dashboard", path: "/dashboard" });
    return (
       <LayoutAdmin title="Dashboard" showTitle={false}>
          {isLoading  

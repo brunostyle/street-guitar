@@ -16,7 +16,7 @@ interface ILayout {
 export const LayoutAdmin = ({ children, title, icon, showTitle = true, funtional = false, isProductPage }: ILayout) => {
    const router = useNavigate();
    return (
-      <Gradient>
+      <>
          <MenuAdmin />
          <div className="container mx-auto py-6 px-4 grid gap-4">
             <Breadcrumbs separator="/">
@@ -47,6 +47,6 @@ export const LayoutAdmin = ({ children, title, icon, showTitle = true, funtional
                {children}
             </div>
          </div>
-      </Gradient>
+      </>
    )
 }

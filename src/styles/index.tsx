@@ -18,7 +18,7 @@ export const SectionTitle = ({ children }: Props) => (
 )
 
 export const SectionSubTitle = ({ children }: Props) => (
-                                                           <h4 className="text-gray-500 text-sm mb-4">{children}</h4>
+  <h4 className="text-gray-500 text-sm mb-4">{children}</h4>
 )
 
 export const Title = ({ children }: Props) => (
