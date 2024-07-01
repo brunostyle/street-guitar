@@ -1,5 +1,5 @@
 import { useNavigate as useRouter } from "react-router-dom";
-import { LayoutApp, Nothing } from "../../components";
+import { LayoutApp, Nothing } from "../../../components";
 import { Button } from "@nextui-org/react";
 
 const Empty = () => {

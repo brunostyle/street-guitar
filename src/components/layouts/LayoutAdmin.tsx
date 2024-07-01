@@ -1,4 +1,4 @@
-import { Between, Gradient, SectionTitle } from '../../styles';
+import { Between, SectionTitle } from '../../styles';
 import { AiOutlineHome, AiOutlineTags, FaPlus, IoMdSearch } from "../../assets/icons";
 import { BreadcrumbItem, Breadcrumbs, Button, Input, Spacer } from '@nextui-org/react';
 import { MenuAdmin } from '../ui/MenuAdmin';

@@ -1,4 +1,4 @@
-import { useTheme } from "../state";
+// import { useTheme } from "../state";
 import gradient from "/gradient.svg";
 
 interface Props {
@@ -52,7 +52,7 @@ export const Grid = ({ children }: Props) => (
 )
 
 export const Gradient = ({ children }: Props) => {
-  const { isLight } = useTheme();
+  // const { isLight } = useTheme();
   return <div style={{
     minHeight: '100vh',
     backgroundImage: `url(${gradient})`,

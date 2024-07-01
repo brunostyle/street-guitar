@@ -1,34 +1,31 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from '../pages';
-import Cards from '../pages/category/cards';
-import Covers from '../pages/category/covers';
-import Logos from '../pages/category/logos';
-import Search from '../pages/search/query';
-import Product from '../pages/product/slug';
-import Cart from '../pages/cart';
-import Empty from '../pages/cart/empty';
-import Summary from '../pages/checkout/summary';
+import Home from '../app';
 
-import Dashboard from '../pages/admin';
-import Products from '../pages/admin/products';
-import ProductSlug from '../pages/admin/products/slug';
-import Orders from '../pages/admin/orders';
-import Users from '../pages/admin/users';
+import Category from '../app/(shop)/category/[category]';
+import Search from '../app/(shop)/search/query';
+import Product from '../app/(shop)/product/slug';
+import Cart from '../app/(shop)/cart/page';
+import Empty from '../app/(shop)/cart/empty';
+import Checkout from '../app/(shop)/checkout/page';
 
-import Login from '../pages/auth/login';
+import Dashboard from '../app/admin/page';
+import Products from '../app/admin/products';
+import ProductSlug from '../app/admin/products/slug';
+import Orders from '../app/admin/orders';
+import Users from '../app/admin/users';
+
+import Login from '../app/auth/login';
 // import Register from '../pages/auth/register';
 
 export const RouterApp = () => (
   <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/category/cards" element={<Cards />} />
-    <Route path="/category/covers" element={<Covers />} />
-    <Route path="/category/logos" element={<Logos />} />
+    <Route path="/category/:category" element={<Category />} />
     <Route path="/search/:query" element={<Search />} />
     <Route path="/product/:slug" element={<Product />} />
     <Route path="/cart" element={<Cart />} />
     <Route path="/cart/empty" element={<Empty />} />
-    <Route path="/checkout/summary" element={<Summary />} />
+    <Route path="/checkout/summary" element={<Checkout />} />
 
     <Route path="/admin" element={<Dashboard />} />
     <Route path="/admin/products" element={<Products />} />

@@ -1,6 +1,6 @@
-import { Grid, GridContainer, SectionSubTitle, SectionTitle } from "../../styles";
-import { useCart } from "../../state";
-import { LayoutApp, ProductCard, ProductOrder, ProductPay } from "../../components";
+import { Grid, GridContainer, SectionSubTitle, SectionTitle } from "../../../styles";
+import { useCart } from "../../../state";
+import { LayoutApp, ProductCard, ProductOrder, ProductPay } from "../../../components";
 
 const Summary = () => {
    const { cart, total, numberOfItems } = useCart();

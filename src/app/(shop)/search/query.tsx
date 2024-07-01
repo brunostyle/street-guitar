@@ -1,6 +1,6 @@
-import { LayoutApp, Nothing, ProductList } from '../../components';
+import { LayoutApp, Nothing, ProductList } from '../../../components';
 import { useParams } from 'react-router-dom';
-import { products } from '../../assets/products';
+import { products } from '../../../assets/products';
 
 const Search = () => {
    const { query } = useParams();

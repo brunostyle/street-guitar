@@ -31,8 +31,22 @@ export const products: IProduct[] = [
 		slug: 'women_turbine_cropped_short_sleeve_tee',
 		tags: ['shirt'],
 	},
+	{
+		_id: '4',
+		title: "Men's Chill Crew Neck Sweatshirt",
+		description: 'Introducing the Tesla Chill Collection',
+		images: ['1740176-00-A_0_2000.jpg', '1740176-00-A_1.jpg'],
+		category: 'cards',
+		price: 75,
+		slug: 'mens_chill_crew_neck_sweatshirt',
+		tags: ['sweatshirt'],
+	},
 ];
 
 export const getProductBySlug = (slug: string) => {
 	return products.find(product => product.slug === slug);
+};
+
+export const getProductByCategory = (category: string):IProduct[] => {
+	return products.filter(product => product.category === category);
 };

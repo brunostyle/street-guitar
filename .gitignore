@@ -27,13 +27,13 @@ dist-ssr
 .idx
 assets
 public
-routes
+# routes
 hooks
 state
 styles
 utils
-App.tsx
-main.tsx
+# App.tsx
+# main.tsx
 
 .eslintrc.cjs
 package-lock.json
@@ -44,4 +44,4 @@ index.html
 tsconfig.json
 vite.config.ts
 vite-env.d.ts
-config.code-profile
+bruno.code-profile

@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate as useRouter } from "react-router-dom";
 import { Button } from "@nextui-org/react";
-import { AiOutlineCreditCard } from '../../assets/icons'
-import { SectionTitle, SectionSubTitle, GridContainer, Grid } from "../../styles";
-import { useCart, useUser } from "../../state";
-import { LayoutApp, ProductCard, ProductOrder } from "../../components";
-import { IOrderSummary } from "../../utils/interfaces";
+import { AiOutlineCreditCard } from '../../../assets/icons'
+import { SectionTitle, SectionSubTitle, GridContainer, Grid } from "../../../styles";
+import { useCart, useUser } from "../../../state";
+import { LayoutApp, ProductCard, ProductOrder } from "../../../components";
+import { IOrderSummary } from "../../../utils/interfaces";
 
 const Cart = () => {
    const router = useRouter();
