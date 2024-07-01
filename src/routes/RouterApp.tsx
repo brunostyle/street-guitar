@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from '../app';
 
-import Category from '../app/(shop)/category/[category]';
-import Search from '../app/(shop)/search/query';
-import Product from '../app/(shop)/product/slug';
-import Cart from '../app/(shop)/cart/page';
-import Empty from '../app/(shop)/cart/empty';
-import Checkout from '../app/(shop)/checkout/page';
+import Category from '../app/shop/category/page';
+import Search from '../app/shop/search/query';
+import Product from '../app/shop/product/slug';
+import Cart from '../app/shop/cart/page';
+import Empty from '../app/shop/cart/empty';
+import Checkout from '../app/shop/checkout/page';
 
 import Dashboard from '../app/admin/page';
 import Products from '../app/admin/products';

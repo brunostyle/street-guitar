@@ -21,7 +21,13 @@ const Product = () => {
          <Card>
             <GridContainer>
                <Grid>
-                  <ImageGallery showPlayButton={false} showFullscreenButton={false} showThumbnails={false} items={images} />
+                  <ImageGallery
+                     autoPlay
+                     slideDuration={1000}
+                     showPlayButton={false}
+                     showFullscreenButton={false}
+                     items={images}
+                  />
                </Grid>
                <Grid>
                   <CardBody>

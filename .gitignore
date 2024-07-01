@@ -30,7 +30,7 @@ public
 # routes
 hooks
 state
-styles
+# styles
 utils
 # App.tsx
 # main.tsx

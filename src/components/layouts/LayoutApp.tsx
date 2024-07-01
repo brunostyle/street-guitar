@@ -19,7 +19,7 @@ export const LayoutApp = ({ children }: ILayout) => (
 		</Head> */}
 
 		<Menu />
-		<div className="container mx-auto p-4">
+		<div className="container mx-auto p-4 min-h-screen">
 			{children}
 		</div>
 	</>
