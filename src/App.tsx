@@ -16,7 +16,6 @@ export const App = () => {
         {/* <LayoutMain> */}
           <RouterApp />
         {/* </LayoutMain> */}
-        {/* <Toast /> */}
         </main>
       </NextUIProvider>
       <ReactQueryDevtools />
