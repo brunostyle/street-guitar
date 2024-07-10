@@ -5,14 +5,14 @@ import { Input, LayoutAuth } from "../../components"
 import { AiOutlineMail, MdLockOutline, FiUsers } from "../../assets/icons";
 import { registerSchema } from "../../assets/validations";
 import { IRegister } from "../../utils/interfaces";
-import { useAuth } from "../../hooks";
+import { useRegister } from "../../hooks";
 
-const initial: IRegister = { name: '', email: '', password: '' };
+const initial: IRegister = { name: 'test1', email: 'test1@gmail.com', password: '123456' };
 
 const Register = () => {
-  const { mutate } = useAuth({path: '/register'});
+  const { mutate: register, isPending } = useRegister();
   const handleSubmit = (data: IRegister) => {
-    mutate(data);
+    register(data);
   }
 
   return (
@@ -22,7 +22,7 @@ const Register = () => {
           <Input variant="bordered" name="name" label="Nombre completo" icon={<FiUsers />} />
           <Input variant="bordered" name="email" label="Correo electronico" icon={<AiOutlineMail />} />
           <Input variant="bordered" type="password" name="password" label="Contraseña" icon={<MdLockOutline />} />
-          <Button type="submit" color="primary" size="sm" startContent={<AiOutlineMail />}>Crear cuenta</Button>
+          <Button type="submit" color="primary" size="sm" isLoading={isPending} startContent={!isPending && <AiOutlineMail />}>Crear cuenta</Button>
         </Form>
       </Formik>
       <Spacer y={2} />

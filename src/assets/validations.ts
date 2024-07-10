@@ -18,8 +18,6 @@ export const registerSchema = Yup.object({
 export const productSchema = Yup.object({
    title: Yup.string().trim()
       .required('Campo requerido'),
-   slug: Yup.string().trim()
-      .required('Campo requerido'),
    description: Yup.string().trim()
       .required('Campo requerido'),
    price: Yup.number()

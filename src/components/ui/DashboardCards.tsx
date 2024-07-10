@@ -1,6 +1,6 @@
 import { Card, CardFooter, CardHeader, Spacer } from "@nextui-org/react";
 import { AiOutlineTags, FiUsers, MdOutlineChangeHistory } from "../../assets/icons";
-import { Title, Wrap } from "../../styles";
+import { Title, WrapFit } from "../../styles";
 
 interface IDashboardCards {
    numberOfClients?: number;
@@ -9,7 +9,7 @@ interface IDashboardCards {
 }
 
 export const DashboardCards = ({numberOfClients = 0, numberOfProducts = 0, numberOfOrders = 0}:IDashboardCards) => (
-   <Wrap>
+   <WrapFit>
       <Card className="bg-primary text-white">
          <CardHeader>
             <Title>Total clientes</Title>
@@ -40,5 +40,5 @@ export const DashboardCards = ({numberOfClients = 0, numberOfProducts = 0, numbe
             <Title>{numberOfOrders}</Title>
          </CardFooter>
       </Card>
-   </Wrap>
+   </WrapFit>
 )

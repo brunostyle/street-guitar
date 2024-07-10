@@ -1,21 +1,46 @@
 import { useQuery } from "@tanstack/react-query"
-import { baseURL } from "../utils/database/api";
+import { supabase } from "../assets/database";
 import { IDashboard } from "../utils/interfaces";
 
-const getDashboard = async (path: string):Promise<IDashboard> => {
-   const data = await fetch(baseURL + path);
-   return data.json();
-}
-
-interface IProps {
-   key: string;
-   path: string;
-}
-
-export const useDashboard = ({key, path}:IProps) => {
-   return useQuery({
-      queryKey: [key],
-      queryFn: () => getDashboard(path),                         
-      // refetchInterval: 30 * 1000
+export const useDashboard = () => {
+   const { data, isLoading } = useQuery({
+      queryKey: ["dashboard"],
+      queryFn: async (): Promise<IDashboard | undefined> => {
+         try {
+            const [
+               { count: numberOfClients },
+               { count: numberOfProducts },
+               { count: numberOfOrders },
+               { data: lastSells, error }
+            ] = await Promise.all([
+               supabase.from('users').select('id', { count: 'exact', head: true }),
+               supabase.from('products').select('id', { count: 'exact', head: true }),
+               supabase.from('orders').select('id', { count: 'exact', head: true }),
+               supabase.from('orders').select('id, user:users(name, email)')
+            ]);
+            if (error) throw new Error("Error fetching lastSells")
+            return {
+               numberOfClients,
+               numberOfProducts,
+               numberOfOrders,
+               lastSells,
+               chart: {
+                  clients: [31, 40, 28, 51, 42, 109, 100],
+                  sells: [11, 32, 45, 32, 34, 52, 41]
+               }
+            }
+         } catch (error) {
+            console.log(error);
+         }
+      }
    })
+   return {
+      numberOfClients: data?.numberOfClients,
+      numberOfProducts: data?.numberOfProducts,
+      numberOfOrders: data?.numberOfOrders,
+      lastSells: data?.lastSells,
+      clients: data?.chart.clients,
+      sells: data?.chart.sells,
+      isLoading
+   }
 }

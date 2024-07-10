@@ -1,26 +1,31 @@
 import { Grid, GridContainer, SectionSubTitle, SectionTitle } from "../../../styles";
-import { useCart } from "../../../state";
-import { LayoutApp, ProductCard, ProductOrder, ProductPay } from "../../../components";
+import { FullScreenLoading, LayoutApp, ProductCard, ProductOrder, ProductPay } from "../../../components";
+import { useGetOrder } from "../../../hooks";
+import { useParams } from "react-router-dom";
 
-const Summary = () => {
-   const { cart, total, numberOfItems } = useCart();
-
+const Checkout = () => {
+   const { id } = useParams();
+   const { products, total, items, isLoading } = useGetOrder(id!);
    return (
       <LayoutApp title="Resumen de orden" description="Resumen de la orden">
-         <SectionTitle>Orden: ABC123</SectionTitle>
+         <SectionTitle>Orden: {id}</SectionTitle>
          <SectionSubTitle>Resumen de la orden</SectionSubTitle>
-         <GridContainer>
-            <Grid>
-               <ProductCard cart={cart} />
-            </Grid>
-            <Grid>
-               <ProductOrder total={total} numberOfItems={numberOfItems}>
-                  <ProductPay />
-               </ProductOrder>
-            </Grid>
-         </GridContainer>
+         {isLoading ?
+            <FullScreenLoading />
+            :
+            <GridContainer>
+               <Grid>
+                  <ProductCard cart={products} />
+               </Grid>
+               <Grid>
+                  <ProductOrder total={total} items={items}>
+                     <ProductPay />
+                  </ProductOrder>
+               </Grid>
+            </GridContainer>
+         }
       </LayoutApp>
    )
 };
 
-export default Summary;
+export default Checkout;

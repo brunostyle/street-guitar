@@ -6,17 +6,17 @@ import { useCart } from "../../state";
 import { Link } from "react-router-dom";
 
 interface IProductCard {
-   cart: IProduct[];
+   cart?: IProduct[];
    editable?: boolean;
 }
 
-export const ProductCard = ({ cart, editable = false }: IProductCard) => {
+export const ProductCard = ({ cart = [], editable = false }: IProductCard) => {
    const { removeProductToCart } = useCart();
    return <>
       {cart.map(product => (
-         <Card isFooterBlurred key={product._id} className="grid grid-cols-12 mb-4">
-            <Link to={"/product/" + product.slug} className="col-span-2">
-               <Image src={'/products/' + product.images[0]} alt={product.title} width="100%" height="100%" />
+         <Card isFooterBlurred key={product.id} className="grid grid-cols-12 mb-4">
+            <Link to={"/product/" + product.id} className="col-span-2">
+               <Image src={product.images[0]} alt={product.title} width="100%" height="100%" />
             </Link>
             <CardBody className="col-span-8">
                <HiddenTitle>{product.title}</HiddenTitle>

@@ -18,7 +18,7 @@ export const LayoutAdmin = ({ children, title, icon, showTitle = true, funtional
    return (
       <>
          <MenuAdmin />
-         <div className="container mx-auto py-6 px-4 flex flex-col gap-4 min-h-screen">
+         <div className="container mx-auto py-6 px-4 flex flex-col gap-4 min-h-screen overflow-x-hidden">
             <Breadcrumbs separator="/">
                <BreadcrumbItem onPress={() => router('/')} startContent={<AiOutlineHome />}>Home</BreadcrumbItem>
                {isProductPage && <BreadcrumbItem onPress={() => router('/admin/products')} startContent={<AiOutlineTags />}>Productos</BreadcrumbItem>}
@@ -43,7 +43,7 @@ export const LayoutAdmin = ({ children, title, icon, showTitle = true, funtional
                   }
                </div>
             }
-            <div>
+            <div className='overflow-x-scroll'>
                {children}
             </div>
          </div>

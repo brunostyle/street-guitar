@@ -1,59 +1,71 @@
 import { useMutation } from "@tanstack/react-query"
+import { ILogin, IRegister } from "../utils/interfaces";
+import { useNavigate } from "react-router-dom"
 import { useUser } from "../state";
-import { baseURL } from "../utils/database/api";
-import { IAuth, ILogin, IRegister } from "../utils/interfaces";
-import { useNavigate as useRouter } from "react-router-dom"
+import { supabase } from "../assets/database";
 
-const auth = async (path: string, data: ILogin | IRegister):Promise<IAuth> => {
-   const res = await fetch(baseURL + path);
-   // const res = await fetch(baseURL + path, {
-   //    method: 'POST',
-   //    headers: { 'Content-Type': 'application/json' },
-   //    body: JSON.stringify(data)
-   // });
-
-   // if (!res.ok) {
-	// 	data.map((err: string) => toast.error(err));
-	// 	throw new Error();
-	// }
-   return res.json();
-}
-
-interface IProps {
-   path: string;
-}
-
-export const useAuth = ({path}:IProps) => {
-   const router = useRouter();
+export const useLogin = () => {
+   const router = useNavigate();
    const { login } = useUser();
    return useMutation({
-      mutationFn: (data: ILogin | IRegister) => auth(path, data),
+      mutationFn: async (user: ILogin) => {
+         try {
+            const { data } = await supabase.auth.signInWithPassword({ email: user.email, password: user.password });
+            const userData = {
+               id: data.user?.id,
+               name: data.user?.user_metadata.name,
+               email: data.user?.email,
+               role: data.user?.user_metadata.roles,
+            }
+            return userData;
+         } catch (error) {
+            console.log(error);
+         }
+      },
       onSuccess: (user) => {
-         localStorage.setItem('token', user.token);
          login(user);
          router('/');
       }
    })
 }
 
-const renew = async (token: string):Promise<IAuth> => {
-   const res = await fetch(baseURL + '/validate-token');
-   // const res = await fetch(baseURL + '/validate-token', {
-   //    headers: { 'Content-Type': 'application/json', 'access-token': token },
-   // });
-   return res.json();
+export const useRegister = () => {
+   const router = useNavigate();
+   const { login } = useUser();
+   return useMutation({
+      mutationFn: async (user: IRegister) => {
+         try {
+            const { data } = await supabase.auth.signUp({ email: user.email, password: user.password, options: { data: { name: user.name, roles: 'client' } } })
+            const userData = {
+               id: data.user?.id,
+               name: data.user?.user_metadata.name,
+               email: data.user?.email,
+               role: data.user?.user_metadata.roles,
+            }
+            await supabase.from('users').insert(userData);
+            return userData;
+         } catch (error) {
+            console.log(error);
+         }
+      },
+      onSuccess: (user) => {
+         login(user!);
+         router('/');
+      }
+   })
 }
 
-
 export const useAuthRenew = () => {
-   const router = useRouter();
-	const { login } = useUser();
-	return useMutation({
-      mutationFn: renew,
-		onSuccess: (user) => {
-			localStorage.setItem('token', user.token);
-			login(user);
-         router('/');
-		},
-	});
+   const { login } = useUser();
+   const { mutate: renew } = useMutation({
+      mutationFn: async (id: string) => {
+         const { data, error } = await supabase.from('users').select().eq('id', id).single()
+         if (error) throw new Error("No existe el usuario");
+         return data;
+      },
+      onSuccess: (user) => {
+         login(user);
+      },
+   });
+   return { renew }
 };

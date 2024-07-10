@@ -1,8 +1,7 @@
-import { FullScreenLoading, LayoutApp, ProductList } from "../../../components";
+import { FullScreenLoading, LayoutApp, Nothing, ProductList } from "../../../components";
 import { BsFillCreditCard2FrontFill, BsFillGrid3X3GapFill, IoLogoPolymer } from "../../../assets/icons";
-import { getProductByCategory } from "../../../assets/products";
 import { useParams } from "react-router-dom";
-const isLoading = false;
+import { useGetCategory } from "../../../hooks";
 
 const categories = {
    cards: {
@@ -26,17 +25,17 @@ const categories = {
 }
 
 const Category = () => {
-   // const { data: products, isLoading } = useProducts({key: "cards", path: "/products?category=cards"});
    const { category } = useParams();
-
-   const products = getProductByCategory(String(category));
+   const { products, isLoading } = useGetCategory(String(category));
    const { title, description, categorys, icon } = categories[category];
 
    return (
       <LayoutApp title={title} description={description}>
          {isLoading
             ? <FullScreenLoading />
-            : <ProductList category={categorys} icon={icon} products={products || []} />
+            : products?.length === 0
+               ? <Nothing text={"No se encontraron resultados para " + category} svg="/search-empty.svg" />
+               : <ProductList category={categorys} icon={icon} products={products ?? []} />
          }
       </LayoutApp>
    )

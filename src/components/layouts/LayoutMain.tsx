@@ -1,16 +1,19 @@
 import { useEffect } from "react";
 import { useAuthRenew } from "../../hooks";
+import { supabase } from "../../assets/database";
 
 interface ILayout {
    children: JSX.Element | JSX.Element[];
 }
 
 export const LayoutMain = ({ children }: ILayout) => {
-   const { mutate } = useAuthRenew();
-   const token = localStorage.getItem('token');
+   const { renew } = useAuthRenew();
 
    useEffect(() => {
-      if (token) mutate(token);
+      const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+         renew(session?.user.id!)
+      })
+      return () => data.subscription.unsubscribe();
    }, []);
 
    return <div>{children}</div>

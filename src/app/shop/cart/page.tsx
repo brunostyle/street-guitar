@@ -5,21 +5,28 @@ import { AiOutlineCreditCard } from '../../../assets/icons'
 import { SectionTitle, SectionSubTitle, GridContainer, Grid } from "../../../styles";
 import { useCart, useUser } from "../../../state";
 import { LayoutApp, ProductCard, ProductOrder } from "../../../components";
-import { IOrderSummary } from "../../../utils/interfaces";
+import { IOrderCheckout } from "../../../utils/interfaces";
+import { useAddOrder } from "../../../hooks";
 
 const Cart = () => {
    const router = useRouter();
-   const { cart, total, numberOfItems } = useCart();
+   const { addOrder, isAddingOrder } = useAddOrder();
+   const { cart, total, items } = useCart();
    const { user } = useUser();
 
    useEffect(() => {
-      numberOfItems < 1 && router('/cart/empty')
+      items < 1 && router('/cart/empty')
    }, [cart]);
 
    const handleCart = () => {
-      const order: IOrderSummary = { user, numberOfItems, total, orderItems: cart, paid: false }
-      console.log(order);
-      router('/checkout/summary');
+      const order: IOrderCheckout = { 
+         items, 
+         total, 
+         paid: false, 
+         user: user?.id, 
+         products: cart.map(p => p.id) 
+      }
+      addOrder(order);
    }
 
    return (
@@ -31,8 +38,8 @@ const Cart = () => {
                <ProductCard editable cart={cart} />
             </Grid>
             <Grid>
-               <ProductOrder editable total={total} numberOfItems={numberOfItems}>
-                  <Button fullWidth size="sm" color="primary" startContent={<AiOutlineCreditCard />} onPress={handleCart}>Comprar</Button>
+               <ProductOrder editable total={total} items={items}>
+                  <Button fullWidth size="sm" color="primary" isLoading={isAddingOrder} startContent={!isAddingOrder && <AiOutlineCreditCard />} onPress={handleCart}>Comprar</Button>
                </ProductOrder>
             </Grid>
          </GridContainer>

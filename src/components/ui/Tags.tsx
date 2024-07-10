@@ -29,7 +29,7 @@ export const Tags = ({ tags, setTags }: IProps) => {
             <Button isIconOnly variant="ghost" size="sm" onPress={addTag}><GrAdd /></Button>
          } />
          <div className="flex gap-1 mt-4">
-            {tags.length > 0 && tags.map(tag => <div key={tag}><Chip color="primary" size="sm" variant="flat" onClose={() => removeTag(tag)}>{tag}</Chip></div>)}
+            {tags && tags.map(tag => <div key={tag}><Chip color="primary" size="sm" variant="flat" onClose={() => removeTag(tag)}>{tag}</Chip></div>)}
          </div>
       </div>
 

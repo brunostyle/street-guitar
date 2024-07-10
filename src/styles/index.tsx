@@ -9,6 +9,10 @@ export const Wrap = ({ children }: Props) => (
   <section className="wrap">{children}</section>
 )
 
+export const WrapFit = ({ children }: Props) => (
+  <section className="wrap-fit">{children}</section>
+)
+
 export const Between = ({ children }: Props) => (
   <div className="flex justify-between items-center gap-4">{children}</div>
 )

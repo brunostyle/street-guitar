@@ -1,6 +1,6 @@
 import { Avatar, Popover, Spacer, User as NextUser, PopoverTrigger, PopoverContent, Button } from "@nextui-org/react";
 import { BiExit } from "../../assets/icons";
-import { useUser } from "../../state";
+import { useCart, useUser } from "../../state";
 import { IAuth } from "../../utils/interfaces";
 
 interface IProps {
@@ -9,6 +9,13 @@ interface IProps {
 
 export const User = ({ user }: IProps) => {
    const { logout } = useUser();
+   const { purgateCart } = useCart();
+
+   const handleLogout = () => {
+      logout();
+      purgateCart();
+   }
+   
    return (
       <Popover radius="sm" offset={20}>
          <PopoverTrigger>
@@ -16,14 +23,14 @@ export const User = ({ user }: IProps) => {
                <Avatar size="sm" color="primary" name={user.name.charAt(0).toUpperCase()} src={user.avatar} />
             </Button>
          </PopoverTrigger>
-         <PopoverContent className="p-2">
+         <PopoverContent className="p-3">
             <NextUser
                avatarProps={{ src: user.avatar, color: 'primary' }}
                name={user.name}
                description={user.email}
             />
             <Spacer y={4} />
-            <Button fullWidth size="sm" variant="bordered" startContent={<BiExit />} onPress={logout}>Cerrar sesion</Button>
+            <Button fullWidth size="sm" variant="flat" startContent={<BiExit />} onPress={handleLogout}>Cerrar sesion</Button>
          </PopoverContent>
       </Popover>
    )

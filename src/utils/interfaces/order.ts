@@ -1,23 +1,22 @@
-import { IProduct, IAuth } from "./index";
-
-export interface IOrder {
-   _id: string;
+export interface IUser {
    name: string;
    email: string;
    avatar?: string;
-   paid: boolean;
-   numberOfItems: number;
-   total: number;
-	createdAt: Date;
-	updatedAt: Date;
 }
 
-export interface IOrderSummary {
-   user?: IAuth;
-   orderItems: IProduct[];
+export interface IOrder {
+   id: string;
+   user: IUser;
    paid: boolean;
-   numberOfItems: number;
+   items: number;
    total: number;
-	createdAt?: Date;
-	updatedAt?: Date;
+	createdAt: Date;
+}
+
+export interface IOrderCheckout {
+   user?: string;
+   products: string[];
+   paid: boolean;
+   items: number;
+   total: number;
 }

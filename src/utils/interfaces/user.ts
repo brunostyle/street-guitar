@@ -3,7 +3,7 @@ import { ChipProps } from "@nextui-org/react";
 type TValidRoles = 'admin' | 'client';
 
 export interface IUser {
-   _id: string;
+   id: string;
    name: string;
    email: string;
 	password?: string;

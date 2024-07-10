@@ -6,12 +6,12 @@ import { AiOutlineMail, FcGoogle, MdLockOutline } from "../../assets/icons";
 import { loginSchema } from "../../assets/validations"
 import { ILogin } from "../../utils/interfaces"
 import { useEffect, useState } from "react";
-// import { useAuth } from "../../hooks"
+import { useLogin } from "../../hooks";
 
 const storage = 'login-lb-digital';
 
 const Login = () => {
-  // const { mutate } = useAuth({ path: '/login' });
+  const { mutate: login, isPending } = useLogin();
   const [isSelected, changeIsSelected] = useState(!!localStorage.getItem(storage));
   const [initial, changeInitial] = useState({ email: '', password: '' });
 
@@ -20,7 +20,7 @@ const Login = () => {
   }, [])
 
   const handleSubmit = (data: ILogin) => {
-    // mutate(data);
+    login(data);
     if (isSelected) {
       localStorage.setItem(storage, JSON.stringify(data))
     } else {
@@ -35,7 +35,7 @@ const Login = () => {
           <Input variant="bordered" name="email" label="Correo electronico" icon={<AiOutlineMail />} />
           <Input variant="bordered" type="password" name="password" label="Contraseña" icon={<MdLockOutline />} />
           <Checkbox name="remember" isSelected={isSelected} onValueChange={changeIsSelected}>Recuérdame</Checkbox>
-          <Button type="submit" color="primary" startContent={<AiOutlineMail />}>Continuar con correo</Button>
+          <Button type="submit" color="primary" isLoading={isPending} startContent={!isPending && <AiOutlineMail />}>Continuar con correo</Button>
           <Button variant="bordered" startContent={<FcGoogle />}>Continuar con Google</Button>
         </Form>
       </Formik>

@@ -1,4 +1,4 @@
-import { Card, CardBody, Chip, Image, Spacer } from '@nextui-org/react';
+import { Card, CardBody, Chip, Image, Skeleton, Spacer } from '@nextui-org/react';
 import { Between, HiddenTitle, Wrap, Title } from '../../styles';
 import { IProduct, categories } from "../../utils/interfaces"
 import { useNavigate as useRouter } from 'react-router-dom';
@@ -19,8 +19,8 @@ export const ProductList = ({ category, icon, products }: IProps) => {
       <Spacer />
       <Wrap>
          {products.map(product => (
-            <Card key={product._id} isPressable onPress={() => router('/product/' + product.slug)}>
-               <Image src={'/products/' + product.images[0]} alt={product.title} width="100%" height="100%" />
+            <Card key={product.id} isPressable onPress={() => router('/product/' + product.id)}>
+               <Image src={product.images[0]} alt={product.title} width="100%" height="100%" />
                <CardBody>
                   <HiddenTitle>{product.title}</HiddenTitle>
                   <Spacer y={2} />

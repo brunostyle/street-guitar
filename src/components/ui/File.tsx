@@ -17,7 +17,6 @@ const file = {
 }
 
 export const File = ({ label, onChange }: IProps) => (
-	// <Button size="sm" variant="bordered" startContent={<AiOutlineCloudUpload />} css={file}>
 	<Button fullWidth size="sm" variant="bordered" color="primary" startContent={<AiOutlineCloudUpload />}>
 		<span>
 			{label ? label : 'Cargar imagen'}

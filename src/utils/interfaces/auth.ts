@@ -1,8 +1,7 @@
 type TValidRoles = 'admin' | 'client';
 
 export interface IAuth {
-   _id: string;
-   token: string;
+   id: string;
    name: string;
    email: string;
    role: TValidRoles;

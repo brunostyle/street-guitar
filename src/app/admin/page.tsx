@@ -1,32 +1,34 @@
 import { Spacer } from "@nextui-org/react";
 import { DashboardCards, Sells, LayoutAdmin, Chart, FullScreenLoading } from "../../components";
 import { SectionTitle } from "../../styles";
-// import { useDashboard } from "../../hooks";
-import { dashboard as data } from "../../assets/database.json";
-const isLoading = false;
+import { useDashboard } from "../../hooks";
 
 const Dashboard = () => {
-   // const { data, isLoading } = useDashboard({ key: "dashboard", path: "/dashboard" });
+   const { numberOfClients, numberOfProducts, numberOfOrders, lastSells, clients, sells, isLoading } = useDashboard();
    return (
       <LayoutAdmin title="Dashboard" showTitle={false}>
-         {isLoading  
+         {isLoading
             ? <FullScreenLoading />
             :
             <div className="dashboard">
                <div className="cards">
                   <SectionTitle>Balance</SectionTitle>
                   <Spacer y={2} />
-                  <DashboardCards numberOfClients={data?.numberOfClients} numberOfProducts={data?.numberOfProducts} numberOfOrders={data?.numberOfOrders} />
+                  <DashboardCards
+                     numberOfClients={numberOfClients}
+                     numberOfProducts={numberOfProducts}
+                     numberOfOrders={numberOfOrders}
+                  />
                </div>
                <div className="sells">
                   <SectionTitle>Ultimas ventas</SectionTitle>
                   <Spacer y={2} />
-                  <Sells sells={data?.lastSells} />
+                  <Sells sells={lastSells} />
                </div>
                <div className="chart">
                   <SectionTitle>Estadisticas</SectionTitle>
                   <Spacer y={2} />
-                  <Chart clients={data?.chart.clients} sells={data?.chart.sells} />
+                  <Chart clients={clients} sells={sells} />
                </div>
             </div>
          }

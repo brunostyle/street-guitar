@@ -25,23 +25,24 @@ dist-ssr
 
 # BORRAR
 .idx
-assets
-public
+# assets
+# public
 # routes
-hooks
-state
+# hooks
+# state
 # styles
-utils
+# utils
 # App.tsx
 # main.tsx
 
-.eslintrc.cjs
-package-lock.json
-package.json
-tsconfig.node.json
-*.config.js
-index.html
-tsconfig.json
-vite.config.ts
-vite-env.d.ts
+# .eslintrc.cjs
+# package-lock.json
+# package.json
+# tsconfig.node.json
+# *.config.js
+# index.html
+# tsconfig.json
+# vite.config.ts
+# vite-env.d.ts
 bruno.code-profile
+.env
