@@ -8,7 +8,7 @@ const Empty = () => {
    return (
       <LayoutApp title="Carrito vació" description="No hay artículos en el carrito de compras">
          <Nothing text="Tu carrito esta vacío." svg="/cart-empty.svg">
-            <Button color="primary" onPress={() => router('/')}>Ir a la tienda</Button>
+            <Button size="sm" color="primary" onPress={() => router('/')}>Ir a la tienda</Button>
          </Nothing>
       </LayoutApp>
    )

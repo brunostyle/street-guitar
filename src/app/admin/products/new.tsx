@@ -27,12 +27,12 @@ const NewProduct = () => {
     const handleSubmit = (values: any) => addProduct({ ...values, tags, category, images })
 
     return (
-        <LayoutAdmin isProductPage showTitle={false} title="Agregar" icon={<FaPlus />}>
+        <LayoutAdmin isProductPage title="Agregar" icon={<FaPlus />}>
             <SectionTitle>Agregar un producto</SectionTitle>
             <Spacer y={4} />
             <Card><CardBody>
                 <Formik initialValues={initial} onSubmit={handleSubmit} validationSchema={productSchema}>
-                    {({ handleSubmit }) => (
+                    {form => (
                         <Form><GridContainer>
                             <Grid>
                                 <Input name="title" label="Titulo" />
@@ -44,7 +44,7 @@ const NewProduct = () => {
                                 <Radio label="Categoria" value={category} onChange={setCategory} />
                                 <Images images={images} setImages={setImages} />
                                 <File onChange={handleImage} />
-                                <Button variant="bordered" fullWidth isLoading={isAdding} startContent={!isAdding && <AiOutlineSave />} color="success" size="sm" onPress={() => handleSubmit()}>Guardar</Button>
+                                <Button variant="bordered" fullWidth isLoading={isAdding} startContent={!isAdding && <AiOutlineSave />} color="success" size="sm" onPress={() => form.handleSubmit()}>Guardar</Button>
                             </Grid>
                         </GridContainer></Form>
                     )}

@@ -6,14 +6,14 @@ import { usePaginateOrders, usePaginate } from "../../hooks";
 
 const Orders = () => {
    const { page, limit, total, setPage } = usePaginate('orders');
-   const { orders = [], isLoading } = usePaginateOrders(page, limit);
+   const { orders = [], isEmpty, isLoading } = usePaginateOrders(page, limit);
    const router = useNavigate();
    return (
       <LayoutAdmin showTitle={orders.length !== 0} title="Ordenes" icon={<MdOutlineChangeHistory />}>
          {isLoading
             ? <FullScreenLoading />
-            : orders.length === 0 ?
-               <Nothing text="Aún no hay ordenes" svg="/no-results.svg" />
+            : isEmpty
+               ? <Nothing text="Aún no hay ordenes" svg="/no-results.svg" />
                :
                <Table removeWrapper className="opacity" aria-label="Historial de ordenes" selectionMode="single" bottomContent={
                   <Pagination className="flex justify-center" size="sm" showShadow showControls page={page} total={total} onChange={setPage} />}>

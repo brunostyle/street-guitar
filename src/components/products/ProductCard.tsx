@@ -16,7 +16,7 @@ export const ProductCard = ({ cart = [], editable = false }: IProductCard) => {
       {cart.map(product => (
          <Card isFooterBlurred key={product.id} className="grid grid-cols-12 mb-4">
             <Link to={"/product/" + product.id} className="col-span-2">
-               <Image src={product.images[0]} alt={product.title} width="100%" height="100%" />
+               <Image src={product.images[0]} alt={product.title} width="100%" height="100%" className="object-cover" />
             </Link>
             <CardBody className="col-span-8">
                <HiddenTitle>{product.title}</HiddenTitle>

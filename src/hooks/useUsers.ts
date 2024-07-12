@@ -10,5 +10,5 @@ export const usePaginateUsers = (page: number, limit: number) => {
       return data;
     }
   })
-  return { users, isLoading }
+  return { users, isEmpty: users?.length === 0, isLoading }
 }

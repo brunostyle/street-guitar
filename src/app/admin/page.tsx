@@ -6,7 +6,7 @@ import { useDashboard } from "../../hooks";
 const Dashboard = () => {
    const { numberOfClients, numberOfProducts, numberOfOrders, lastSells, clients, sells, isLoading } = useDashboard();
    return (
-      <LayoutAdmin title="Dashboard" showTitle={false}>
+      <LayoutAdmin title="Dashboard">
          {isLoading
             ? <FullScreenLoading />
             :

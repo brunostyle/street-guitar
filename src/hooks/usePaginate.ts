@@ -7,7 +7,7 @@ export const usePaginate = (database: string) => {
     const limit = 10;
 
     useEffect(() => {
-        supabase.from(database).select('*', { count: 'exact', head: true }).then(({ count }) => {
+        supabase.from(database).select('id', { count: 'exact', head: true }).then(({ count }) => {
             setTotal(Math.ceil(count! / limit));
         });
     }, []);

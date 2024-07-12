@@ -3,24 +3,25 @@ import { ILogin, IRegister } from "../utils/interfaces";
 import { useNavigate } from "react-router-dom"
 import { useUser } from "../state";
 import { supabase } from "../assets/database";
+import toast from "react-hot-toast";
 
 export const useLogin = () => {
    const router = useNavigate();
    const { login } = useUser();
    return useMutation({
       mutationFn: async (user: ILogin) => {
-         try {
-            const { data } = await supabase.auth.signInWithPassword({ email: user.email, password: user.password });
-            const userData = {
-               id: data.user?.id,
-               name: data.user?.user_metadata.name,
-               email: data.user?.email,
-               role: data.user?.user_metadata.roles,
-            }
-            return userData;
-         } catch (error) {
-            console.log(error);
+         const { data, error } = await supabase.auth.signInWithPassword({ email: user.email, password: user.password });
+         if (error) throw new Error('El usuario no existe');
+         const userData = {
+            id: data.user?.id,
+            name: data.user?.user_metadata.name,
+            email: data.user?.email,
+            role: data.user?.user_metadata.roles,
          }
+         return userData;
+      },
+      onError: (error) => {
+         toast.error(error.message);
       },
       onSuccess: (user) => {
          login(user);
@@ -34,19 +35,19 @@ export const useRegister = () => {
    const { login } = useUser();
    return useMutation({
       mutationFn: async (user: IRegister) => {
-         try {
-            const { data } = await supabase.auth.signUp({ email: user.email, password: user.password, options: { data: { name: user.name, roles: 'client' } } })
-            const userData = {
-               id: data.user?.id,
-               name: data.user?.user_metadata.name,
-               email: data.user?.email,
-               role: data.user?.user_metadata.roles,
-            }
-            await supabase.from('users').insert(userData);
-            return userData;
-         } catch (error) {
-            console.log(error);
+         const { data, error } = await supabase.auth.signUp({ email: user.email, password: user.password, options: { data: { name: user.name, roles: 'client' } } })
+         if (error) throw new Error('No se pudo registrar el usuario');
+         const userData = {
+            id: data.user?.id,
+            name: data.user?.user_metadata.name,
+            email: data.user?.email,
+            role: data.user?.user_metadata.roles,
          }
+         await supabase.from('users').insert(userData);
+         return userData;
+      },
+      onError: (error) => {
+         toast.error(error.message);
       },
       onSuccess: (user) => {
          login(user!);

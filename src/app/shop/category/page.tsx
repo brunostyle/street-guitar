@@ -26,14 +26,15 @@ const categories = {
 
 const Category = () => {
    const { category } = useParams();
-   const { products, isLoading } = useGetCategory(String(category));
-   const { title, description, categorys, icon } = categories[category];
+   const { products, isEmpty, isLoading } = useGetCategory(String(category));
+   const { title, description, categorys, icon } = categories[category as keyof typeof categories]
+;
 
    return (
       <LayoutApp title={title} description={description}>
          {isLoading
             ? <FullScreenLoading />
-            : products?.length === 0
+            : isEmpty
                ? <Nothing text={"No se encontraron resultados para " + category} svg="/search-empty.svg" />
                : <ProductList category={categorys} icon={icon} products={products ?? []} />
          }

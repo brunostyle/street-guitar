@@ -1,9 +1,9 @@
 import { QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { RouterApp } from "./routes";
 import { NextUIProvider } from '@nextui-org/react'
 import { client } from './assets/query-client';
 import { useTheme } from './state';
+import { Toast } from './components';
 // import { LayoutMain } from './components';
 
 export const App = () => {
@@ -17,8 +17,8 @@ export const App = () => {
           <RouterApp />
         {/* </LayoutMain> */}
         </main>
+        <Toast />
       </NextUIProvider>
-      <ReactQueryDevtools />
     </QueryClientProvider>
   )
 }

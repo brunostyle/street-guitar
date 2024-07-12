@@ -8,16 +8,17 @@ import { usePaginate, usePaginateProducts } from "../../hooks";
 
 const Products = () => {
    const router = useNavigate();
-   const { page, limit, total, setPage } = usePaginate('products');   
-   const { products = [], isLoading } = usePaginateProducts(page, limit);
+   const { page, limit, total, setPage } = usePaginate('products');
+   const { products = [], isEmpty, isLoading } = usePaginateProducts(page, limit);
    return (
-      <LayoutAdmin showTitle={products.length !== 0} funtional title="Productos" icon={<AiOutlineTags />}>
+      <LayoutAdmin funtional title="Productos" icon={<AiOutlineTags />}>
          {isLoading
             ? <FullScreenLoading />
-            : products.length === 0 ? <Nothing text="Aún no hay productos" svg="/no-results.svg" />
+            : isEmpty
+               ? <Nothing text="Aún no hay productos" svg="/no-results.svg" />
                :
                <Table removeWrapper className="opacity" selectionMode="single" aria-label="Products" bottomContent={
-                  <Pagination className="flex justify-center" size="sm" showControls page={page} total={total} onChange={(page) => setPage(page)} />}>
+                  <Pagination className="flex justify-center" size="sm" showControls page={page} total={total} onChange={setPage} />}>
                   <TableHeader>
                      <TableColumn>IMAGEN</TableColumn>
                      <TableColumn>TITULO</TableColumn>

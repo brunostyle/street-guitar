@@ -45,10 +45,10 @@ export const Collapse = () => {
          <Divisor text="Tema" />
          <Between>
             <NavbarMenuItem>
-               <Button size="sm" variant={isLight ? 'flat' : 'light'} startContent={<BiSun />} onPress={() => changeTheme(true)}>Claro</Button>
+               <Button size="sm" variant={isLight ? 'bordered' : 'light'} startContent={<BiSun />} onPress={() => changeTheme(true)}>Claro</Button>
             </NavbarMenuItem>
             <NavbarMenuItem>
-               <Button size="sm" variant={isLight ? 'light' : 'flat'} startContent={<MdOutlineNightlight />} onPress={() => changeTheme(false)}>Oscuro</Button>
+               <Button size="sm" variant={isLight ? 'light' : 'bordered'} startContent={<MdOutlineNightlight />} onPress={() => changeTheme(false)}>Oscuro</Button>
             </NavbarMenuItem>
          </Between>
       </NavbarMenu>

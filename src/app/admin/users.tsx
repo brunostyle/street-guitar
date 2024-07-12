@@ -7,12 +7,12 @@ import { usePaginateUsers, usePaginate } from "../../hooks";
 
 const Users = () => {
    const { page, limit, total, setPage } = usePaginate('users');
-   const { users = [], isLoading } = usePaginateUsers(page, limit);
+   const { users = [], isEmpty, isLoading } = usePaginateUsers(page, limit);
    return (
       <LayoutAdmin showTitle={users.length !== 0} title="Usuarios" icon={<FiUsers />}>
          {isLoading
             ? <FullScreenLoading />
-            : users.length === 0
+            : isEmpty
                ? <Nothing text="Aún no hay usuarios" svg="/no-results.svg" />
                :
                <Table removeWrapper className="opacity" aria-label="Usuarios" selectionMode="multiple" bottomContent={

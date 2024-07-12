@@ -1,20 +1,20 @@
-// import { Toaster } from 'react-hot-toast';
-// import { useTheme } from '../../state';
+import { Toaster } from 'react-hot-toast';
+import { useTheme } from '../../state';
 
-// const styleDark = {
-//    background: '#0c0b0b',
-//    boxShadow: '10px 10px 60px #3e1a1a',
-//    color: '#fff',
-// };
+const styleDark: React.CSSProperties = {
+   background: '#0c0b0b',
+   color: '#fff',
+};
 
-// export const Toast = () => {
-//    const { isLight } = useTheme();
-//    return (
-//       <Toaster
-//          toastOptions={{ 
-//             style: !isLight && styleDark, 
-//             duration: 9000,
-//          }} 
-//       />
-//    )
-// }
+export const Toast = () => {
+   const { isLight } = useTheme();
+   return (
+      <Toaster
+         toastOptions={{ 
+            style: isLight ? undefined : styleDark, 
+            duration: 5000,
+            position: 'bottom-right'
+         }} 
+      />
+   )
+}

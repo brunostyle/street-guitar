@@ -12,7 +12,7 @@ export const usePaginateOrders = (page: number, limit: number) => {
          return data;
       }
    })
-   return { orders, isLoading }
+   return { orders, isEmpty: orders?.length === 0, isLoading }
 }
 //--------------------------------- GET ---------------------------------
 export const useGetOrder = (id: string) => {

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../assets/database";
 import { v4 as uuid } from "uuid";
 import { ChangeEvent } from "react";
+import toast from "react-hot-toast";
 
 //--------------------------------- GET ---------------------------------
 export const useProducts = () => {
@@ -26,7 +27,7 @@ export const usePaginateProducts = (page: number, limit: number) => {
       return data;
     },
   })
-  return { products, isLoading }
+  return { products, isEmpty: products?.length === 0,  isLoading }
 }
 export const useGetProduct = (id: string): { product: IProduct, isLoading: boolean } => {
   const { data: product, isLoading } = useQuery({
@@ -44,19 +45,19 @@ export const useGetCategory = (category: string) => {
       return data;
     }
   })
-  return { products, isLoading }
+  return { products, isLoading, isEmpty: products?.length === 0 }
 }
-export const useGetProductsQuery = (query: string) => {
+export const useGetProductsQuery = (query: string): { products?: IProduct[], isEmpty: boolean, isLoading: boolean } => {
   const { data: products, isLoading } = useQuery({
     queryKey: ["products", query],
-    queryFn: async () => {
-      // const { data, error } = await supabase.from('products').select().like('title', `%${query}%`)
-      // console.log(data)
-      // if (error) throw new Error("Error fetching products")
-      // return data;
+    queryFn: async ():Promise<IProduct[]> => {
+      const { data, error } = await supabase.from('products').select().ilike('title', `${query}%`)
+      console.log(data)
+      if (error) throw new Error("Error fetching products")
+      return data;
     }
   })
-  return { products, isLoading }
+  return { products, isLoading, isEmpty: products?.length === 0 }
 }
 //--------------------------------- ADD ---------------------------------
 export const useAddProduct = () => {
@@ -64,6 +65,7 @@ export const useAddProduct = () => {
   const { mutate: addProduct, isPending: isAdding } = useMutation({
     mutationFn: async (product: IProduct) => await supabase.from('products').insert(product),
     onSuccess: () => {
+      toast.success('Producto añadido')
       router('/admin/products')
     }
   })
@@ -75,6 +77,7 @@ export const useUpdateProduct = () => {
   const { mutate: updateProduct, isPending: isUpdating } = useMutation({
     mutationFn: async (product: IProduct) => await supabase.from('products').update(product).eq('id', product.id),
     onSuccess: () => {
+      toast.success('Producto actualizado')
       router('/admin/products')
     }
   })
@@ -86,6 +89,7 @@ export const useDeleteProduct = () => {
   const { mutate: deleteProduct, isPending: isDeleting } = useMutation({
     mutationFn: async (id: string) => await supabase.from('products').delete().eq('id', id),
     onSuccess: () => {
+      toast.success('Producto eliminado')
       router('/admin/products')
     }
   })
@@ -93,10 +97,18 @@ export const useDeleteProduct = () => {
 }
 export const uploadFile = async (e: ChangeEvent<HTMLInputElement>) => {
   const [file] = e.target.files!;
-  const { data } = await supabase.storage.from('products').upload(uuid(), file, { cacheControl: '3600', upsert: false });
-  const URL = import.meta.env.VITE_SUPABASE_URL_FILE;
-  return URL + data?.fullPath;
+  const promise = supabase.storage.from('products').upload(uuid(), file, { cacheControl: '3600', upsert: false }).then(({ data }) => {
+    const URL = import.meta.env.VITE_SUPABASE_URL_FILE;
+    return URL + data?.fullPath;
+  });
+  toast.promise(promise, {
+    loading: 'Subiendo imagen',
+    success: 'Imagen subida',
+    error: 'No se pudo subir la imagen',
+  });
+  return promise;
 }
+
 export const deleteFile = async (img: string) => {
   console.log({ img })
   const fileName = 'products/' + img.split('/').at(-1);

@@ -17,10 +17,12 @@ import Users from '../app/admin/users';
 
 import Login from '../app/auth/login';
 import Register from '../app/auth/register';
+import { Private } from './Private';
+import { Public } from './Public';
 
 export const RouterApp = () => (
   <Routes>
-    <Route path="/" element={<Home />} />
+    <Route index element={<Home />} />
     <Route path="/category/:category" element={<Category />} />
     <Route path="/search/:query" element={<Search />} />
     <Route path="/product/:id" element={<Product />} />
@@ -28,14 +30,25 @@ export const RouterApp = () => (
     <Route path="/cart/empty" element={<Empty />} />
     <Route path="/checkout/:id" element={<Checkout />} />
 
-    <Route path="/admin" element={<Dashboard />} />
-    <Route path="/admin/products" element={<Products />} />
-    <Route path="/admin/products/new" element={<NewProduct />} />
-    <Route path="/admin/products/:id" element={<UpdateProduct />} />
-    <Route path="/admin/orders" element={<Orders />} />
-    <Route path="/admin/users" element={<Users />} />
-    
-    <Route path="/auth/login" element={<Login />} />
-    <Route path="/auth/register" element={<Register />} />
+    <Route path="/admin/*" element={
+      <Private>
+        <Routes>
+          <Route index element={<Dashboard />} />
+          <Route path="products" element={<Products />} />
+          <Route path="products/new" element={<NewProduct />} />
+          <Route path="products/:id" element={<UpdateProduct />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="users" element={<Users />} />
+        </Routes>
+      </Private>
+    }/>
+    <Route path="/auth/*" element={
+      <Public>
+        <Routes>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Routes>
+      </Public>
+    }/>
   </Routes>
 )

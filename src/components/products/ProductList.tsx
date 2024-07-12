@@ -1,4 +1,4 @@
-import { Card, CardBody, Chip, Image, Skeleton, Spacer } from '@nextui-org/react';
+import { Card, CardBody, Chip, Image, Spacer } from '@nextui-org/react';
 import { Between, HiddenTitle, Wrap, Title } from '../../styles';
 import { IProduct, categories } from "../../utils/interfaces"
 import { useNavigate as useRouter } from 'react-router-dom';

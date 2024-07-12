@@ -7,7 +7,7 @@ import { registerSchema } from "../../assets/validations";
 import { IRegister } from "../../utils/interfaces";
 import { useRegister } from "../../hooks";
 
-const initial: IRegister = { name: 'test1', email: 'test1@gmail.com', password: '123456' };
+const initial: IRegister = { name: '', email: '', password: '' };
 
 const Register = () => {
   const { mutate: register, isPending } = useRegister();

@@ -13,6 +13,7 @@ export * from './ui/Nothing';
 export * from './ui/Radio';
 export * from './ui/Tags';
 export * from './ui/Textarea';
+export * from './ui/Toast';
 export * from './ui/User';
 export * from './ui/Sells';
 export * from './layouts/LayoutAdmin';

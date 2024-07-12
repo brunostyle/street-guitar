@@ -6,7 +6,7 @@ interface IProps {
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const file = {
+const file: React.CSSProperties = {
 	cursor: 'pointer',
 	position: 'absolute',
 	top: 0,
