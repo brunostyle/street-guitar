@@ -7,13 +7,13 @@ import { TValidCategory } from "../../../utils/interfaces";
 import { productSchema } from "../../../assets/validations";
 import { Grid, GridContainer, SectionTitle } from "../../../styles";
 import { uploadFile, useAddProduct } from "../../../hooks";
+const initial = { title: '', description: '', price: '' }
 
 const NewProduct = () => {
     const { addProduct, isAdding } = useAddProduct();
     const [category, setCategory] = useState<TValidCategory>('cards');
     const [tags, setTags] = useState<string[]>([]);
     const [images, setImages] = useState<string[]>([]);
-    const initial = { title: '', description: '', price: '' }
 
     const handleImage = async (e: ChangeEvent<HTMLInputElement>) => {
         try {

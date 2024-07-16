@@ -24,25 +24,25 @@ dist-ssr
 *.sw?
 
 .idx
-bruno.code-profile
+milla.code-profile
 .env
 
 # BORRAR
-assets
-public
+# assets
+# public
 # routes
 # hooks
-state
-styles
-utils
-App.tsx
-main.tsx
-.eslintrc.cjs
-package-lock.json
-package.json
-tsconfig.node.json
-*.config.js
-index.html
-tsconfig.json
-vite.config.ts
-vite-env.d.ts
+# state
+# styles
+# utils
+# App.tsx
+# main.tsx
+# .eslintrc.cjs
+# package-lock.json
+# package.json
+# tsconfig.node.json
+# *.config.js
+# index.html
+# tsconfig.json
+# vite.config.ts
+# vite-env.d.ts

@@ -27,7 +27,7 @@ export const Menu = () => {
             <Title>LB Digital</Title>
          </NavbarBrand>
 
-         <NavbarContent justify="end" className="gap-5">
+         <NavbarContent justify="end" className="gap-4">
             <NavbarItem className="hidden lg:block">
                <Formik initialValues={values} onSubmit={handleSubmit} validationSchema={searchSchema}>
                   <Form>

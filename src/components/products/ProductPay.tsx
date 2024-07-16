@@ -1,4 +1,4 @@
-import { Spacer, Button } from "@nextui-org/react"
+import { Spacer, Button, DatePicker } from "@nextui-org/react"
 import { Formik, Form } from "formik"
 import { Between } from "../../styles"
 import { Input } from "../index"
@@ -12,7 +12,7 @@ export const ProductPay = () => {
    const handleSubmit = (values: any) => {
       console.log(values)
    }
-   
+
    return (
       <div className="w-full">
          <Button fullWidth size="sm" color="warning" startContent={<BsPaypal />}><h4 className="font-extrabold text-blue-700">Pay</h4><h4 className="font-extrabold text-white">Pal</h4></Button>
@@ -29,7 +29,7 @@ export const ProductPay = () => {
                   <Input type="number" name="number" label="Numero tarjeta" />
                   <Spacer y={2} />
                   <Between>
-                     <Input type="number" name="expires" label="Expiración" />
+                     <DatePicker granularity="day" size="sm" label="Expiracion" labelPlacement="outside" />
                      <Input type="number" name="csc" label="Nro seguridad" />
                   </Between>
                   <Spacer y={4} />
