@@ -1,4 +1,4 @@
-export interface IUser {
+export interface IUserDashboard {
 	name: string;
 	email: string;
 	avatar?: string;
@@ -6,7 +6,7 @@ export interface IUser {
 
 export interface IOrderDashboard {
 	id: string;
-	user: IUser;
+	user: IUserDashboard;
 }
 
 export interface IChart {

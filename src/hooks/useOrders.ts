@@ -28,7 +28,7 @@ export const useGetOrder = (id: string) => {
             total: number;
             items: number;
          }
-         const response: IResponse = { products, total, items }
+         const response: IResponse = { products, total, items } as any;
          return response;
       }
    })

@@ -1,4 +1,4 @@
-export interface IUser {
+export interface IUserOrder {
    name: string;
    email: string;
    avatar?: string;
@@ -6,7 +6,7 @@ export interface IUser {
 
 export interface IOrder {
    id: string;
-   user: IUser;
+   user: IUserOrder;
    paid: boolean;
    items: number;
    total: number;

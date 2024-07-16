@@ -20,10 +20,10 @@ export const useDashboard = () => {
             ]);
             if (error) throw new Error("Error fetching lastSells")
             return {
-               numberOfClients,
-               numberOfProducts,
-               numberOfOrders,
-               lastSells,
+               numberOfClients: numberOfClients!,
+               numberOfProducts: numberOfProducts!,
+               numberOfOrders: numberOfOrders!,
+               lastSells: lastSells as any,
                chart: {
                   clients: [31, 40, 28, 51, 42, 109, 100],
                   sells: [11, 32, 45, 32, 34, 52, 41]

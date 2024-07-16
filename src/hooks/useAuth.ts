@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query"
-import { ILogin, IRegister } from "../utils/interfaces";
+import { IAuth, ILogin, IRegister } from "../utils/interfaces";
 import { useNavigate } from "react-router-dom"
 import { useUser } from "../state";
 import { supabase } from "../assets/database";
@@ -24,7 +24,7 @@ export const useLogin = () => {
          toast.error(error.message);
       },
       onSuccess: (user) => {
-         login(user);
+         login(user as IAuth);
          router('/');
       }
    })
@@ -50,7 +50,7 @@ export const useRegister = () => {
          toast.error(error.message);
       },
       onSuccess: (user) => {
-         login(user!);
+         login(user as IAuth);
          router('/');
       }
    })
