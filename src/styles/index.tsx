@@ -14,7 +14,7 @@ export const WrapFit = ({ children }: Props) => (
 )
 
 export const Between = ({ children }: Props) => (
-  <div className="flex justify-between items-center gap-4">{children}</div>
+  <div className="w-full flex justify-between items-center gap-4">{children}</div>
 )
 
 export const SectionTitle = ({ children }: Props) => (

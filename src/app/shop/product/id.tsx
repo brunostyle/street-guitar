@@ -7,6 +7,7 @@ import { LayoutApp } from "../../../components";
 import { categories } from "../../../utils/interfaces";
 import { useGetProduct } from "../../../hooks";
 import ImageGallery from 'react-image-gallery';
+import { useEffect } from "react";
 
 const Product = () => {
    const { id } = useParams();
@@ -14,12 +15,15 @@ const Product = () => {
    const { product, isLoading } = useGetProduct(String(id));
    const images = product?.images.map(img => ({ original: img, thumbnail: img }))
    const handleAddToCart = () => addProductToCart(product!);
+   useEffect(() => {
+      window.scroll({ top: 0 });
+   }, []);
    return (
       <LayoutApp title={product?.title} description={product?.description}>
          <Card className="max-w-[1200px] mx-auto" isBlurred>
             <GridContainer>
                <Grid>
-                  {isLoading 
+                  {isLoading
                      ? <div className="grid place-content-center h-[500px]"><Spinner /></div>
                      : <ImageGallery showThumbnails showPlayButton={false} showFullscreenButton={false} items={images} additionalClass="opacity-slow min-h-[500px]" />
                   }
