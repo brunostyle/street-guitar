@@ -28,6 +28,10 @@
   animation: darked .3s linear;
 }
 
+.opacity-slow {
+  animation: darked 1s linear;
+}
+
 .dashboard {
   display: grid;
   gap: 1rem;

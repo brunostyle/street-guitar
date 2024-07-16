@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, Chip, Divider, Skeleton, Spacer } from "@nextui-org/react";
+import { Button, Card, CardBody, Chip, Divider, Skeleton, Spacer, Spinner } from "@nextui-org/react";
 import { useParams } from "react-router-dom";
 import { FiShoppingCart } from "../../../assets/icons";
 import { Between, Grid, GridContainer, Subtitle, Title } from "../../../styles";
@@ -12,20 +12,17 @@ const Product = () => {
    const { id } = useParams();
    const { addProductToCart } = useCart();
    const { product, isLoading } = useGetProduct(String(id));
-
-   const images = product?.images.map(img => ({ original: img }))
-
+   const images = product?.images.map(img => ({ original: img, thumbnail: img }))
    const handleAddToCart = () => addProductToCart(product!);
    return (
       <LayoutApp title={product?.title} description={product?.description}>
-         <Card className="max-w-[1200px] mx-auto">
+         <Card className="max-w-[1200px] mx-auto" isBlurred>
             <GridContainer>
                <Grid>
-                  <Skeleton className="rounded-md" isLoaded={!isLoading}>
-                     <div className="min-h-96">
-                        <ImageGallery autoPlay slideDuration={1000} showPlayButton={false} showFullscreenButton={false} items={images ?? []} />
-                     </div>
-                  </Skeleton>
+                  {isLoading 
+                     ? <div className="grid place-content-center h-[500px]"><Spinner /></div>
+                     : <ImageGallery showThumbnails showPlayButton={false} showFullscreenButton={false} items={images} additionalClass="opacity-slow min-h-[500px]" />
+                  }
                </Grid>
                <Grid>
                   <CardBody>
