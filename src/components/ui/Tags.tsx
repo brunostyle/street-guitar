@@ -9,7 +9,7 @@ export const Tags = () => {
    const [tagValue, setTagValue] = useState<string>('');
 
    const removeTag = (tag: string) => {
-      helpers.setValue(input.value.filter((t:string) => t !== tag))
+      helpers.setValue(input.value.filter((t: string) => t !== tag))
    }
 
    const addTag = () => {
@@ -26,7 +26,7 @@ export const Tags = () => {
             <Button isIconOnly variant="ghost" size="sm" onPress={addTag}><GrAdd /></Button>
          } />
          <div className="flex gap-1 mt-4">
-            {input.value && input.value.map((tag:string) => <div key={tag}><Chip color="primary" size="sm" variant="flat" onClose={() => removeTag(tag)}>{tag}</Chip></div>)}
+            {input.value && input.value.map((tag: string) => <div key={tag}><Chip color="primary" size="sm" variant="flat" onClose={() => removeTag(tag)}>{tag}</Chip></div>)}
          </div>
       </div>
 
