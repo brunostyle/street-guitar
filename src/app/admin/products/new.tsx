@@ -1,30 +1,16 @@
-import { ChangeEvent, useState } from "react";
 import { Card, CardBody, Button, Spacer } from "@nextui-org/react";
 import { Form, Formik } from "formik";
-import { File, Images, Input, LayoutAdmin, Radio, Tags, Textarea } from "../../../components";
+import { Images, Input, LayoutAdmin, Category, Tags, Textarea } from "../../../components";
 import { AiOutlineSave, FaPlus } from "../../../assets/icons";
-import { TValidCategory } from "../../../utils/interfaces";
 import { productSchema } from "../../../assets/validations";
 import { Grid, GridContainer, SectionTitle } from "../../../styles";
-import { uploadFile, useAddProduct } from "../../../hooks";
-const initial = { title: '', description: '', price: '' }
+import { useAddProduct } from "../../../hooks";
+const initial = { title: '', description: '', price: '', category: 'cards', tags: [], images: [] }
 
 const NewProduct = () => {
     const { addProduct, isAdding } = useAddProduct();
-    const [category, setCategory] = useState<TValidCategory>('cards');
-    const [tags, setTags] = useState<string[]>([]);
-    const [images, setImages] = useState<string[]>([]);
 
-    const handleImage = async (e: ChangeEvent<HTMLInputElement>) => {
-        try {
-            const url = await uploadFile(e);
-            setImages([...images, url]);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const handleSubmit = (values: any) => addProduct({ ...values, tags, category, images })
+    const handleSubmit = (values: any) => addProduct({ ...values });
 
     return (
         <LayoutAdmin isProductPage title="Agregar" icon={<FaPlus />}>
@@ -38,12 +24,11 @@ const NewProduct = () => {
                                 <Input name="title" label="Titulo" />
                                 <Textarea name="description" label="Descripción" />
                                 <Input type="number" name="price" label="Precio" />
-                                <Tags tags={tags} setTags={setTags} />
+                                <Tags />
                             </Grid>
                             <Grid>
-                                <Radio label="Categoria" value={category} onChange={setCategory} />
-                                <Images images={images} setImages={setImages} />
-                                <File onChange={handleImage} />
+                                <Category />
+                                <Images />
                                 <Button variant="bordered" fullWidth isLoading={isAdding} startContent={!isAdding && <AiOutlineSave />} color="success" size="sm" onPress={() => form.handleSubmit()}>Guardar</Button>
                             </Grid>
                         </GridContainer></Form>

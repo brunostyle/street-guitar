@@ -10,8 +10,15 @@ interface IUser {
 }
 
 export const useUser = create<IUser>(set => ({
-   isLogged: false,
-   user: undefined,
+   isLogged: true,
+   user: {
+      "id": "1",
+      "name": "Bruno Brian Millalipe",
+      "email": "bruno@gmail.com",
+      "role": "admin"
+    },
+   // isLogged: false,
+   // user: undefined,
    login: user => set({ isLogged: true, user }),
    logout: async () => {
       await supabase.auth.signOut();

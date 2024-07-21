@@ -10,7 +10,7 @@ export * from './ui/Logo';
 export * from './ui/Menu';
 export * from './ui/MenuAdmin';
 export * from './ui/Nothing';
-export * from './ui/Radio';
+export * from './ui/Category';
 export * from './ui/Tags';
 export * from './ui/Textarea';
 export * from './ui/Toast';
