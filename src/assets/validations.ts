@@ -25,6 +25,7 @@ export const productSchema = Yup.object({
       .integer()
       .typeError('Debe ser un valor numerico')
       .min(0, 'No debe ser menor a cero'),
+   category: Yup.mixed().oneOf(['rock', 'folclore', 'pop'], 'La categoria no existe'),
    tags: Yup.array()
       .of(Yup.string()).optional(),
    images: Yup.array()

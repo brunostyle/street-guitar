@@ -1,5 +1,5 @@
 import { RadioGroup, Radio as RadioNext } from "@nextui-org/react";
-import { useField } from "formik";
+import { ErrorMessage, useField } from "formik";
 
 export const Category = () => {
    const [input, _meta, helpers] = useField('category');
@@ -10,13 +10,14 @@ export const Category = () => {
             aria-label="categoria" 
             size="sm" 
             orientation="horizontal" 
-            defaultValue="cards" 
+            defaultValue="rock" 
             value={input.value}
             onValueChange={helpers.setValue}
+            errorMessage={<ErrorMessage name={input.name} />}
          >
-            <RadioNext value="cards">Tarjetas</RadioNext>
-            <RadioNext value="covers">Portadas</RadioNext>
-            <RadioNext value="logos">Logos</RadioNext>
+            <RadioNext value="rock">Rock</RadioNext>
+            <RadioNext value="folclore">Folclore</RadioNext>
+            <RadioNext value="pop">Pop</RadioNext>
          </RadioGroup>
       </div>
    );

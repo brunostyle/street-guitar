@@ -19,7 +19,9 @@ export const ProductList = ({ category, icon, products }: IProps) => {
       <Wrap>
          {products.map(product => (
             <Card key={product.id} isPressable onPress={() => router('/product/' + product.id)}>
-               <Image src={product.images.at(0)} alt={product.title} width="100%" height="100%" className="rounded-none" />
+               <div className="w-full h-full">
+                  <Image src={product.images.at(0)} alt={product.title} width="100%" height="100%" className="rounded-none object-cover" />
+               </div>
                <CardBody>
                   <HiddenTitle>{product.title}</HiddenTitle>
                </CardBody>

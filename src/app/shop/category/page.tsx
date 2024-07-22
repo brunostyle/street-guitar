@@ -4,22 +4,22 @@ import { useParams } from "react-router-dom";
 import { useGetCategory } from "../../../hooks";
 
 const categories = {
-   cards: {
-      title: "LB Digital - Tarjetas digitales",
-      description: "Encuentra las mejores tarjetas digitales de LB Digital",
-      categorys: "Tarjetas digitales",
+   rock: {
+      title: "LB Digital - Rock",
+      description: "Encuentra las mejores canciones de rock en LB Digital",
+      categoryName: "Rock",
       icon: <BsFillCreditCard2FrontFill />
    },
-   covers: {
-      title: "LB Digital - Portadas",
-      description: "Encuentra las mejores portadas de LB Digital",
-      categorys: "Portadas",
+   folclore: {
+      title: "LB Digital - Folclore",
+      description: "Encuentra las mejores canciones de folclore en LB Digital",
+      categoryName: "Folclore",
       icon: <BsFillGrid3X3GapFill />
    },
-   logos: {
-      title: "LB Digital - Logos",
-      description: "Encuentra los mejores logos en LB Digital",
-      categorys: "Logos",
+   pop: {
+      title: "LB Digital - Pop",
+      description: "Encuentra los mejores canciones de pop en LB Digital",
+      categoryName: "Pop",
       icon: <IoLogoPolymer />
    },
 }
@@ -27,8 +27,7 @@ const categories = {
 const Category = () => {
    const { category } = useParams();
    const { products, isEmpty, isLoading } = useGetCategory(String(category));
-   const { title, description, categorys, icon } = categories[category as keyof typeof categories]
-;
+   const { title, description, categoryName, icon } = categories[category as keyof typeof categories];
 
    return (
       <LayoutApp title={title} description={description}>
@@ -36,7 +35,7 @@ const Category = () => {
             ? <FullScreenLoading />
             : isEmpty
                ? <Nothing text={"No se encontraron resultados para " + category} svg="/search-empty.svg" />
-               : <ProductList category={categorys} icon={icon} products={products ?? []} />
+               : <ProductList category={categoryName} icon={icon} products={products ?? []} />
          }
       </LayoutApp>
    )

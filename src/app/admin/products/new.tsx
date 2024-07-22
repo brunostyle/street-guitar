@@ -5,12 +5,14 @@ import { AiOutlineSave, FaPlus } from "../../../assets/icons";
 import { productSchema } from "../../../assets/validations";
 import { Grid, GridContainer, SectionTitle } from "../../../styles";
 import { useAddProduct } from "../../../hooks";
-const initial = { title: '', description: '', price: '', category: 'cards', tags: [], images: [] }
+const initial = { title: '', description: '', price: '', category: 'rock', tags: [], images: [] }
 
 const NewProduct = () => {
     const { addProduct, isAdding } = useAddProduct();
 
-    const handleSubmit = (values: any) => addProduct({ ...values });
+    const handleSubmit = (values: any) => {
+        addProduct({ ...values })
+    };
 
     return (
         <LayoutAdmin isProductPage title="Agregar" icon={<FaPlus />}>

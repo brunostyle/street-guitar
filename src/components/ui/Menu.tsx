@@ -43,9 +43,9 @@ export const Menu = () => {
                   </DropdownTrigger>
                   <DropdownMenu variant="bordered" aria-label="filtrado de productos" onAction={category => router('/category/' + category)}>
                      <DropdownSection title="Categorias">
-                        <DropdownItem showDivider key="cards" startContent={<BsFillCreditCard2FrontFill />}>Tarjetas</DropdownItem>
-                        <DropdownItem key="covers" startContent={<BsFillGrid3X3GapFill />}>Portadas</DropdownItem>
-                        <DropdownItem key="logos" startContent={<IoLogoPolymer />}>Logos</DropdownItem>
+                        <DropdownItem showDivider key="rock" startContent={<BsFillCreditCard2FrontFill />}>Rock</DropdownItem>
+                        <DropdownItem key="folclore" startContent={<BsFillGrid3X3GapFill />}>Folclore</DropdownItem>
+                        <DropdownItem key="pop" startContent={<IoLogoPolymer />}>Pop</DropdownItem>
                      </DropdownSection>
                   </DropdownMenu>
                </Dropdown>
