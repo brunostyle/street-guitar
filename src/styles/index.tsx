@@ -1,5 +1,4 @@
-// import { useTheme } from "../state";
-import gradient from "/gradient.svg";
+import { useTheme } from "../state";
 
 interface Props {
   children: React.ReactNode;
@@ -56,13 +55,13 @@ export const Grid = ({ children }: Props) => (
 )
 
 export const Gradient = ({ children }: Props) => {
-  // const { isLight } = useTheme();
+  const { isLight } = useTheme();
   return <div style={{
+    background: isLight ? 
+    'radial-gradient(circle, rgba(186,186,212,1) 0%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 100%)' 
+    :
+    'radial-gradient(circle, rgba(9,9,71,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 100%)',
     minHeight: '100vh',
-    backgroundImage: `url(${gradient})`,
-    backgroundBlendMode: 'soft-light',
-    backgroundPosition: 'center',
-    // backgroundColor: isLight ? 'rgba(255,255,255,.8)' : 'rgba(0,0,0,6)',
   }}>{children}</div>
 }
 
