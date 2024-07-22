@@ -11,7 +11,7 @@ export const useProducts = () => {
   const { data: products, isLoading } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const { data, error } = await supabase.from('products').select();
+      const { data, error } = await supabase.from('products').select().order('id');
       if (error) throw new Error(error.message);
       return data;
     },
@@ -22,7 +22,7 @@ export const usePaginateProducts = (page: number, limit: number) => {
   const { data: products, isLoading } = useQuery({
     queryKey: ["products", page],
     queryFn: async () => {
-      const { data, error } = await supabase.from('products').select().range((page - 1) * limit, page * limit - 1);
+      const { data, error } = await supabase.from('products').select().order('id').range((page - 1) * limit, page * limit - 1);
       if (error) throw new Error(error.message);
       return data;
     },

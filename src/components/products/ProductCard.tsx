@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, CardFooter, Chip, Image, Spacer } from "@nextui-org/react";
+import { Button, Card, CardBody, CardFooter, Chip, Spacer } from "@nextui-org/react";
 import { IProduct, categories } from "../../utils/interfaces"
 import { AiFillDelete } from '../../assets/icons'
 import { HiddenTitle, Subtitle, Title } from "../../styles";
@@ -16,12 +16,12 @@ export const ProductCard = ({ cart = [], editable = false }: IProductCard) => {
       {cart.map(product => (
          <Card isFooterBlurred key={product.id} className="grid grid-cols-12 mb-4">
             <Link to={"/product/" + product.id} className="col-span-2">
-               <Image src={product.images[0]} alt={product.title} width="100%" height="100%" className="object-cover" />
+               <img src={product.images[0]} alt={product.title} className="w-full h-full rounded-none object-cover" />
             </Link>
             <CardBody className="col-span-8">
                <HiddenTitle>{product.title}</HiddenTitle>
                <Subtitle>{product.description}</Subtitle>
-               <Spacer />
+               <Spacer y={4} />
                <Chip variant="flat" size="sm" color={categories[product.category]}>{product.category}</Chip>
             </CardBody>
             <CardFooter className="col-span-2 flex flex-col justify-between">

@@ -1,4 +1,4 @@
-import { Card, CardBody, CardFooter, Chip, Image } from '@nextui-org/react';
+import { Card, CardBody, CardFooter, Chip } from '@nextui-org/react';
 import { Between, HiddenTitle, Wrap, Title } from '../../styles';
 import { IProduct, categories } from "../../utils/interfaces"
 import { useNavigate as useRouter } from 'react-router-dom';
@@ -19,9 +19,7 @@ export const ProductList = ({ category, icon, products }: IProps) => {
       <Wrap>
          {products.map(product => (
             <Card key={product.id} isPressable onPress={() => router('/product/' + product.id)}>
-               <div className="w-full h-full">
-                  <Image src={product.images.at(0)} alt={product.title} width="100%" height="100%" className="rounded-none object-cover" />
-               </div>
+               <img src={product.images.at(0)} alt={product.title} className="w-full h-full rounded-none object-cover" />
                <CardBody>
                   <HiddenTitle>{product.title}</HiddenTitle>
                </CardBody>
