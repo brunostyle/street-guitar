@@ -9,9 +9,9 @@ export interface IProduct {
 	title: string;
 	description: string;
 	images: string[];
+	category: TValidCategory;
 	price: number;
 	tags: string[];
-	category: TValidCategory;
 }
 
 export const categories: Record<string, ChipProps["color"]> = {
