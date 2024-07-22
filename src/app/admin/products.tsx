@@ -5,7 +5,6 @@ import { FullScreenLoading, LayoutAdmin, Nothing } from "../../components";
 import { HiddenTitle, HiddenSubtitle } from "../../styles";
 import { categories } from "../../utils/interfaces";
 import { usePaginate, usePaginateProducts } from "../../hooks";
-
 const Products = () => {
    const router = useNavigate();
    const { page, limit, total, setPage } = usePaginate('products');

@@ -29,7 +29,7 @@ export const Images = () => {
    return (
       <div className="flex gap-2 justify-evenly flex-wrap">
          {input.value && input.value.map((img: string) => <Badge key={img} content={<MdClose />} onClick={() => deleteImage(img)} size="lg" color="primary" variant="shadow" isOneChar className="cursor-pointer">
-            <Image src={img} width="120px" height="120px" />
+            <Image src={img} width="120px" height="120px" className="object-cover" />
          </Badge>
          )}
          <File onChange={handleImage} />
