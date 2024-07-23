@@ -17,7 +17,7 @@ export const Banner = () => (
                <Button color="primary" size="sm" as="a" variant="bordered" startContent={<BsInstagram />} href="https://www.instagram.com/lb_digitaloficial/" target="_blank">Instagram</Button>
             </div>
          </div>
-         <div className="hidden md:block mb-36">
+         <div className="hidden md:block mb-36 dark:opacity-80">
             <Image src="auris.png" alt="Ilustracion" />
          </div>
       </div>
