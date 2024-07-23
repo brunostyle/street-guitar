@@ -110,7 +110,6 @@ export const uploadFile = async (e: ChangeEvent<HTMLInputElement>) => {
 }
 
 export const deleteFile = async (img: string) => {
-  console.log({ img })
   const fileName = 'products/' + img.split('/').at(-1);
   const { data, error } = await supabase.storage.from('products').remove([fileName])
   console.log({ fileName })

@@ -6,7 +6,7 @@ import { useProducts } from '../hooks';
 const Home = () => {
 	const { products, isLoading } = useProducts();
 	return (
-			<LayoutApp title="LB Digital - Inicio" description="Encuentra los mejores productos de LB Digital aquí">
+			<LayoutApp title="LB Digital - Inicio" description="Encuentra las mejores tablaturas de LB Digital aquí">
 				<Banner />
 				{isLoading
 					? <Spinner className="flex justify-center" />
