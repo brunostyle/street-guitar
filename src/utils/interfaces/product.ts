@@ -12,8 +12,8 @@ export interface IProduct {
 	category: TValidCategory;
 	price: number;
 	tags: string[];
-	tab: string;
-	pdf: string;
+	tab?: string;
+	pdf?: string;
 }
 
 export const categories: Record<string, ChipProps["color"]> = {
