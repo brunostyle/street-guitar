@@ -95,25 +95,28 @@ export const useDeleteProduct = () => {
   })
   return { deleteProduct, isDeleting }
 }
-export const uploadFile = async (e: ChangeEvent<HTMLInputElement>) => {
-  const [file] = e.target.files!;
-  const promise = supabase.storage.from('products').upload(uuid(), file, { cacheControl: '3600', upsert: false }).then(({ data }) => {
-    const URL = import.meta.env.VITE_SUPABASE_URL_FILE;
-    return URL + data?.fullPath;
-  });
-  toast.promise(promise, {
-    loading: 'Subiendo imagen',
-    success: 'Imagen subida',
-    error: 'No se pudo subir la imagen',
-  });
-  return promise;
+//--------------------------------- UPLOAD IMAGE ---------------------------------
+export const useAddImage = () => {
+  const { mutateAsync: addImage } = useMutation({
+    mutationFn: async (e: ChangeEvent<HTMLInputElement>) => {
+      const [file] = e.target.files!;
+      const { data } = await supabase.storage.from('products').upload(uuid(), file, { cacheControl: '3600', upsert: false });
+      const URL = import.meta.env.VITE_SUPABASE_URL_FILE;
+      return URL + data?.fullPath;
+    }
+  })
+  return { addImage }
 }
-
-export const deleteFile = async (img: string) => {
-  const fileName = 'products/' + img.split('/').at(-1);
-  await supabase.storage.from('products').remove([fileName])
+export const useDeleteImage = () => {
+  const { mutateAsync: deleteImage } = useMutation({
+    mutationFn: async (img: string) => {
+      const fileName = 'products/' + img.split('/').at(-1);
+      await supabase.storage.from('products').remove([fileName])
+    }
+  })
+  return { deleteImage }
 }
-
+//--------------------------------- UPLOAD PDF ---------------------------------
 export const useAddPDF = () => {
   const { mutate: addPDF, isPending: isAdding } = useMutation({
     mutationFn: async (file: File) => {

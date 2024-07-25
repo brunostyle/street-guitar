@@ -11,7 +11,7 @@ interface ILayout {
 export const LayoutAuth = ({ children, title, description }: ILayout) => (
    <Gradient>
       <div className="container mx-auto p-4 grid grid-cols-2 gap-4 min-h-screen place-content-center">
-         <Image className="flot hidden md:block" src="/illustration.png" alt="Ilustracion" />
+         <Image className="hidden md:block" src="/auris.png" alt="Ilustracion" />
          <Card isBlurred className="col-span-2 md:col-span-1">
             <CardHeader className="grid justify-center text-center gap-2">
                <Logo big />
