@@ -27,7 +27,7 @@ export const usePaginateProducts = (page: number, limit: number) => {
       return data;
     },
   })
-  return { products, isEmpty: products?.length === 0,  isLoading }
+  return { products, isEmpty: products?.length === 0, isLoading }
 }
 export const useGetProduct = (id: string): { product: IProduct, isLoading: boolean } => {
   const { data: product, isLoading } = useQuery({
@@ -50,7 +50,7 @@ export const useGetCategory = (category: string) => {
 export const useGetProductsQuery = (query: string): { products?: IProduct[], isEmpty: boolean, isLoading: boolean } => {
   const { data: products, isLoading } = useQuery({
     queryKey: ["products", query],
-    queryFn: async ():Promise<IProduct[]> => {
+    queryFn: async (): Promise<IProduct[]> => {
       const { data, error } = await supabase.from('products').select().ilike('title', `${query}%`)
       console.log(data)
       if (error) throw new Error("Error fetching products")
@@ -111,8 +111,25 @@ export const uploadFile = async (e: ChangeEvent<HTMLInputElement>) => {
 
 export const deleteFile = async (img: string) => {
   const fileName = 'products/' + img.split('/').at(-1);
-  const { data, error } = await supabase.storage.from('products').remove([fileName])
-  console.log({ fileName })
-  console.log({ data });
-  console.log({ error });
+  await supabase.storage.from('products').remove([fileName])
+}
+
+export const useAddPDF = () => {
+  const { mutate: addPDF, isPending: isAdding } = useMutation({
+    mutationFn: async (file: File) => {
+      const { data } = await supabase.storage.from('tabs').upload(uuid(), file, { cacheControl: '3600', upsert: false });
+      const URL = import.meta.env.VITE_SUPABASE_URL_FILE;
+      return URL + data?.fullPath;
+    }
+  })
+  return { addPDF, isAdding }
+}
+export const useDeletePDF = () => {
+  const { mutate: deletePDF, isPending: isDeleting } = useMutation({
+    mutationFn: async (pdf: string) => {
+      const fileName = 'tabs/' + pdf.split('/').at(-1);
+      await supabase.storage.from('products').remove([fileName])
+    }
+  })
+  return { deletePDF, isDeleting }
 }

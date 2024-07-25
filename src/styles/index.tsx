@@ -34,6 +34,12 @@ export const Subtitle = ({ children }: Props) => (
   </div>
 )
 
+export const TitlePDF = ({ children }: Props) => (
+  <div className="max-w-screen-sm sm:max-w-max">
+    <h4 className="overflow-hidden text-ellipsis whitespace-nowrap text-sm">{children}</h4>
+  </div>
+)
+
 export const HiddenTitle = ({ children }: Props) => (
   <div className="max-w-40 sm:max-w-max">
     <h4 className="overflow-hidden text-ellipsis whitespace-nowrap text-sm">{children}</h4>

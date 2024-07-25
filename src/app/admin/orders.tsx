@@ -33,7 +33,7 @@ const Orders = () => {
                            <TableCell><h4>${order.total}</h4></TableCell>
                            <TableCell><h4>{new Date(order.createdAt).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: '2-digit' })}</h4></TableCell>
                            <TableCell><Checkbox aria-label="Pagada" isSelected={order.paid} isReadOnly /></TableCell>
-                           <TableCell><Button isIconOnly variant="faded" size="sm" onPress={() => router('/checkout/' + order.id)}><AiOutlineFolderOpen /></Button></TableCell>
+                           <TableCell><Button isIconOnly variant="bordered" size="sm" onPress={() => router('/checkout/' + order.id)}><AiOutlineFolderOpen /></Button></TableCell>
                         </TableRow>
                      ))}
                   </TableBody>

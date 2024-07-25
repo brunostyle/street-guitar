@@ -17,7 +17,7 @@ const file: React.CSSProperties = {
 }
 
 export const File = ({ label, onChange }: IProps) => (
-	<Button fullWidth size="sm" variant="bordered" color="primary" startContent={<AiOutlineCloudUpload />}>
+	<Button fullWidth size="sm" variant="bordered" startContent={<AiOutlineCloudUpload />}>
 		<span>
 			{label ? label : 'Cargar imagen'}
 		</span>

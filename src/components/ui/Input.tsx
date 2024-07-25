@@ -63,7 +63,6 @@ export const InputTags = ({ label, value, onChange, content, addTag }: IInputTag
       onChange={(e) => onChange(e.target.value)}
       onKeyDown={(e) => e.key === 'Enter' && addTag()}
       placeholder="Ingresa una etiqueta"
-      isClearable
       autoComplete="off"
       size="sm"
       fullWidth

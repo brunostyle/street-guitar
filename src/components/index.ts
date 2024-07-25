@@ -5,6 +5,7 @@ export * from './ui/DashboardCards';
 export * from './ui/File';
 export * from './ui/FullScreenLoading';
 export * from './ui/Images';
+export * from './ui/PDF';
 export * from './ui/Input';
 export * from './ui/Logo';
 export * from './ui/Menu';

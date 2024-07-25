@@ -23,7 +23,7 @@ export const Tags = () => {
    return (
       <div>
          <InputTags label="Etiquetas" value={tagValue} onChange={setTagValue} addTag={addTag} content={
-            <Button isIconOnly variant="ghost" size="sm" onPress={addTag}><GrAdd /></Button>
+            <Button isIconOnly variant="light" size="sm" onPress={addTag}><GrAdd /></Button>
          } />
          <div className="flex gap-1 mt-4">
             {input.value && input.value.map((tag: string) => <div key={tag}><Chip color="primary" size="sm" variant="flat" onClose={() => removeTag(tag)}>{tag}</Chip></div>)}

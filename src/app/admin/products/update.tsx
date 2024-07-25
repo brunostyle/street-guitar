@@ -1,7 +1,7 @@
 import { Card, CardBody, Button, Spacer, Skeleton } from "@nextui-org/react";
 import { useParams } from "react-router-dom";
 import { Form, Formik } from "formik";
-import { Images, Input, LayoutAdmin, Category, Tags, Textarea } from "../../../components";
+import { Images, Input, LayoutAdmin, Category, Tags, Textarea, PDF } from "../../../components";
 import { AiFillDelete, AiOutlineSave, BiPencil } from "../../../assets/icons";
 import { productSchema } from "../../../assets/validations";
 import { Grid, GridContainer, SectionTitle } from "../../../styles";
@@ -41,9 +41,12 @@ const UpdateProduct = () => {
                                 <Skeleton isLoaded={!isLoading}>
                                     <Category />
                                 </Skeleton>
+                                <Skeleton isLoaded={!isLoading}>
+                                    <PDF />
+                                </Skeleton>
                                 <Images />
-                                <Button fullWidth variant="bordered" size="sm" color="success" isLoading={isUpdating} startContent={!isUpdating && <AiOutlineSave />} onPress={() => form.handleSubmit()}>Actualizar</Button>
-                                <Button fullWidth variant="bordered" size="sm" color="danger" isLoading={isDeleting} startContent={!isDeleting && <AiFillDelete />} onPress={() => deleteProduct(String(id))}>Eliminar</Button>
+                                <Button fullWidth variant="bordered" size="sm" isLoading={isDeleting} startContent={!isDeleting && <AiFillDelete />} onPress={() => deleteProduct(String(id))}>Eliminar</Button>
+                                <Button fullWidth variant="bordered" size="sm" isLoading={isUpdating} startContent={!isUpdating && <AiOutlineSave />} onPress={() => form.handleSubmit()}>Actualizar</Button>
                             </Grid>
                         </GridContainer></Form>
                     )}

@@ -1,4 +1,4 @@
-export { FaPlus, FaMinus, FaFacebookF } from 'react-icons/fa';
+export { FaPlus, FaRegEye, FaMinus, FaFacebookF } from 'react-icons/fa';
 export { FcGoogle } from 'react-icons/fc';
 export { FiShoppingCart, FiUsers } from 'react-icons/fi';
 export { IoLogoPolymer, IoMdSearch } from "react-icons/io";
