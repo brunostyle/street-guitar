@@ -5,28 +5,30 @@ import { GrAdd } from "../../assets/icons";
 import { useField } from "formik";
 
 export const Tags = () => {
-   const [input, _meta, helpers] = useField('tags');
+   const [field, _meta, helpers] = useField('tags');
    const [tagValue, setTagValue] = useState<string>('');
 
    const removeTag = (tag: string) => {
-      helpers.setValue(input.value.filter((t: string) => t !== tag))
+      helpers.setValue(field.value.filter((t: string) => t !== tag))
    }
 
    const addTag = () => {
       if (tagValue === "") return;
       const newTag = tagValue.trim().toLowerCase();
-      if (input.value.includes(newTag)) return;
+      if (field.value.includes(newTag)) return;
       setTagValue('');
-      helpers.setValue([...input.value, newTag])
+      helpers.setValue([...field.value, newTag])
    }
 
    return (
       <div>
          <InputTags label="Etiquetas" value={tagValue} onChange={setTagValue} addTag={addTag} content={
             <Button isIconOnly variant="light" size="sm" onPress={addTag}><GrAdd /></Button>
-         } />
+         }/>
          <div className="flex gap-1 mt-4">
-            {input.value && input.value.map((tag: string) => <div key={tag}><Chip color="primary" size="sm" variant="flat" onClose={() => removeTag(tag)}>{tag}</Chip></div>)}
+            {field.value && field.value.map((tag: string) => (
+               <Chip key={tag} color="primary" size="sm" variant="flat" onClose={() => removeTag(tag)}>{tag}</Chip>
+            ))}
          </div>
       </div>
 

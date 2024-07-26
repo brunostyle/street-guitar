@@ -2,7 +2,7 @@ import { RadioGroup, Radio as RadioNext } from "@nextui-org/react";
 import { ErrorMessage, useField } from "formik";
 
 export const Category = () => {
-   const [input, _meta, helpers] = useField('category');
+   const [field, _meta, helpers] = useField('category');
    return (
       <div>
          <h4 className="text-xs mb-2">Categoria</h4>
@@ -11,9 +11,9 @@ export const Category = () => {
             size="sm" 
             orientation="horizontal" 
             defaultValue="rock" 
-            value={input.value}
+            value={field.value}
             onValueChange={helpers.setValue}
-            errorMessage={<ErrorMessage name={input.name} />}
+            errorMessage={<ErrorMessage name={field.name} />}
          >
             <RadioNext value="rock">Rock</RadioNext>
             <RadioNext value="folclore">Folclore</RadioNext>

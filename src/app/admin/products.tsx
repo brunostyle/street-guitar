@@ -1,9 +1,8 @@
-import { Avatar, Button, Chip, Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
+import { Avatar, Button, Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineTags, BiPencil, FaRegEye } from "../../assets/icons";
 import { FullScreenLoading, LayoutAdmin, Nothing } from "../../components";
-import { HiddenTitle, HiddenSubtitle } from "../../styles";
-import { categories } from "../../utils/interfaces";
+import { HiddenTitle, HiddenSubtitle, ChipCategory } from "../../styles";
 import { usePaginate, usePaginateProducts } from "../../hooks";
 
 const Products = () => {
@@ -35,7 +34,7 @@ const Products = () => {
                            <TableCell><HiddenTitle>{product.title}</HiddenTitle></TableCell>
                            <TableCell><HiddenSubtitle>{product.description}</HiddenSubtitle></TableCell>
                            <TableCell><h4>${product.price}</h4></TableCell>
-                           <TableCell><Chip variant="flat" size="sm" color={categories[product.category]}>{product.category}</Chip></TableCell>
+                           <TableCell><ChipCategory>{product.category}</ChipCategory></TableCell>
                            <TableCell><Button as={Link} to={product.pdf} target="_blank" isDisabled={!product.pdf} isIconOnly variant="bordered" size="sm"><FaRegEye  /></Button></TableCell>
                            <TableCell><Button isIconOnly variant="bordered" size="sm" onPress={() => router(String(product.id))}><BiPencil /></Button></TableCell>
                         </TableRow>

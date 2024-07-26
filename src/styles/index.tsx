@@ -1,8 +1,18 @@
+import { Chip as ChipNext } from "@nextui-org/react";
 import { useTheme } from "../state";
+import { categories, roles } from "../utils/interfaces";
 
 interface Props {
   children: React.ReactNode;
 }
+
+export const ChipCategory = ({ children }: { children: string }) => (
+  <ChipNext size="sm" variant="flat" color={categories[children]}>{children}</ChipNext>
+)
+
+export const ChipUser = ({ children }: { children: string }) => (
+  <ChipNext size="sm" variant="flat" color={roles[children]}>{children}</ChipNext>
+)
 
 export const Wrap = ({ children }: Props) => (
   <section className="wrap">{children}</section>
@@ -68,9 +78,9 @@ export const Gradient = ({ children }: Props) => {
   const { isLight } = useTheme();
   return <div style={{
     minHeight: '100vh',
-    background: isLight ? 
-    'radial-gradient(circle, rgba(186,186,212,1) 0%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 100%)' 
-    :
-    'radial-gradient(circle, rgba(9,9,71,9) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 100%)'
+    background: isLight ?
+      'radial-gradient(circle, rgba(186,186,212,1) 0%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 100%)'
+      :
+      'radial-gradient(circle, rgba(9,9,71,9) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 100%)'
   }}>{children}</div>
 }

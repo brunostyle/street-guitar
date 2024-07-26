@@ -9,12 +9,12 @@ import toast from "react-hot-toast";
 export const Images = () => {
    const { addImage } = useAddImage();
    const { deleteImage } = useDeleteImage();
-   const [input, _meta, helpers] = useField('images');
+   const [field, _meta, helpers] = useField('images');
 
    const handleDelete = (img: string) => {
       const promise = deleteImage(img, {
          onSuccess: () => {
-            helpers.setValue(input.value.filter((image: string) => image !== img))
+            helpers.setValue(field.value.filter((image: string) => image !== img))
          }
       });
       toast.promise(promise, {
@@ -26,7 +26,7 @@ export const Images = () => {
 
    const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
       const promise = addImage(e, {
-         onSuccess: (url) => helpers.setValue([...input.value, url])
+         onSuccess: (url) => helpers.setValue([...field.value, url])
       })
       toast.promise(promise, {
          loading: 'Subiendo imagen',
@@ -37,7 +37,7 @@ export const Images = () => {
 
    return (
       <div className="flex gap-2 justify-evenly flex-wrap">
-         {input.value && input.value.map((img: string) => <Badge key={img} content={<MdClose />} onClick={() => handleDelete(img)} size="lg" color="primary" variant="shadow" isOneChar className="cursor-pointer">
+         {field.value && field.value.map((img: string) => <Badge key={img} content={<MdClose />} onClick={() => handleDelete(img)} size="lg" color="primary" variant="shadow" isOneChar className="cursor-pointer">
             <Image src={img} width="120px" height="120px" className="object-cover" />
          </Badge>
          )}

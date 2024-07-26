@@ -1,10 +1,9 @@
-import { Button, Card, CardBody, Chip, Divider, Skeleton, Spacer, Spinner } from "@nextui-org/react";
+import { Button, Card, CardBody, Divider, Skeleton, Spacer, Spinner } from "@nextui-org/react";
 import { useParams } from "react-router-dom";
 import { FiShoppingCart } from "../../../assets/icons";
-import { Between, Grid, GridContainer, Subtitle, Title } from "../../../styles";
+import { Between, Grid, GridContainer, Subtitle, Title, ChipCategory } from "../../../styles";
 import { useCart } from "../../../state";
 import { LayoutApp } from "../../../components";
-import { categories } from "../../../utils/interfaces";
 import { useGetProduct } from "../../../hooks";
 import ImageGallery from 'react-image-gallery';
 import { useEffect } from "react";
@@ -40,7 +39,7 @@ const Product = () => {
                            <Title>${product?.price}</Title>
                         </Skeleton>
                         <Skeleton className="rounded-md" isLoaded={!isLoading} >
-                           <Chip variant="flat" size="sm" color={categories[product?.category]}>{product?.category}</Chip>
+                           <ChipCategory>{product.category}</ChipCategory>
                         </Skeleton>
                      </Between>
                      <Spacer y={4} />

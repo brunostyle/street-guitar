@@ -1,8 +1,7 @@
-import { Avatar, Chip, Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
+import { Avatar, Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
 import { FullScreenLoading, LayoutAdmin, Nothing } from "../../components";
 import { FiUsers } from "../../assets/icons";
-import { HiddenTitle, HiddenSubtitle } from "../../styles";
-import { roles } from "../../utils/interfaces";
+import { HiddenTitle, HiddenSubtitle, ChipUser } from "../../styles";
 import { usePaginateUsers, usePaginate } from "../../hooks";
 
 const Users = () => {
@@ -29,7 +28,7 @@ const Users = () => {
                            <TableCell><Avatar color="primary" radius="sm" size="sm" showFallback name={user.name.charAt(0).toUpperCase()} src={user.avatar} /></TableCell>
                            <TableCell><HiddenTitle>{user.name}</HiddenTitle></TableCell>
                            <TableCell><HiddenSubtitle>{user.email}</HiddenSubtitle></TableCell>
-                           <TableCell><Chip variant="flat" size="sm" color={roles[user.role]}>{user.role}</Chip></TableCell>
+                           <TableCell><ChipUser>{user.role}</ChipUser></TableCell>
                         </TableRow>
                      ))}
                   </TableBody>

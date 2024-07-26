@@ -1,7 +1,7 @@
-import { Button, Card, CardBody, CardFooter, Chip, Spacer } from "@nextui-org/react";
-import { IProduct, categories } from "../../utils/interfaces"
+import { Button, Card, CardBody, CardFooter, Spacer } from "@nextui-org/react";
+import { IProduct } from "../../utils/interfaces"
 import { AiFillDelete } from '../../assets/icons'
-import { HiddenTitle, Subtitle, Title } from "../../styles";
+import { HiddenTitle, Subtitle, Title, ChipCategory } from "../../styles";
 import { useCart } from "../../state";
 import { Link } from "react-router-dom";
 
@@ -22,7 +22,7 @@ export const ProductCard = ({ cart = [], editable = false }: IProductCard) => {
                <HiddenTitle>{product.title}</HiddenTitle>
                <Subtitle>{product.description}</Subtitle>
                <Spacer y={4} />
-               <Chip variant="flat" size="sm" color={categories[product.category]}>{product.category}</Chip>
+               <ChipCategory>{product.category}</ChipCategory>
             </CardBody>
             <CardFooter className="col-span-2 flex flex-col justify-between">
                <Title>${product.price}</Title >
