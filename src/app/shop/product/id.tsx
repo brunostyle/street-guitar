@@ -39,7 +39,7 @@ const Product = () => {
                            <Title>${product?.price}</Title>
                         </Skeleton>
                         <Skeleton className="rounded-md" isLoaded={!isLoading} >
-                           <ChipCategory>{product.category}</ChipCategory>
+                           <ChipCategory>{product?.category}</ChipCategory>
                         </Skeleton>
                      </Between>
                      <Spacer y={4} />

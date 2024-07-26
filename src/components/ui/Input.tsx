@@ -20,7 +20,6 @@ export const Input = ({ name, label, icon, type = 'text', variant = 'default' }:
       label={label}
       autoComplete="off"
       size="sm"
-      isClearable
       fullWidth
       isInvalid={<ErrorMessage name={name} />}
       errorMessage={<ErrorMessage name={name} />}

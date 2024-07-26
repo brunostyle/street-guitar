@@ -6,19 +6,25 @@ import { useAddPDF, useDeletePDF } from "../../hooks";
 import { ChangeEvent } from "react";
 import { useField } from "formik";
 import { File } from "./File";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { supabase } from "../../assets/database";
 
 export const PDF = () => {
+    const { id } = useParams();
     const { addPDF, isAdding } = useAddPDF();
     const { deletePDF, isDeleting } = useDeletePDF();
     const [fieldPDF, _metaPDF, helpersPDF] = useField('pdf');
     const [fieldTAB, _metaTAB, helpersTAB] = useField('tab');
-    
+
     const handleDelete = () => {
         deletePDF(fieldPDF.value, {
-            onSuccess: () => {
+            onSuccess: async () => {
                 helpersPDF.setValue('');
                 helpersTAB.setValue('');
+                if (id) {
+                    await supabase.from('products').update({ pdf: '', tab: '' }).eq('id', id);
+                }
+
             }
         });
     }
@@ -27,7 +33,12 @@ export const PDF = () => {
         const [file] = e.target.files!;
         helpersTAB.setValue(file.name);
         addPDF(file, {
-            onSuccess: (url) => helpersPDF.setValue(url)
+            onSuccess: async (url) => {
+                helpersPDF.setValue(url)
+                if (id) {
+                    await supabase.from('products').update({ pdf: url, tab: file.name }).eq('id', id);
+                }
+            }
         });
     };
 
