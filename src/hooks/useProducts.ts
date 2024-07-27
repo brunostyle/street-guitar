@@ -11,7 +11,7 @@ export const useProducts = () => {
   const { data: products, isLoading } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
-      const { data, error } = await supabase.from('products').select().order('id');
+      const { data, error } = await supabase.from('products').select().neq('tab', '').order('id');
       if (error) throw new Error(error.message);
       return data;
     },
@@ -40,7 +40,7 @@ export const useGetCategory = (category: string) => {
   const { data: products, isLoading } = useQuery({
     queryKey: ["products", category],
     queryFn: async () => {
-      const { data, error } = await supabase.from('products').select().eq('category', category)
+      const { data, error } = await supabase.from('products').select().eq('category', category).neq('tab', '')
       if (error) throw new Error("Error fetching products")
       return data;
     }
@@ -51,7 +51,7 @@ export const useGetProductsQuery = (query: string): { products?: IProduct[], isE
   const { data: products, isLoading } = useQuery({
     queryKey: ["products", query],
     queryFn: async (): Promise<IProduct[]> => {
-      const { data, error } = await supabase.from('products').select().ilike('title', `${query}%`)
+      const { data, error } = await supabase.from('products').select().neq('tab', '').ilike('title', `%${query}%`)
       console.log(data)
       if (error) throw new Error("Error fetching products")
       return data;

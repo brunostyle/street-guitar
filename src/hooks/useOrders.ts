@@ -22,13 +22,14 @@ export const useGetOrder = (id: string) => {
          const { data: order, error } = await supabase.from('orders').select().eq('id', id).single();
          if (error) throw new Error("Error fetching order with ID")
          const { data: products } = await supabase.from('products').select().in('id', order.products);
-         const { items, total } = order;
+         const { items, total, paid } = order;
          interface IResponse {
             products?: IProduct[];
             total: number;
             items: number;
+            paid: boolean;
          }
-         const response: IResponse = { products, total, items } as any;
+         const response: IResponse = { products, total, items, paid } as any;
          return response;
       }
    })
@@ -36,6 +37,7 @@ export const useGetOrder = (id: string) => {
       products: data?.products,
       total: data?.total,
       items: data?.items,
+      paid: data?.paid,
       isLoading
    }
 }

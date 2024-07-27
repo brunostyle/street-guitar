@@ -37,7 +37,7 @@ export const LayoutAdmin = ({ children, title, icon, showTitle = false, funtiona
                <SectionTitle>{title}</SectionTitle>
                <Input size="sm" placeholder={'Buscar ' + title.toLocaleLowerCase()} startContent={<IoMdSearch />} className="max-w-80" />
             </Between>}
-         <div className='overflow-x-scroll'>
+         <div className="overflow-x-scroll overflow-y-hidden">
             {children}
          </div>
       </div>

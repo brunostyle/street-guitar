@@ -5,7 +5,7 @@ import { useUser } from '../../state';
 import { Title } from '../../styles';
 
 export const MenuAdmin = () => {
-   const { isLogged, user } = useUser();
+   const { isLogged } = useUser();
    return (
       <Navbar isBordered maxWidth="full">
          <NavbarBrand>
@@ -15,7 +15,7 @@ export const MenuAdmin = () => {
          </NavbarBrand>
 
          <NavbarContent justify="end">
-            {isLogged && <User user={user!} />}
+            {isLogged && <User />}
          </NavbarContent>
          <NavbarMenuToggle />
          <Collapse />

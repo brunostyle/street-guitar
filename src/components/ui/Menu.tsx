@@ -14,7 +14,7 @@ const values: ISearch = { query: '' }
 export const Menu = () => {
    const router = useNavigate();
    const { items } = useCart();
-   const { isLogged, user } = useUser();
+   const { isLogged } = useUser();
    const handleSubmit = ({ query }: ISearch) => {
       router('/search/' + query);
    }
@@ -58,7 +58,7 @@ export const Menu = () => {
             </NavbarItem>
 
             <NavbarItem>
-               {isLogged && <User user={user!} />}
+               {isLogged && <User />}
             </NavbarItem>
 
             <NavbarMenuToggle />

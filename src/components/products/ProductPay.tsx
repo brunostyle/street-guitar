@@ -5,17 +5,20 @@ import { Input } from "../index"
 import { AiOutlineCreditCard, BsPaypal, MdClose } from "../../assets/icons";
 import { useState } from "react";
 import { paySchema } from "../../assets/validations";
+import { useOrder } from "../../state";
+const initial = { name: '', number: '', expires: '', csc: '' };
 
 export const ProductPay = () => {
    const [showPay, setShowPay] = useState(false);
-   const initial = { name: '', number: '', expires: '', csc: '' };
+   const { setPaid } = useOrder();
+
    const handleSubmit = (values: any) => {
       console.log(values)
    }
 
    return (
       <div className="w-full">
-         <Button fullWidth size="sm" color="warning" startContent={<BsPaypal />}><h4 className="font-extrabold text-blue-700">Pay</h4><h4 className="font-extrabold text-white">Pal</h4></Button>
+         <Button fullWidth size="sm" color="warning" startContent={<BsPaypal />} onPress={setPaid}><h4 className="font-extrabold text-blue-700">Pay</h4><h4 className="font-extrabold text-white">Pal</h4></Button>
          <Spacer y={4} />
          <Button fullWidth size="sm" color="primary" startContent={showPay ? <MdClose /> : <AiOutlineCreditCard />} onPress={() => setShowPay(!showPay)}>
             {showPay ? 'Cancelar' : 'Tarjeta de credito'}
