@@ -21,7 +21,7 @@ export const ProductOrder = ({ editable = false, children, total, items }: IProd
             {!editable &&
                <Between>
                   <Title>Orden</Title>
-                  <Button isIconOnly variant="faded" size="sm" onPress={() => router('/cart')}><BiPencil /></Button>
+                  <Button isIconOnly variant="bordered" size="sm" onPress={() => router('/cart')}><BiPencil /></Button>
                </Between>}
             <Between>
                <Subtitle>No. Productos</Subtitle>

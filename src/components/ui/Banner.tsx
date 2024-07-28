@@ -18,7 +18,7 @@ export const Banner = () => (
             </div>
          </div>
          <div className="hidden md:block mb-36 dark:opacity-80">
-            <Image src="auris.png" alt="Ilustracion" />
+            <Image className="opacity" src="auris.png" alt="Ilustracion" />
          </div>
       </div>
    </Gradient>

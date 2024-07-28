@@ -15,8 +15,8 @@ export const useDashboard = () => {
             ] = await Promise.all([
                supabase.from('users').select('id', { count: 'exact', head: true }),
                supabase.from('products').select('id', { count: 'exact', head: true }),
-               supabase.from('orders').select('id', { count: 'exact', head: true }),
-               supabase.from('orders').select('id, user:users(name, email)')
+               supabase.from('orders').select('id', { count: 'exact', head: true }).eq('paid', true),
+               supabase.from('orders').select('id, createdAt, user:users(name, email)').eq('paid', true).order('id').limit(10)
             ]);
             if (error) throw new Error("Error fetching lastSells")
             return {

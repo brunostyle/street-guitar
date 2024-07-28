@@ -15,7 +15,7 @@ const Orders = () => {
             : isEmpty
                ? <Nothing text="Aún no hay ordenes" svg="/no-results.svg" />
                :
-               <Table removeWrapper className="opacity" aria-label="Historial de ordenes" selectionMode="single" bottomContent={
+               <Table removeWrapper className="opacity" aria-label="Historial de ordenes" bottomContent={
                   <Pagination className="flex justify-center" size="sm" showShadow showControls page={page} total={total} onChange={setPage} />}>
                   <TableHeader>
                      <TableColumn>CLIENTE</TableColumn>
@@ -28,7 +28,7 @@ const Orders = () => {
                   <TableBody>
                      {orders.map(order => (
                         <TableRow key={order.id}>
-                           <TableCell><User name={order.user.name} description={order.user.email} avatarProps={{ src: order.user.avatar, color: 'secondary' }} /></TableCell>
+                           <TableCell><User name={order.user.name} description={order.user.email} avatarProps={{ radius: 'sm', size:'sm', src: order.user.avatar, color: 'secondary', name: order.user.name.charAt(0).toUpperCase() }} /></TableCell>
                            <TableCell><h4>{order.items}</h4></TableCell>
                            <TableCell><h4>${order.total}</h4></TableCell>
                            <TableCell><h4>{new Date(order.createdAt).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: '2-digit' })}</h4></TableCell>

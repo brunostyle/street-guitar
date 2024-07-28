@@ -1,5 +1,4 @@
-import { Avatar, Button, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
-import { HiddenTitle, HiddenSubtitle } from "../../styles";
+import { Button, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, User } from "@nextui-org/react";
 import { IOrderDashboard } from "../../utils/interfaces";
 import { AiOutlineFolderOpen } from '../../assets/icons';
 import { useNavigate } from "react-router-dom";
@@ -13,18 +12,16 @@ export const Sells = ({ sells = [] }: ISells) => {
     return (
         <Table aria-label="Ultimas ventas" hideHeader>
             <TableHeader>
-                <TableColumn>AVATAR</TableColumn>
-                <TableColumn>NOMBRE</TableColumn>
-                <TableColumn>CORREO</TableColumn>
+                <TableColumn>USUARIO</TableColumn>
+                <TableColumn>FECHA</TableColumn>
                 <TableColumn>ORDEN</TableColumn>
             </TableHeader>
             <TableBody emptyContent="Aun no hay ventas">
                 {sells.map(sell => (
                     <TableRow key={sell.id}>
-                        <TableCell><Avatar isBordered color="primary" size="sm" showFallback name={sell.user.name.charAt(0).toUpperCase()} src={sell.user.avatar} /></TableCell>
-                        <TableCell><HiddenTitle>{sell.user.name}</HiddenTitle></TableCell>
-                        <TableCell className="show"><HiddenSubtitle>{sell.user.email}</HiddenSubtitle></TableCell>
-                        <TableCell><Button isIconOnly variant="faded" size="sm" onPress={() => router('/checkout/' + sell.id)}><AiOutlineFolderOpen /></Button></TableCell>
+                        <TableCell><User name={sell.user.name} description={sell.user.email} avatarProps={{ radius: 'sm', size:'sm', src: sell.user.avatar, color: 'secondary', name: sell.user.name.charAt(0).toUpperCase() }} /></TableCell>
+                        <TableCell><h4>{new Date(sell.createdAt).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: '2-digit' })}</h4></TableCell>
+                        <TableCell><Button isIconOnly variant="bordered" size="sm" onPress={() => router('/checkout/' + sell.id)}><AiOutlineFolderOpen /></Button></TableCell>
                     </TableRow>
                 ))}
             </TableBody>

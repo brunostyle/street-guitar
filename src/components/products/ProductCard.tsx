@@ -2,17 +2,17 @@ import { Button, Card, CardBody, CardFooter, Spacer } from "@nextui-org/react";
 import { IProduct } from "../../utils/interfaces"
 import { AiFillDelete, FaCloudDownloadAlt } from '../../assets/icons'
 import { HiddenTitle, Subtitle, Title, ChipCategory } from "../../styles";
-import { useCart, useOrder } from "../../state";
+import { useCart } from "../../state";
 import { Link } from "react-router-dom";
 
 interface IProductCard {
    cart?: IProduct[];
    editable?: boolean;
+   paid?: boolean;
 }
 
-export const ProductCard = ({ cart = [], editable = false }: IProductCard) => {
+export const ProductCard = ({ cart = [], paid, editable = false }: IProductCard) => {
    const { removeProductToCart } = useCart();
-   const { paid } = useOrder();
    return <>
       {cart.map(product => (
          <Card key={product.id} className="grid grid-cols-12 mb-4">
@@ -27,8 +27,8 @@ export const ProductCard = ({ cart = [], editable = false }: IProductCard) => {
             </CardBody>
             <CardFooter className="col-span-2 flex flex-col justify-between">
                <Title>${product.price}</Title>
-               {(paid && !editable) && <Button as={Link} to={product.pdf} target="_blank" download={product.title} variant="faded" size="sm" isIconOnly><FaCloudDownloadAlt /></Button>}
-               {editable && <Button isIconOnly variant="faded" size="sm" onPress={() => removeProductToCart(product)}><AiFillDelete /></Button>}
+               {(paid && !editable) && <Button as={Link} to={product.pdf} target="_blank" download={product.title} variant="bordered" size="sm" isIconOnly><FaCloudDownloadAlt /></Button>}
+               {editable && <Button isIconOnly variant="bordered" size="sm" onPress={() => removeProductToCart(product)}><AiFillDelete /></Button>}
             </CardFooter>
          </Card>
       ))}

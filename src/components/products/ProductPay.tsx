@@ -1,24 +1,32 @@
-import { Spacer, Button, DatePicker } from "@nextui-org/react"
+import { Spacer, Spinner, Button, DatePicker } from "@nextui-org/react"
 import { Formik, Form } from "formik"
 import { Between } from "../../styles"
 import { Input } from "../index"
 import { AiOutlineCreditCard, BsPaypal, MdClose } from "../../assets/icons";
 import { useState } from "react";
 import { paySchema } from "../../assets/validations";
-import { useOrder } from "../../state";
+import { useParams } from "react-router-dom";
+import { usePayOrder } from "../../hooks";
 const initial = { name: '', number: '', expires: '', csc: '' };
 
 export const ProductPay = () => {
+   const { id } = useParams();
    const [showPay, setShowPay] = useState(false);
-   const { setPaid } = useOrder();
+   const { payOrder, isPayingOrder } = usePayOrder(id!);
 
    const handleSubmit = (values: any) => {
       console.log(values)
    }
 
+   const payWithPaypal = () => {
+      payOrder();
+   }
+
    return (
       <div className="w-full">
-         <Button fullWidth size="sm" color="warning" startContent={<BsPaypal />} onPress={setPaid}><h4 className="font-extrabold text-blue-700">Pay</h4><h4 className="font-extrabold text-white">Pal</h4></Button>
+         <Button fullWidth size="sm" color="warning" startContent={isPayingOrder ? <Spinner size="sm" color="current" /> : <BsPaypal />} onPress={payWithPaypal}>
+            <h4 className="font-extrabold text-blue-700">Pay</h4><h4 className="font-extrabold text-white">Pal</h4>
+         </Button>
          <Spacer y={4} />
          <Button fullWidth size="sm" color="primary" startContent={showPay ? <MdClose /> : <AiOutlineCreditCard />} onPress={() => setShowPay(!showPay)}>
             {showPay ? 'Cancelar' : 'Tarjeta de credito'}

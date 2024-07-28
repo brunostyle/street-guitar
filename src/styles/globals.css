@@ -60,16 +60,6 @@
   }
 }
 
-.show {
-  display: block;
-}
-
-@media screen and (max-width: 365px) {
-  .show {
-    display: none;
-  }
-}
-
 .wrap {
   display: grid;
   gap: 1rem;

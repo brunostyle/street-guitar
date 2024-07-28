@@ -4,6 +4,7 @@ import { NextUIProvider } from '@nextui-org/react'
 import { client } from './assets/query-client';
 import { useTheme } from './state';
 import { Toast } from './components';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 // import { LayoutMain } from './components';
 
 export const App = () => {
@@ -18,6 +19,7 @@ export const App = () => {
         {/* </LayoutMain> */}
         </main>
         <Toast />
+        <ReactQueryDevtools />
       </NextUIProvider>
     </QueryClientProvider>
   )

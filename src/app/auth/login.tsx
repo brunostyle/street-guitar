@@ -21,11 +21,12 @@ const Login = () => {
 
   const handleSubmit = (data: ILogin) => {
     login(data);
-    if (isSelected) {
-      localStorage.setItem(storage, JSON.stringify(data))
-    } else {
-      localStorage.removeItem(storage);
-    }
+    if (isSelected) localStorage.setItem(storage, JSON.stringify(data))
+  }
+ 
+  const handleChange = () => {
+    changeIsSelected(!isSelected);
+    if(isSelected) localStorage.removeItem(storage);
   }
 
   return (
@@ -34,7 +35,7 @@ const Login = () => {
         <Form className="grid gap-4">
           <Input variant="bordered" name="email" label="Correo electronico" icon={<AiOutlineMail />} />
           <Input variant="bordered" type="password" name="password" label="Contraseña" icon={<MdLockOutline />} />
-          <Checkbox name="remember" isSelected={isSelected} onValueChange={changeIsSelected}>Recuérdame</Checkbox>
+          <Checkbox name="remember" isSelected={isSelected} onValueChange={handleChange}>Recuérdame</Checkbox>
           <Button type="submit" color="primary" isLoading={isPending} startContent={!isPending && <AiOutlineMail />}>Continuar con correo</Button>
           <Button variant="bordered" startContent={<FcGoogle />}>Continuar con Google</Button>
         </Form>

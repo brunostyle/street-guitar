@@ -29,7 +29,7 @@ const Products = () => {
                   </TableHeader>
                   <TableBody>
                      {products.map(product => (
-                        <TableRow key={product.id} >
+                        <TableRow key={product.id}>
                            <TableCell><Avatar color="secondary" radius="sm" size="sm" src={product.images.at(0)} /></TableCell>
                            <TableCell><HiddenTitle>{product.title}</HiddenTitle></TableCell>
                            <TableCell><HiddenSubtitle>{product.description}</HiddenSubtitle></TableCell>

@@ -7,6 +7,7 @@ export interface IUserDashboard {
 export interface IOrderDashboard {
 	id: string;
 	user: IUserDashboard;
+	createdAt: string;
 }
 
 export interface IChart {

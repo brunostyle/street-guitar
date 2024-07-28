@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const Checkout = () => {
    const { id } = useParams();
-   const { products, total, items, isLoading } = useGetOrder(id!);
+   const { products, total, items, paid, isLoading } = useGetOrder(id!);
    return (
       <LayoutApp title="Resumen de orden" description="Resumen de la orden">
          <SectionTitle>Orden: {id}</SectionTitle>
@@ -15,7 +15,7 @@ const Checkout = () => {
             :
             <GridContainer>
                <Grid>
-                  <ProductCard cart={products} />
+                  <ProductCard cart={products} paid={paid} />
                </Grid>
                <Grid>
                   <ProductOrder total={total} items={items}>
