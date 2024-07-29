@@ -12,7 +12,6 @@ export const useLogin = () => {
    return useMutation({
       mutationFn: async (user: ILogin) => {
          const { data, error } = await supabase.auth.signInWithPassword({ email: user.email, password: user.password });
-         console.log(data)
          if (error) throw new Error('El usuario no existe');
          const { data: userAvatar } = await supabase.from('users').select('avatar').eq('id', data.user.id).single()
          if (error) throw new Error("No existe el usuario");
@@ -76,17 +75,23 @@ export const useAuthRenew = () => {
    return { renew }
 };
 
-export const useAddUserImage = (id: string) => {
+export const useAddUserImage = ({ user }: { user?: IAuth }) => {
+   const { login } = useUser();
    const { mutate: addUserImage, isPending: isAdding } = useMutation({
-     mutationFn: async (file: File) => {
-       const { data } = await supabase.storage.from('user-images').upload(uuid(), file, { cacheControl: '3600', upsert: false });
-       const URL = import.meta.env.VITE_SUPABASE_URL_FILE;
-       const { error } = await supabase.from('users').update({ avatar: URL + data?.fullPath }).eq('id', id);
-       if (error) throw new Error('No se pudo actualizar la imagen');
-     },
-     onSuccess: () => {
-
-     }
+      mutationFn: async (file: File) => {
+         if (user?.avatar) {
+            const fileName = user?.avatar.split('/').at(-1)!;
+            await supabase.storage.from('user-images').remove([fileName])
+         }
+         const { data } = await supabase.storage.from('user-images').upload(uuid(), file, { cacheControl: '3600', upsert: false });
+         const URL = import.meta.env.VITE_SUPABASE_URL_FILE;
+         const { data: userAvatar, error } = await supabase.from('users').update({ avatar: URL + data?.fullPath }).eq('id', user?.id).select().single();
+         if (error) throw new Error('No se pudo actualizar la imagen');
+         return userAvatar;
+      },
+      onSuccess: (user) => {
+         login(user!);
+      }
    })
-   return { addUserImage, isAdding  }
- }
+   return { addUserImage, isAdding }
+}
