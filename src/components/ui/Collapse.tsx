@@ -1,10 +1,10 @@
 import { Button, Divider, NavbarMenuItem, NavbarMenu } from '@nextui-org/react';
 import { Formik, Form } from 'formik'
-import { IoMdSearch, AiOutlineHome, BsKey, FiUsers, BiGridAlt, AiOutlineTags, MdOutlineChangeHistory, BiSun, MdOutlineNightlight } from '../../assets/icons'
+import { IoMdSearch, AiOutlineHome, BsKey, FiUsers, BiGridAlt, AiOutlineTags, MdOutlineChangeHistory, BiSun, MdOutlineNightlight, BiExit } from '../../assets/icons'
 import { InputBordered } from './Input';
 import { Between, Subtitle } from '../../styles';
 import { searchSchema } from '../../assets/validations';
-import { useTheme, useUser } from '../../state';
+import { useCart, useTheme, useUser } from '../../state';
 import { useNavigate as useRouter, useLocation } from 'react-router-dom'
 
 interface ISearch { query: string }
@@ -14,6 +14,7 @@ export const Collapse = () => {
    const router = useRouter();
    const { isLight, changeTheme } = useTheme();
    const { user, isLogged } = useUser();
+
    const handleSubmit = ({ query }: ISearch) => {
       router('/search/' + query);
    }
@@ -31,6 +32,7 @@ export const Collapse = () => {
          <Divisor text="Menu" />
          <Item text="Inicio" to="/" icon={<AiOutlineHome />} />
          {!isLogged && <Item text="Ingresar" to="/auth/login" icon={<BsKey />} />}
+         {isLogged && <Exit />}
 
          {user?.role === "admin" &&
             <>
@@ -66,7 +68,7 @@ export const Item = ({ to, text, icon }: IItem) => {
    const location = useLocation();
    return (
       <NavbarMenuItem>
-         <Button fullWidth color={location.pathname === to ? "primary" : "default"} className="justify-start" size="md" startContent={icon} variant={location.pathname === to ? "flat" : "light"} onPress={() => router(to)}>
+         <Button fullWidth color={location.pathname === to ? "primary" : "default"} className="justify-start" startContent={icon} variant={location.pathname === to ? "flat" : "light"} onPress={() => router(to)}>
             {text}
          </Button>
       </NavbarMenuItem>
@@ -79,3 +81,19 @@ export const Divisor = ({ text }: { text: string }) => (
       <Divider />
    </NavbarMenuItem>
 )
+
+export const Exit = () => {
+   const { purgateCart } = useCart();
+   const { logout } = useUser();
+
+   const handleLogout = () => {
+      logout();
+      purgateCart();
+   }
+
+   return (
+      <NavbarMenuItem>
+         <Button fullWidth variant="light" className="justify-start" startContent={<BiExit />} onPress={handleLogout}>Salir</Button>
+      </NavbarMenuItem>
+   )
+}

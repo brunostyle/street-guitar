@@ -5,7 +5,7 @@ import { client } from './assets/query-client';
 import { useTheme } from './state';
 import { Toast } from './components';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-// import { LayoutMain } from './components';
+import { LayoutMain } from './components';
 
 export const App = () => {
   const { isLight } = useTheme();
@@ -14,9 +14,9 @@ export const App = () => {
     <QueryClientProvider client={client}>
       <NextUIProvider>
         <main className={isLight ? 'light text-foreground bg-background' : 'dark text-foreground bg-background'}>
-        {/* <LayoutMain> */}
+        <LayoutMain>
           <RouterApp />
-        {/* </LayoutMain> */}
+        </LayoutMain>
         </main>
         <Toast />
         <ReactQueryDevtools />

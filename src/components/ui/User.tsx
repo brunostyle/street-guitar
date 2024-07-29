@@ -1,16 +1,18 @@
-import { Avatar, Popover, Spacer, User as NextUser, PopoverTrigger, PopoverContent, Button } from "@nextui-org/react";
-import { BiExit } from "../../assets/icons";
-import { useCart, useUser } from "../../state";
+import { Avatar, Popover, Spacer, User as NextUser, PopoverTrigger, PopoverContent, Button, Progress } from "@nextui-org/react";
+import { useUser } from "../../state";
+import { File } from "./File";
+import { ChangeEvent } from "react";
+import { useAddUserImage } from "../../hooks";
 
 export const User = () => {
-   const { user, logout } = useUser();
-   const { purgateCart } = useCart();
-   
-   const handleLogout = () => {
-      logout();
-      purgateCart();
-   }
-   
+   const { user } = useUser();
+   const { addUserImage, isAdding } = useAddUserImage(user?.id!);
+
+   const handleImage = (e: ChangeEvent<HTMLInputElement>) => {
+      const [file] = e.target.files!;
+      addUserImage(file)
+   };
+
    return (
       <Popover radius="sm" offset={20}>
          <PopoverTrigger>
@@ -18,14 +20,15 @@ export const User = () => {
                <Avatar size="sm" color="primary" name={user?.name.charAt(0).toUpperCase()} src={user?.avatar} />
             </Button>
          </PopoverTrigger>
-         <PopoverContent className="p-3">
+         <PopoverContent className="px-3 py-2">
             <NextUser
-               avatarProps={{ src: user?.avatar, color: 'primary' }}
+               avatarProps={{ size: 'sm', src: user?.avatar, color: 'primary', name: user?.name.charAt(0).toUpperCase() }}
                name={user?.name}
                description={user?.email}
             />
             <Spacer y={4} />
-            <Button fullWidth size="sm" variant="flat" startContent={<BiExit />} onPress={handleLogout}>Cerrar sesion</Button>
+            {isAdding && <Progress label="Subiendo imagen" size="sm" className="mb-4" isIndeterminate />}
+            <File label="Cambiar imagen" onChange={handleImage} />
          </PopoverContent>
       </Popover>
    )

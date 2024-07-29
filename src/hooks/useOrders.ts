@@ -7,7 +7,7 @@ export const usePaginateOrders = (page: number, limit: number) => {
    const { data: orders, isLoading } = useQuery({
       queryKey: ["orders", page],
       queryFn: async () => {
-         const { data, error } = await supabase.from('orders').select('*, user:users(name, email)').order('id').range((page - 1) * limit, page * limit - 1);
+         const { data, error } = await supabase.from('orders').select('*, user:users(name, email, avatar)').order('id').range((page - 1) * limit, page * limit - 1);
          if (error) throw new Error(error.message);
          return data;
       }
