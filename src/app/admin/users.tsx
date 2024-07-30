@@ -14,7 +14,7 @@ const Users = () => {
             : isEmpty
                ? <Nothing text="Aún no hay usuarios" svg="/no-results.svg" />
                :
-               <Table removeWrapper className="opacity" aria-label="Usuarios" selectionMode="multiple" bottomContent={
+               <Table removeWrapper className="table" aria-label="Usuarios" selectionMode="multiple" bottomContent={
                   <Pagination className="flex justify-center" size="sm" showShadow showControls page={page} total={total} onChange={setPage} />}>
                   <TableHeader>
                      <TableColumn>AVATAR</TableColumn>

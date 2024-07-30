@@ -28,14 +28,14 @@ export const LayoutAdmin = ({ children, title, icon, showTitle = false, funtiona
                <SectionTitle>{title}</SectionTitle>
                <Spacer y={4} />
                <Between>
-                  <Input size="sm" placeholder="Buscar producto" startContent={<IoMdSearch />} className="w-80 max-w-[50%]" />
+                  <Input variant="bordered" classNames={{inputWrapper: "border-1"}} size="sm" placeholder="Buscar producto" startContent={<IoMdSearch />} className="w-80 max-w-[50%]" />
                   <Button size="sm" color="primary" startContent={<FaPlus />} onPress={() => router('/admin/products/new')}>Agregar</Button>
                </Between>
             </div>}
          {showTitle &&
             <Between>
                <SectionTitle>{title}</SectionTitle>
-               <Input size="sm" placeholder={'Buscar ' + title.toLocaleLowerCase()} startContent={<IoMdSearch />} className="max-w-80" />
+               <Input variant="bordered" classNames={{inputWrapper: "border-1"}} size="sm" placeholder={'Buscar ' + title.toLocaleLowerCase()} startContent={<IoMdSearch />} className="max-w-80" />
             </Between>}
          <div className="overflow-x-scroll overflow-y-hidden">
             {children}

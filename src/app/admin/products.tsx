@@ -16,7 +16,7 @@ const Products = () => {
             : isEmpty
                ? <Nothing text="Aún no hay productos" svg="/no-results.svg" />
                :
-               <Table removeWrapper className="opacity" selectionMode="single" aria-label="Products" bottomContent={
+               <Table removeWrapper className="table" selectionMode="single" aria-label="Products" bottomContent={
                   <Pagination className="flex justify-center" size="sm" showControls page={page} total={total} onChange={setPage} />}>
                   <TableHeader>
                      <TableColumn>IMAGEN</TableColumn>

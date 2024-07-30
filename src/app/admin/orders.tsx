@@ -15,7 +15,7 @@ const Orders = () => {
             : isEmpty
                ? <Nothing text="Aún no hay ordenes" svg="/no-results.svg" />
                :
-               <Table removeWrapper className="opacity" aria-label="Historial de ordenes" bottomContent={
+               <Table removeWrapper className="table" aria-label="Historial de ordenes" bottomContent={
                   <Pagination className="flex justify-center" size="sm" showShadow showControls page={page} total={total} onChange={setPage} />}>
                   <TableHeader>
                      <TableColumn>CLIENTE</TableColumn>
