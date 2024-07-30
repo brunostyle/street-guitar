@@ -8,7 +8,7 @@ const Users = () => {
    const { page, limit, total, setPage } = usePaginate('users');
    const { users = [], isEmpty, isLoading } = usePaginateUsers(page, limit);
    return (
-      <LayoutAdmin showTitle={users.length !== 0} title="Usuarios" icon={<FiUsers />}>
+      <LayoutAdmin showTitle={!isEmpty} title="Usuarios" icon={<FiUsers />}>
          {isLoading
             ? <FullScreenLoading />
             : isEmpty
@@ -37,4 +37,5 @@ const Users = () => {
       </LayoutAdmin>
    )
 }
+
 export default Users;

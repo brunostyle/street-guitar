@@ -9,7 +9,7 @@ const Orders = () => {
    const { orders = [], isEmpty, isLoading } = usePaginateOrders(page, limit);
    const router = useNavigate();
    return (
-      <LayoutAdmin showTitle={orders.length !== 0} title="Ordenes" icon={<MdOutlineChangeHistory />}>
+      <LayoutAdmin showTitle={!isEmpty} title="Ordenes" icon={<MdOutlineChangeHistory />}>
          {isLoading
             ? <FullScreenLoading />
             : isEmpty
