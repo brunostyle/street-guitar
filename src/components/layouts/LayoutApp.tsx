@@ -1,5 +1,5 @@
 // import Head from 'next/head';
-import { Menu } from '@components';
+import { Footer, Menu } from '@components';
 
 interface ILayout {
 	children: JSX.Element | JSX.Element[];
@@ -22,6 +22,7 @@ export const LayoutApp = ({ children }: ILayout) => (
 		<div className="container mx-auto p-4 min-h-screen">
 			{children}
 		</div>
+		<Footer />
 	</>
 );
 

@@ -12,9 +12,9 @@ export const App = () => {
     <QueryClientProvider client={client}>
       <NextUIProvider>
         <main className={isLight ? 'light text-foreground bg-background' : 'dark text-foreground bg-background'}>
-        {/* <LayoutMain> */}
-          <RouterApp />
-        {/* </LayoutMain> */}
+          {/* <LayoutMain> */}
+            <RouterApp />
+          {/* </LayoutMain> */}
         </main>
         <Toast />
       </NextUIProvider>

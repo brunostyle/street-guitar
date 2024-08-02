@@ -23,7 +23,7 @@ export const Menu = () => {
          <NavbarBrand>
             <NextLink to="/"><Logo /></NextLink>
             <Spacer x={2} />
-            <Title>LB Digital</Title>
+            <Title>Street Guitar</Title>
          </NavbarBrand>
 
          <NavbarContent justify="end" className="gap-4">

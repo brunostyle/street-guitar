@@ -3,6 +3,7 @@ export * from './ui/Chart';
 export * from './ui/Collapse';
 export * from './ui/DashboardCards';
 export * from './ui/File';
+export * from './ui/Footer';
 export * from './ui/FullScreenLoading';
 export * from './ui/Images';
 export * from './ui/PDF';
