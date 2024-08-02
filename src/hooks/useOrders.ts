@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@database";
 import { IOrderCheckout, IProduct } from "@interfaces";
@@ -57,13 +57,13 @@ export const useAddOrder = () => {
    return { addOrder, isAddingOrder }
 }
 //--------------------------------- PAY ---------------------------------
-export const usePayOrder = (id: string) => {
-   const queryClient = useQueryClient();
-   const { mutate: payOrder, isPending: isPayingOrder } = useMutation({
-      mutationFn: async () => await supabase.from('orders').update({ paid: true }).eq('id', id),
-      onSuccess: () => {
-         queryClient.refetchQueries({queryKey: ["order", id]});
-      }
-   })
-   return { payOrder, isPayingOrder }
-}
+// export const usePayOrder = (id: string) => {
+//    const queryClient = useQueryClient();
+//    const { mutate: payOrder, isPending: isPayingOrder } = useMutation({
+//       mutationFn: async () => await supabase.from('orders').update({ paid: true }).eq('id', id),
+//       onSuccess: () => {
+//          queryClient.refetchQueries({queryKey: ["order", id]});
+//       }
+//    })
+//    return { payOrder, isPayingOrder }
+// }

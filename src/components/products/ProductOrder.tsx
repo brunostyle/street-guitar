@@ -4,7 +4,7 @@ import { BiPencil } from '@icons'
 import { Between, Subtitle, Title } from "@styles";
 
 interface IProductOrder {
-   children: JSX.Element;
+   children?: JSX.Element;
    editable?: boolean;
    total?: number;
    items?: number;

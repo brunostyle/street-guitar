@@ -1,30 +1,22 @@
-import { Spacer, Spinner, Button, DatePicker } from "@nextui-org/react"
-import { useParams } from "react-router-dom";
+import { Spacer, Button, DatePicker } from "@nextui-org/react"
 import { useState } from "react";
 import { Formik, Form } from "formik"
 import { Between } from "@styles"
 import { Input } from "@components"
 import { AiOutlineCreditCard, BsPaypal, MdClose } from "@icons";
 import { paySchema } from "@validations";
-import { usePayOrder } from "@hooks";
 const initial = { name: '', number: '', expires: '', csc: '' };
 
 export const ProductPay = () => {
-   const { id } = useParams();
    const [showPay, setShowPay] = useState(false);
-   const { payOrder, isPayingOrder } = usePayOrder(id!);
 
    const handleSubmit = (values: any) => {
       console.log(values)
    }
 
-   const payWithPaypal = () => {
-      payOrder();
-   }
-
    return (
       <div className="w-full">
-         <Button fullWidth size="sm" color="warning" startContent={isPayingOrder ? <Spinner size="sm" color="current" /> : <BsPaypal />} onPress={payWithPaypal}>
+         <Button fullWidth size="sm" color="warning" startContent={<BsPaypal />}>
             <h4 className="font-extrabold text-blue-700">Pay</h4><h4 className="font-extrabold text-white">Pal</h4>
          </Button>
          <Spacer y={4} />

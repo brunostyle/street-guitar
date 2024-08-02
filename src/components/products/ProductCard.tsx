@@ -27,7 +27,7 @@ export const ProductCard = ({ cart = [], paid, editable = false }: IProductCard)
             </CardBody>
             <CardFooter className="col-span-2 flex flex-col justify-between">
                <Title>${product.price}</Title>
-               {(paid && !editable) && <Button as={Link} to={product.pdf} target="_blank" download={product.title} variant="bordered" size="sm" isIconOnly><FaCloudDownloadAlt /></Button>}
+               {(paid && !editable) && <Button as={Link} to={product.pdf} target="_blank" download={product.title} variant="bordered" color="primary" size="sm" isIconOnly><FaCloudDownloadAlt /></Button>}
                {editable && <Button isIconOnly variant="bordered" size="sm" onPress={() => removeProductToCart(product)}><AiFillDelete /></Button>}
             </CardFooter>
          </Card>

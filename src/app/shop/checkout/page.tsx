@@ -1,11 +1,17 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import ConfettiExplosion from 'react-confetti-explosion';
+import toast from "react-hot-toast";
 import { Grid, GridContainer, SectionSubTitle, SectionTitle } from "@styles";
-import { FullScreenLoading, LayoutApp, ProductCard, ProductOrder, ProductPay } from "@components";
+import { FullScreenLoading, LayoutApp, ProductCard, ProductOrder } from "@components";
 import { useGetOrder } from "@hooks";
 
 const Checkout = () => {
    const { id } = useParams();
    const { products, total, items, paid, isLoading } = useGetOrder(id!);
+   useEffect(() => {
+      !isLoading && toast.success('Disfruta las tablaturas!!!');
+   }, [isLoading]);
    return (
       <LayoutApp title="Resumen de orden" description="Resumen de la orden">
          <SectionTitle>Orden: {id}</SectionTitle>
@@ -15,11 +21,12 @@ const Checkout = () => {
             :
             <GridContainer>
                <Grid>
+                  <ConfettiExplosion force={0.8} duration={3000} particleCount={250} width={1600} />
                   <ProductCard cart={products} paid={paid} />
                </Grid>
                <Grid>
                   <ProductOrder total={total} items={items}>
-                     <ProductPay />
+                     {/* <ProductPay /> */}
                   </ProductOrder>
                </Grid>
             </GridContainer>

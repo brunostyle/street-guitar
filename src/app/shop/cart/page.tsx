@@ -14,11 +14,11 @@ const Cart = () => {
    const { isLogged, user } = useUser();
 
    const handleCart = () => {
-      if (!isLogged) return toast.error("Debes iniciar sesión para comprar");
+      if (!isLogged) return toast.error("Debes iniciar sesión");
       const order: IOrderCheckout = {
          items,
          total,
-         paid: false,
+         paid: true,
          user: user?.id,
          products: cart.map(product => product.id)
       }
@@ -30,7 +30,7 @@ const Cart = () => {
          ? <Navigate to="/cart/empty" />
          :
          <LayoutApp title="Carrito" description="Carrito de compras de la tienda">
-            <SectionTitle>Carrito de compras</SectionTitle>
+            <SectionTitle>Carrito</SectionTitle>
             <SectionSubTitle>Mis productos</SectionSubTitle>
             <GridContainer>
                <Grid>
@@ -38,7 +38,7 @@ const Cart = () => {
                </Grid>
                <Grid>
                   <ProductOrder editable total={total} items={items}>
-                     <Button fullWidth size="sm" color="primary" isLoading={isAddingOrder} startContent={!isAddingOrder && <AiOutlineCreditCard />} onPress={handleCart}>Comprar</Button>
+                     <Button fullWidth size="sm" color="primary" isLoading={isAddingOrder} startContent={!isAddingOrder && <AiOutlineCreditCard />} onPress={handleCart}>Ver tabs</Button>
                   </ProductOrder>
                </Grid>
             </GridContainer>

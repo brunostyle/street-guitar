@@ -6,10 +6,6 @@
   display: none;
 }
 
-.outline-none {
-  outline: none;
-}
-
 .image-gallery-icon:focus {
   outline: none;
 }
