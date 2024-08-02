@@ -1,9 +1,9 @@
 import { Button, Card, CardBody, CardFooter, Spacer } from "@nextui-org/react";
-import { IProduct } from "../../utils/interfaces"
-import { AiFillDelete, FaCloudDownloadAlt } from '../../assets/icons'
-import { HiddenTitle, Subtitle, Title, ChipCategory } from "../../styles";
-import { useCart } from "../../state";
 import { Link } from "react-router-dom";
+import { IProduct } from "@interfaces"
+import { AiFillDelete, FaCloudDownloadAlt } from '@icons'
+import { HiddenTitle, Subtitle, Title, ChipCategory } from "@styles";
+import { useCart } from "@state";
 
 interface IProductCard {
    cart?: IProduct[];

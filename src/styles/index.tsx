@@ -1,6 +1,6 @@
 import { Chip as ChipNext } from "@nextui-org/react";
-import { useTheme } from "../state";
-import { categories, roles } from "../utils/interfaces";
+import { useTheme } from "@state";
+import { categories, roles } from "@interfaces";
 
 interface Props {
   children: React.ReactNode;

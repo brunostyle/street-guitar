@@ -2,6 +2,7 @@ export { FaPlus, FaRegEye, FaMinus, FaFacebookF, FaCloudDownloadAlt } from 'reac
 export { FcGoogle } from 'react-icons/fc';
 export { FiShoppingCart, FiUsers } from 'react-icons/fi';
 export { IoLogoPolymer, IoMdSearch } from "react-icons/io";
+export { IoDocumentText } from "react-icons/io5";
 export { GrAdd } from 'react-icons/gr';
 export { BiFilter, BiExit, BiSun, BiPencil, BiGridAlt } from 'react-icons/bi';
 export { MdOutlineNightlight, MdOutlineChangeHistory, MdClose, MdLockOutline  } from 'react-icons/md';

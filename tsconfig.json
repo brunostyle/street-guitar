@@ -18,7 +18,20 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@database": ["assets/database"],
+      "@icons": ["assets/icons"],
+      "@query-client": ["assets/query-client"],
+      "@validations": ["assets/validations"],
+      "@components": ["components"],
+      "@hooks": ["hooks"],
+      "@routes": ["routes"],
+      "@state": ["state"],
+      "@styles": ["styles"],
+      "@interfaces": ["interfaces"]
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

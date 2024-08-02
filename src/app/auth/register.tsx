@@ -1,11 +1,11 @@
 import { Spacer, Button } from "@nextui-org/react"
 import { Link } from "react-router-dom"
 import { Form, Formik } from "formik"
-import { Input, LayoutAuth } from "../../components"
-import { AiOutlineMail, MdLockOutline, FiUsers } from "../../assets/icons";
-import { registerSchema } from "../../assets/validations";
-import { IRegister } from "../../utils/interfaces";
-import { useRegister } from "../../hooks";
+import { Input, LayoutAuth } from "@components"
+import { AiOutlineMail, MdLockOutline, FiUsers } from "@icons";
+import { registerSchema } from "@validations";
+import { IRegister } from "@interfaces";
+import { useRegister } from "@hooks";
 
 const initial: IRegister = { name: '', email: '', password: '' };
 

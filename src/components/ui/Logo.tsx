@@ -1,4 +1,4 @@
-import { useTheme } from "../../state";
+import { useTheme } from "@state";
 
 interface IProps {
    big?: boolean;

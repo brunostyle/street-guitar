@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { IProduct } from "../utils/interfaces"
 import toast from 'react-hot-toast';
+import { IProduct } from "@interfaces"
 
 interface ICart {
    cart: IProduct[];

@@ -1,7 +1,7 @@
-import { FullScreenLoading, LayoutApp, Nothing, ProductList } from "../../../components";
-import { BsFillCreditCard2FrontFill, BsFillGrid3X3GapFill, IoLogoPolymer } from "../../../assets/icons";
 import { useParams } from "react-router-dom";
-import { useGetCategory } from "../../../hooks";
+import { FullScreenLoading, LayoutApp, Nothing, ProductList } from "@components";
+import { BsFillCreditCard2FrontFill, BsFillGrid3X3GapFill, IoLogoPolymer } from "@icons";
+import { useGetCategory } from "@hooks";
 
 const categories = {
    rock: {

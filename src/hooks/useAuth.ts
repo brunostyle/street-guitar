@@ -1,10 +1,10 @@
 import { useMutation } from "@tanstack/react-query"
-import { IAuth, ILogin, IRegister } from "../utils/interfaces";
 import { useNavigate } from "react-router-dom"
-import { useUser } from "../state";
-import { supabase } from "../assets/database";
 import { v4 as uuid } from "uuid";
 import toast from "react-hot-toast";
+import { IAuth, ILogin, IRegister } from "@interfaces";
+import { useUser } from "@state";
+import { supabase } from "@database";
 
 export const useLogin = () => {
    const router = useNavigate();

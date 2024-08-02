@@ -1,8 +1,8 @@
 import { Navbar, Spacer, NavbarBrand, NavbarContent, NavbarMenuToggle } from '@nextui-org/react';
-import { Collapse, Logo, User } from '../index';
 import { Link as NextLink } from 'react-router-dom'
-import { useUser } from '../../state';
-import { Title } from '../../styles';
+import { Collapse, Logo, User } from '@components';
+import { useUser } from '@state';
+import { Title } from '@styles';
 
 export const MenuAdmin = () => {
    const { isLogged } = useUser();

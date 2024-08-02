@@ -1,6 +1,6 @@
 import { Card, CardFooter, CardHeader, Spacer } from "@nextui-org/react";
-import { AiOutlineTags, FiUsers, MdOutlineChangeHistory } from "../../assets/icons";
-import { Title, WrapFit } from "../../styles";
+import { AiOutlineTags, FiUsers, MdOutlineChangeHistory } from "@icons";
+import { Title, WrapFit } from "@styles";
 
 interface IDashboardCards {
    numberOfClients?: number;

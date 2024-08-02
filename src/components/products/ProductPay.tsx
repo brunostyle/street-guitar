@@ -1,12 +1,12 @@
 import { Spacer, Spinner, Button, DatePicker } from "@nextui-org/react"
-import { Formik, Form } from "formik"
-import { Between } from "../../styles"
-import { Input } from "../index"
-import { AiOutlineCreditCard, BsPaypal, MdClose } from "../../assets/icons";
-import { useState } from "react";
-import { paySchema } from "../../assets/validations";
 import { useParams } from "react-router-dom";
-import { usePayOrder } from "../../hooks";
+import { useState } from "react";
+import { Formik, Form } from "formik"
+import { Between } from "@styles"
+import { Input } from "@components"
+import { AiOutlineCreditCard, BsPaypal, MdClose } from "@icons";
+import { paySchema } from "@validations";
+import { usePayOrder } from "@hooks";
 const initial = { name: '', number: '', expires: '', csc: '' };
 
 export const ProductPay = () => {

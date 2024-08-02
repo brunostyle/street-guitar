@@ -1,7 +1,7 @@
 import { Spacer } from "@nextui-org/react";
-import { DashboardCards, Sells, LayoutAdmin, Chart, FullScreenLoading } from "../../components";
-import { SectionTitle } from "../../styles";
-import { useDashboard } from "../../hooks";
+import { DashboardCards, Sells, LayoutAdmin, Chart, FullScreenLoading } from "@components";
+import { SectionTitle } from "@styles";
+import { useDashboard } from "@hooks";
 
 const Dashboard = () => {
    const { numberOfClients, numberOfProducts, numberOfOrders, lastSells, clients, sells, isLoading } = useDashboard();

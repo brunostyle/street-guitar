@@ -1,6 +1,6 @@
 import { Card, CardBody, CardHeader, Image } from "@nextui-org/react";
-import { Gradient, SectionSubTitle, SectionTitle } from '../../styles';
-import { Logo } from "../ui/Logo";
+import { Gradient, SectionSubTitle, SectionTitle } from "@styles";
+import { Logo } from "@components";
 
 interface ILayout {
    children: JSX.Element | JSX.Element[];

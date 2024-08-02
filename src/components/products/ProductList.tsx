@@ -1,7 +1,7 @@
 import { Card, CardBody, CardFooter } from '@nextui-org/react';
-import { Between, HiddenTitle, Wrap, Title, ChipCategory } from '../../styles';
-import { IProduct } from "../../utils/interfaces"
 import { useNavigate as useRouter } from 'react-router-dom';
+import { Between, HiddenTitle, Wrap, Title, ChipCategory } from '@styles';
+import { IProduct } from "@interfaces"
 
 interface IProps {
    category: string;

@@ -1,5 +1,5 @@
 // import Head from 'next/head';
-import { Menu } from '../index';
+import { Menu } from '@components';
 
 interface ILayout {
 	children: JSX.Element | JSX.Element[];

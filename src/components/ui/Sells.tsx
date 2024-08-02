@@ -1,7 +1,7 @@
 import { Button, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, User } from "@nextui-org/react";
-import { IOrderDashboard } from "../../utils/interfaces";
-import { AiOutlineFolderOpen } from '../../assets/icons';
 import { useNavigate } from "react-router-dom";
+import { IOrderDashboard } from "@interfaces";
+import { AiOutlineFolderOpen } from '@icons';
 
 interface ISells {
     sells?: IOrderDashboard[];

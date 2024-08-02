@@ -1,8 +1,8 @@
 import { Button, Checkbox, Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, User } from "@nextui-org/react";
-import { AiOutlineFolderOpen, MdOutlineChangeHistory } from '../../assets/icons';
 import { useNavigate } from "react-router-dom";
-import { FullScreenLoading, LayoutAdmin, Nothing } from "../../components";
-import { usePaginateOrders, usePaginate } from "../../hooks";
+import { AiOutlineFolderOpen, MdOutlineChangeHistory } from '@icons';
+import { FullScreenLoading, LayoutAdmin, Nothing } from "@components";
+import { usePaginateOrders, usePaginate } from "@hooks";
 
 const Orders = () => {
    const { page, limit, total, setPage } = usePaginate('orders');

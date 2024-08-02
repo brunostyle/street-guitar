@@ -1,11 +1,11 @@
 import { Card, CardBody, Button, Spacer, Skeleton } from "@nextui-org/react";
 import { useParams } from "react-router-dom";
 import { Form, Formik } from "formik";
-import { Images, Input, LayoutAdmin, Category, Tags, Textarea, PDF } from "../../../components";
-import { AiFillDelete, AiOutlineSave, BiPencil } from "../../../assets/icons";
-import { productSchema } from "../../../assets/validations";
-import { Grid, GridContainer, SectionTitle } from "../../../styles";
-import { useDeleteProduct, useGetProduct, useUpdateProduct } from "../../../hooks";
+import { Images, Input, LayoutAdmin, Category, Tags, Textarea, PDF } from "@components";
+import { AiFillDelete, AiOutlineSave, BiPencil } from "@icons";
+import { productSchema } from "@validations";
+import { Grid, GridContainer, SectionTitle } from "@styles";
+import { useDeleteProduct, useGetProduct, useUpdateProduct } from "@hooks";
 
 const UpdateProduct = () => {
     const { id } = useParams();

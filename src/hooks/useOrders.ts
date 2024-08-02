@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import { supabase } from "../assets/database";
 import { useNavigate } from "react-router-dom";
-import { IOrderCheckout, IProduct } from "../utils/interfaces";
+import { supabase } from "@database";
+import { IOrderCheckout, IProduct } from "@interfaces";
 
 export const usePaginateOrders = (page: number, limit: number) => {
    const { data: orders, isLoading } = useQuery({

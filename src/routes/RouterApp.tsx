@@ -1,4 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
+import { Private, Public } from '@routes';
+
 import Home from '../app/page';
 
 import Category from '../app/shop/category/page';
@@ -17,8 +19,6 @@ import Users from '../app/admin/users';
 
 import Login from '../app/auth/login';
 import Register from '../app/auth/register';
-import { Private } from './Private';
-import { Public } from './Public';
 
 export const RouterApp = () => (
   <Routes>

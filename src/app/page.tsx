@@ -1,7 +1,7 @@
 import { Spinner } from '@nextui-org/react';
-import { Banner, LayoutApp, ProductList } from '../components';
-import { BiFilter } from '../assets/icons';
-import { useProducts } from '../hooks';
+import { Banner, LayoutApp, ProductList } from '@components';
+import { BiFilter } from '@icons';
+import { useProducts } from '@hooks';
 
 const Home = () => {
 	const { products, isLoading } = useProducts();

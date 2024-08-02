@@ -1,12 +1,11 @@
 import { Navbar, Dropdown, Spacer, Badge, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, DropdownTrigger, DropdownMenu, DropdownSection, DropdownItem, Button } from '@nextui-org/react';
-import { IoMdSearch, FiShoppingCart, BsFillCreditCard2FrontFill, BsFillGrid3X3GapFill, IoLogoPolymer, BiFilter } from '../../assets/icons'
-import { Formik, Form } from 'formik'
-import { Collapse, User, InputBordered } from '../index';
-import { searchSchema } from '../../assets/validations';
-import { useCart, useUser } from '../../state';
-import { Logo } from './Logo';
 import { useNavigate, Link as NextLink } from 'react-router-dom'
-import { Title } from '../../styles';
+import { Formik, Form } from 'formik'
+import { IoMdSearch, FiShoppingCart, BsFillCreditCard2FrontFill, BsFillGrid3X3GapFill, IoLogoPolymer, BiFilter } from '@icons'
+import { Collapse, User, InputBordered, Logo } from '@components';
+import { searchSchema } from '@validations';
+import { useCart, useUser } from '@state';
+import { Title } from '@styles';
 
 interface ISearch { query: string }
 const values: ISearch = { query: '' }

@@ -1,10 +1,10 @@
 import { Card, CardBody, Button, Spacer } from "@nextui-org/react";
 import { Form, Formik } from "formik";
-import { Images, Input, LayoutAdmin, Category, Tags, Textarea, PDF } from "../../../components";
-import { AiOutlineSave, FaPlus } from "../../../assets/icons";
-import { productSchema } from "../../../assets/validations";
-import { Grid, GridContainer, SectionTitle } from "../../../styles";
-import { useAddProduct } from "../../../hooks";
+import { Images, Input, LayoutAdmin, Category, Tags, Textarea, PDF } from "@components";
+import { AiOutlineSave, FaPlus } from "@icons";
+import { productSchema } from "@validations";
+import { Grid, GridContainer, SectionTitle } from "@styles";
+import { useAddProduct } from "@hooks";
 const initial = { title: '', description: '', price: '', tab: '', pdf: '', category: 'rock', tags: [], images: [] }
 
 const NewProduct = () => {

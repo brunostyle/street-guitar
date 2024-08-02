@@ -11,6 +11,6 @@ export default {
   },
   darkMode: "class",
   plugins: [nextui({
-    defaultTheme: 'dark',
+    defaultTheme: 'dark'
   })],
 }

@@ -1,5 +1,5 @@
 import { Image } from "@nextui-org/react";
-import { Center } from "../../styles";
+import { Center } from "@styles";
 
 interface INothing {
    text: string;

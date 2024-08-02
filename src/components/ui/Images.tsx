@@ -1,11 +1,11 @@
 import { Badge, Image, Progress } from "@nextui-org/react";
-import { MdClose } from "../../assets/icons";
-import { useAddImage, useDeleteImage } from "../../hooks";
-import { File } from "./File";
 import { ChangeEvent } from "react";
-import { useField } from "formik";
 import { useParams } from "react-router-dom";
-import { supabase } from "../../assets/database";
+import { useField } from "formik";
+import { MdClose } from "@icons";
+import { useAddImage, useDeleteImage } from "@hooks";
+import { File } from "@components";
+import { supabase } from "@database";
 
 export const Images = () => {
    const { id } = useParams();

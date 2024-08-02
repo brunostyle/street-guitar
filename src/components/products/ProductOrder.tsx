@@ -1,7 +1,7 @@
 import { Button, Card, CardBody, CardFooter, CardHeader } from "@nextui-org/react";
-import { BiPencil } from '../../assets/icons'
-import { Between, Subtitle, Title } from "../../styles";
 import { useNavigate as useRouter } from "react-router-dom";
+import { BiPencil } from '@icons'
+import { Between, Subtitle, Title } from "@styles";
 
 interface IProductOrder {
    children: JSX.Element;

@@ -1,9 +1,9 @@
 import { Avatar, Button, Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
 import { Link, useNavigate } from "react-router-dom";
-import { AiOutlineTags, BiPencil, FaRegEye } from "../../assets/icons";
-import { FullScreenLoading, LayoutAdmin, Nothing } from "../../components";
-import { HiddenTitle, HiddenSubtitle, ChipCategory } from "../../styles";
-import { usePaginate, usePaginateProducts } from "../../hooks";
+import { AiOutlineTags, BiPencil, FaRegEye } from "@icons";
+import { FullScreenLoading, LayoutAdmin, Nothing } from "@components";
+import { HiddenTitle, HiddenSubtitle, ChipCategory } from "@styles";
+import { usePaginate, usePaginateProducts } from "@hooks";
 
 const Products = () => {
    const router = useNavigate();

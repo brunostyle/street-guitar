@@ -1,8 +1,8 @@
-import { Between, SectionTitle } from '../../styles';
-import { AiOutlineHome, AiOutlineTags, FaPlus, IoMdSearch } from "../../assets/icons";
 import { BreadcrumbItem, Breadcrumbs, Button, Input, Spacer } from '@nextui-org/react';
-import { MenuAdmin } from '../ui/MenuAdmin';
 import { useNavigate } from 'react-router-dom';
+import { Between, SectionTitle } from '@styles';
+import { AiOutlineHome, AiOutlineTags, FaPlus, IoMdSearch } from "@icons";
+import { MenuAdmin } from '@components';
 
 interface ILayout {
    children: JSX.Element | JSX.Element[];

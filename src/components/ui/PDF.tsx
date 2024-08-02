@@ -1,13 +1,12 @@
 import { Card, Button, CardBody, Progress } from "@nextui-org/react";
-import { IoDocumentText } from "react-icons/io5";
-import { MdClose } from "../../assets/icons";
-import { TitlePDF } from "../../styles";
-import { useAddPDF, useDeletePDF } from "../../hooks";
 import { ChangeEvent } from "react";
-import { useField } from "formik";
-import { File } from "./File";
 import { Link, useParams } from "react-router-dom";
-import { supabase } from "../../assets/database";
+import { useField } from "formik";
+import { MdClose, IoDocumentText } from "@icons";
+import { TitlePDF } from "@styles";
+import { useAddPDF, useDeletePDF } from "@hooks";
+import { File } from "@components";
+import { supabase } from "@database";
 
 export const PDF = () => {
     const { id } = useParams();

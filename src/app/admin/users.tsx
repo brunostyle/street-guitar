@@ -1,8 +1,8 @@
 import { Avatar, Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
-import { FullScreenLoading, LayoutAdmin, Nothing } from "../../components";
-import { FiUsers } from "../../assets/icons";
-import { HiddenTitle, HiddenSubtitle, ChipUser } from "../../styles";
-import { usePaginateUsers, usePaginate } from "../../hooks";
+import { FullScreenLoading, LayoutAdmin, Nothing } from "@components";
+import { FiUsers } from "@icons";
+import { HiddenTitle, HiddenSubtitle, ChipUser } from "@styles";
+import { usePaginateUsers, usePaginate } from "@hooks";
 
 const Users = () => {
    const { page, limit, total, setPage } = usePaginate('users');

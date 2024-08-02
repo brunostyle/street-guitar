@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { Button, Chip } from "@nextui-org/react";
-import { InputTags } from "./Input";
-import { GrAdd } from "../../assets/icons";
+import { useState } from "react";
 import { useField } from "formik";
+import { InputTags } from "@components";
+import { GrAdd } from "@icons";
 
 export const Tags = () => {
    const [field, _meta, helpers] = useField('tags');

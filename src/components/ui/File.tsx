@@ -1,5 +1,5 @@
 import { Button } from '@nextui-org/react';
-import { AiOutlineCloudUpload } from "../../assets/icons";
+import { AiOutlineCloudUpload } from "@icons";
 
 interface IProps {
 	label?: string;

@@ -1,12 +1,12 @@
 import { Spacer, Button, Checkbox } from "@nextui-org/react"
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
 import { Form, Formik } from "formik"
-import { Input, LayoutAuth } from "../../components"
-import { AiOutlineMail, FcGoogle, MdLockOutline } from "../../assets/icons";
-import { loginSchema } from "../../assets/validations"
-import { ILogin } from "../../utils/interfaces"
-import { useEffect, useState } from "react";
-import { useLogin } from "../../hooks";
+import { Input, LayoutAuth } from "@components"
+import { AiOutlineMail, FcGoogle, MdLockOutline } from "@icons";
+import { loginSchema } from "@validations"
+import { ILogin } from "@interfaces"
+import { useLogin } from "@hooks";
 
 const storage = 'login-lb-digital';
 

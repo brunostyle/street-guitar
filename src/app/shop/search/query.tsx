@@ -1,6 +1,6 @@
-import { FullScreenLoading, LayoutApp, Nothing, ProductList } from '../../../components';
 import { useParams } from 'react-router-dom';
-import { useGetProductsQuery } from '../../../hooks';
+import { FullScreenLoading, LayoutApp, Nothing, ProductList } from '@components';
+import { useGetProductsQuery } from '@hooks';
 
 const Search = () => {
    const { query } = useParams();

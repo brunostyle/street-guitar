@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { supabase } from "../assets/database";
+import { supabase } from "@database";
 
 export const usePaginateUsers = (page: number, limit: number) => {
   const { data: users, isLoading } = useQuery({

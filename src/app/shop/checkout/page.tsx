@@ -1,7 +1,7 @@
-import { Grid, GridContainer, SectionSubTitle, SectionTitle } from "../../../styles";
-import { FullScreenLoading, LayoutApp, ProductCard, ProductOrder, ProductPay } from "../../../components";
-import { useGetOrder } from "../../../hooks";
 import { useParams } from "react-router-dom";
+import { Grid, GridContainer, SectionSubTitle, SectionTitle } from "@styles";
+import { FullScreenLoading, LayoutApp, ProductCard, ProductOrder, ProductPay } from "@components";
+import { useGetOrder } from "@hooks";
 
 const Checkout = () => {
    const { id } = useParams();

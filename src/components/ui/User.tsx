@@ -1,8 +1,8 @@
 import { Avatar, Popover, Spacer, User as NextUser, PopoverTrigger, PopoverContent, Button, Progress } from "@nextui-org/react";
-import { useUser } from "../../state";
-import { File } from "./File";
 import { ChangeEvent } from "react";
-import { useAddUserImage } from "../../hooks";
+import { useUser } from "@state";
+import { File } from "@components";
+import { useAddUserImage } from "@hooks";
 
 export const User = () => {
    const { user } = useUser();

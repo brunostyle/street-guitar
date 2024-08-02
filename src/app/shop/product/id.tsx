@@ -1,12 +1,13 @@
 import { Button, Card, CardBody, Divider, Skeleton, Spacer, Spinner } from "@nextui-org/react";
 import { useParams } from "react-router-dom";
-import { FiShoppingCart } from "../../../assets/icons";
-import { Between, Grid, GridContainer, Subtitle, Title, ChipCategory } from "../../../styles";
-import { useCart } from "../../../state";
-import { LayoutApp } from "../../../components";
-import { useGetProduct } from "../../../hooks";
 import ImageGallery from 'react-image-gallery';
 import { useEffect } from "react";
+import { FiShoppingCart } from "@icons";
+import { Between, Grid, GridContainer, Subtitle, Title, ChipCategory } from "@styles";
+import { useCart } from "@state";
+import { LayoutApp } from "@components";
+import { useGetProduct } from "@hooks";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 const Product = () => {
    const { id } = useParams();

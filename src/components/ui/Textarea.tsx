@@ -1,5 +1,5 @@
-import { ErrorMessage, Field } from 'formik';
 import { Textarea as TextField } from '@nextui-org/react';
+import { ErrorMessage, Field } from 'formik';
 
 interface ITextarea {
 	name: string;

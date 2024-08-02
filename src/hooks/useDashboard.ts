@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
-import { supabase } from "../assets/database";
-import { IDashboard } from "../utils/interfaces";
+import { supabase } from "@database";
+import { IDashboard } from "@interfaces";
 
 export const useDashboard = () => {
    const { data, isLoading } = useQuery({

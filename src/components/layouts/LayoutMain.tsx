@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useAuthRenew } from "../../hooks";
-import { supabase } from "../../assets/database";
+import { useAuthRenew } from "@hooks";
+import { supabase } from "@database";
 
 interface ILayout {
    children: JSX.Element | JSX.Element[];

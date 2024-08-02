@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { IAuth } from '../utils/interfaces';
-import { supabase } from '../assets/database';
+import { IAuth } from '@interfaces';
+import { supabase } from '@database';
 
 interface IUser {
    isLogged: boolean;

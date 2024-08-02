@@ -1,10 +1,10 @@
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { IProduct } from "../utils/interfaces";
-import { useNavigate } from "react-router-dom";
-import { supabase } from "../assets/database";
-import { v4 as uuid } from "uuid";
 import { ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { v4 as uuid } from "uuid";
+import { supabase } from "@database";
+import { IProduct } from "@interfaces";
 
 //--------------------------------- GET ---------------------------------
 export const useProducts = () => {

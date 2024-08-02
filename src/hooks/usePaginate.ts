@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../assets/database";
+import { supabase } from "@database";
 
 export const usePaginate = (database: string) => {
     const [page, setPage] = useState(1);

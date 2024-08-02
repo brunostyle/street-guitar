@@ -1,6 +1,6 @@
 import { Button, Image } from "@nextui-org/react";
-import { BsInstagram, FaFacebookF } from "../../assets/icons";
-import { Gradient, Subtitle } from "../../styles";
+import { BsInstagram, FaFacebookF } from "@icons";
+import { Gradient, Subtitle } from "@styles";
 
 export const Banner = () => (
    <Gradient>

@@ -1,11 +1,11 @@
 import { Button, Divider, NavbarMenuItem, NavbarMenu } from '@nextui-org/react';
-import { Formik, Form } from 'formik'
-import { IoMdSearch, AiOutlineHome, BsKey, FiUsers, BiGridAlt, AiOutlineTags, MdOutlineChangeHistory, BiSun, MdOutlineNightlight, BiExit } from '../../assets/icons'
-import { InputBordered } from './Input';
-import { Between, Subtitle } from '../../styles';
-import { searchSchema } from '../../assets/validations';
-import { useCart, useTheme, useUser } from '../../state';
 import { useNavigate as useRouter, useLocation } from 'react-router-dom'
+import { Formik, Form } from 'formik'
+import { IoMdSearch, AiOutlineHome, BsKey, FiUsers, BiGridAlt, AiOutlineTags, MdOutlineChangeHistory, BiSun, MdOutlineNightlight, BiExit } from '@icons'
+import { InputBordered } from '@components';
+import { Between, Subtitle } from '@styles';
+import { searchSchema } from '@validations';
+import { useCart, useTheme, useUser } from '@state';
 
 interface ISearch { query: string }
 const values: ISearch = { query: '' }

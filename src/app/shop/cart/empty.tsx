@@ -1,6 +1,6 @@
-import { useNavigate as useRouter } from "react-router-dom";
-import { LayoutApp, Nothing } from "../../../components";
 import { Button } from "@nextui-org/react";
+import { useNavigate as useRouter } from "react-router-dom";
+import { LayoutApp, Nothing } from "@components";
 
 const Empty = () => {
    const router = useRouter();
