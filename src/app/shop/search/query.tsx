@@ -11,7 +11,7 @@ const Search = () => {
          {isLoading
             ? <FullScreenLoading />
             : isEmpty
-               ? <Nothing text={"No se encontraron resultados para " + query} svg="/search-empty.svg" />
+               ? <Nothing text={"No se encontraron resultados para " + query} svg="/no-results.svg" />
                : <ProductList category={query!} products={products ?? []} />
          }
       </LayoutApp>

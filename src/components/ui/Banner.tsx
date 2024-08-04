@@ -1,6 +1,7 @@
 import { Button, Image } from "@nextui-org/react";
 import { BsInstagram, FaFacebookF } from "@icons";
 import { Gradient, Subtitle } from "@styles";
+import { Push } from "@components";
 
 export const Banner = () => (
    <Gradient>
@@ -18,7 +19,9 @@ export const Banner = () => (
             </div>
          </div>
          <div className="hidden md:block mb-36 dark:opacity-80">
-            <Image className="opacity" src="auris.png" alt="Ilustracion" />
+            <Push>
+               <Image src="auris.png" alt="Ilustracion" />
+            </Push>
          </div>
       </div>
    </Gradient>

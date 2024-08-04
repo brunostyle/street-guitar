@@ -7,6 +7,7 @@ export * from './ui/Footer';
 export * from './ui/FullScreenLoading';
 export * from './ui/Images';
 export * from './ui/PDF';
+export * from './ui/Push';
 export * from './ui/Input';
 export * from './ui/Logo';
 export * from './ui/Menu';
