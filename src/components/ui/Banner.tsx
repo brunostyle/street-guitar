@@ -20,7 +20,7 @@ export const Banner = () => (
          </div>
          <div className="hidden md:block mb-36 dark:opacity-80">
             <Push>
-               <Image src="auris.png" alt="Ilustracion" />
+               <Image disableSkeleton src="auris.png" alt="Ilustracion" />
             </Push>
          </div>
       </div>
