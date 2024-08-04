@@ -6,7 +6,7 @@ import { Push } from "@components";
 export const Banner = () => (
    <Gradient>
       <div className="grid gap-4 md:grid-cols-2 min-h-screen items-center">
-         <div className="flex flex-col gap-4 mb-36">
+         <div className="flex flex-col gap-4 mb-48">
             <h1 className="text-5xl leading-snug font-bold">
                Encontra las mejores tablaturas en
                <span className="bg-gradient-to-bl from-blue-400 to-blue-950  bg-clip-text text-transparent leading-normal"> Street Guitar </span>
