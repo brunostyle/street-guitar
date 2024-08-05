@@ -12,7 +12,7 @@ const Users = () => {
          {isLoading
             ? <FullScreenLoading />
             : isEmpty
-               ? <Nothing text="Aún no hay usuarios" svg="/no-results.svg" />
+               ? <Nothing text="Aún no hay usuarios" svg="/nothing.svg" />
                :
                <Table removeWrapper className="table" aria-label="Usuarios" selectionMode="multiple" bottomContent={
                   <Pagination className="flex justify-center" size="sm" showShadow showControls page={page} total={total} onChange={setPage} />}>

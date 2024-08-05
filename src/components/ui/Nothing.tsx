@@ -1,5 +1,5 @@
 import { Image } from "@nextui-org/react";
-import { Center, Title } from "@styles";
+import { Center, Subtitle } from "@styles";
 import { Push } from "@components";
 
 interface INothing {
@@ -13,7 +13,7 @@ export const Nothing = ({ text, svg, children }: INothing) => (
       <Push>
          <Image disableSkeleton src={svg} width="300px" height="300px" alt="No se encontraron resultados" />
       </Push>
-      <Title>{text}</Title>
+      <Subtitle>{text}</Subtitle>
       {children}
    </Center>
 )
