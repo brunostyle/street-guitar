@@ -16,7 +16,6 @@ export const Input = ({ name, label, icon, type = 'text', variant = 'default' }:
       name={name}
       type={type}
       variant={variant}
-      classNames={variant === 'bordered' && {inputWrapper: "border-1"}}
       labelPlacement="outside"
       label={label}
       autoComplete="off"
@@ -34,7 +33,6 @@ export const InputBordered = ({ name, label, icon }: IInput) => (
       aria-label="input"
       name={name}
       placeholder={label}
-      classNames={{inputWrapper: "border-1"}}
       color="primary"
       autoComplete="off"
       size="sm"

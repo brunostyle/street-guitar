@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { AiOutlineCreditCard } from '@icons'
 import { SectionTitle, SectionSubTitle, GridContainer, Grid } from "@styles";
 import { useCart, useUser } from "@state";
-import { LayoutApp, ProductCard, ProductOrder } from "@components";
+import { ProductCard, ProductOrder } from "@components";
 import { IOrderCheckout } from "@interfaces";
 import { useAddOrder } from "@hooks";
 
@@ -29,7 +29,7 @@ const Cart = () => {
       (items < 1)
          ? <Navigate to="/cart/empty" />
          :
-         <LayoutApp title="Carrito" description="Carrito de compras de la tienda">
+         <section>
             <SectionTitle>Carrito</SectionTitle>
             <SectionSubTitle>Mis productos</SectionSubTitle>
             <GridContainer>
@@ -42,7 +42,7 @@ const Cart = () => {
                   </ProductOrder>
                </Grid>
             </GridContainer>
-         </LayoutApp>
+         </section>
    )
 };
 

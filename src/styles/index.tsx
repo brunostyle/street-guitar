@@ -79,7 +79,7 @@ export const Gradient = ({ children }: Props) => {
   return <div style={{
     minHeight: '100vh',
     background: isLight ?
-      'radial-gradient(circle, rgba(186,186,212,1) 0%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 100%)'
+      'radial-gradient(circle, rgba(186,186,212,1) 0%, rgba(255,255,255,1) 40%, rgba(255,255,255,1) 0%)'
       :
       'radial-gradient(circle, rgba(9,9,71,9) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 100%)'
   }}>{children}</div>

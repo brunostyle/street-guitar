@@ -13,10 +13,10 @@ const Orders = () => {
          {isLoading
             ? <FullScreenLoading />
             : isEmpty
-               ? <Nothing text="Aún no hay ordenes" svg="/no-results.svg" />
+               ? <Nothing text="Aún no hay ordenes" svg="/nothing.svg" />
                :
                <Table removeWrapper className="table" aria-label="Historial de ordenes" bottomContent={
-                  <Pagination className="flex justify-center" size="sm" showShadow showControls page={page} total={total} onChange={setPage} />}>
+                  <Pagination className="flex justify-center" variant="bordered" size="sm" showShadow showControls page={page} total={total} onChange={setPage} />}>
                   <TableHeader>
                      <TableColumn>CLIENTE</TableColumn>
                      <TableColumn>ITEMS</TableColumn>

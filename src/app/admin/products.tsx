@@ -14,10 +14,10 @@ const Products = () => {
          {isLoading
             ? <FullScreenLoading />
             : isEmpty
-               ? <Nothing text="Aún no hay productos" svg="/no-results.svg" />
+               ? <Nothing text="Aún no hay productos" svg="/nothing.svg" />
                :
                <Table removeWrapper className="table" selectionMode="single" aria-label="Products" bottomContent={
-                  <Pagination className="flex justify-center" size="sm" showControls page={page} total={total} onChange={setPage} />}>
+                  <Pagination className="flex justify-center" variant="bordered" size="sm" showControls page={page} total={total} onChange={setPage} />}>
                   <TableHeader>
                      <TableColumn>IMAGEN</TableColumn>
                      <TableColumn>TITULO</TableColumn>

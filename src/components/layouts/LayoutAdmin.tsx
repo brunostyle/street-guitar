@@ -1,6 +1,6 @@
 import { BreadcrumbItem, Breadcrumbs, Button, Input, Spacer } from '@nextui-org/react';
 import { useNavigate } from 'react-router-dom';
-import { Between, SectionTitle } from '@styles';
+import { Between, Gradient, SectionTitle } from '@styles';
 import { AiOutlineHome, AiOutlineTags, FaPlus, IoMdSearch } from "@icons";
 import { MenuAdmin } from '@components';
 
@@ -15,31 +15,33 @@ interface ILayout {
 
 export const LayoutAdmin = ({ children, title, icon, showTitle = false, funtional = false, isProductPage }: ILayout) => {
    const router = useNavigate();
-   return <>
-      <MenuAdmin />
-      <div className="container mx-auto py-6 px-4 flex flex-col gap-4 min-h-screen overflow-x-hidden">
-         <Breadcrumbs separator="/">
-            <BreadcrumbItem onPress={() => router('/')} startContent={<AiOutlineHome />}>Home</BreadcrumbItem>
-            {isProductPage && <BreadcrumbItem onPress={() => router('/admin/products')} startContent={<AiOutlineTags />}>Productos</BreadcrumbItem>}
-            <BreadcrumbItem startContent={icon}>{title}</BreadcrumbItem>
-         </Breadcrumbs>
-         {funtional &&
-            <div>
-               <SectionTitle>{title}</SectionTitle>
-               <Spacer y={4} />
+   return (
+      <Gradient>
+         <MenuAdmin />
+         <div className="container mx-auto py-6 px-4 flex flex-col gap-4 min-h-screen overflow-x-hidden">
+            <Breadcrumbs separator="/">
+               <BreadcrumbItem onPress={() => router('/')} startContent={<AiOutlineHome />}>Home</BreadcrumbItem>
+               {isProductPage && <BreadcrumbItem onPress={() => router('/admin/products')} startContent={<AiOutlineTags />}>Productos</BreadcrumbItem>}
+               <BreadcrumbItem startContent={icon}>{title}</BreadcrumbItem>
+            </Breadcrumbs>
+            {funtional &&
+               <div>
+                  <SectionTitle>{title}</SectionTitle>
+                  <Spacer y={4} />
+                  <Between>
+                     <Input variant="bordered" size="sm" placeholder="Buscar producto" startContent={<IoMdSearch />} className="w-80 max-w-[50%]" />
+                     <Button size="sm" color="primary" startContent={<FaPlus />} onPress={() => router('/admin/products/new')}>Agregar</Button>
+                  </Between>
+               </div>}
+            {showTitle &&
                <Between>
-                  <Input variant="bordered" classNames={{inputWrapper: "border-1"}} size="sm" placeholder="Buscar producto" startContent={<IoMdSearch />} className="w-80 max-w-[50%]" />
-                  <Button size="sm" color="primary" startContent={<FaPlus />} onPress={() => router('/admin/products/new')}>Agregar</Button>
-               </Between>
-            </div>}
-         {showTitle &&
-            <Between>
-               <SectionTitle>{title}</SectionTitle>
-               <Input variant="bordered" classNames={{inputWrapper: "border-1"}} size="sm" placeholder={'Buscar ' + title.toLowerCase()} startContent={<IoMdSearch />} className="w-80 max-w-[50%]" />
-            </Between>}
-         <div className="overflow-x-scroll overflow-y-hidden">
-            {children}
+                  <SectionTitle>{title}</SectionTitle>
+                  <Input variant="bordered" size="sm" placeholder={'Buscar ' + title.toLowerCase()} startContent={<IoMdSearch />} className="w-80 max-w-[50%]" />
+               </Between>}
+            <div className="overflow-x-scroll overflow-y-hidden">
+               {children}
+            </div>
          </div>
-      </div>
-   </>
+      </Gradient>
+   )
 }

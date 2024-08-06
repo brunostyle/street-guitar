@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ConfettiExplosion from 'react-confetti-explosion';
 import toast from "react-hot-toast";
 import { Grid, GridContainer, SectionSubTitle, SectionTitle } from "@styles";
-import { FullScreenLoading, LayoutApp, ProductCard, ProductOrder } from "@components";
+import { FullScreenLoading, ProductCard, ProductOrder } from "@components";
 import { useGetOrder } from "@hooks";
 
 const Checkout = () => {
@@ -13,7 +13,7 @@ const Checkout = () => {
       !isLoading && toast.success('Disfruta las tablaturas!!!');
    }, [isLoading]);
    return (
-      <LayoutApp title="Resumen de orden" description="Resumen de la orden">
+      <section>
          <SectionTitle>Orden: {id}</SectionTitle>
          <SectionSubTitle>Resumen de la orden</SectionSubTitle>
          {isLoading ?
@@ -31,7 +31,7 @@ const Checkout = () => {
                </Grid>
             </GridContainer>
          }
-      </LayoutApp>
+      </section>
    )
 };
 

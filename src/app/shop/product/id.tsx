@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { FiShoppingCart } from "@icons";
 import { Between, Grid, GridContainer, Subtitle, Title, ChipCategory } from "@styles";
 import { useCart } from "@state";
-import { LayoutApp } from "@components";
 import { useGetProduct } from "@hooks";
 import "react-image-gallery/styles/css/image-gallery.css";
 
@@ -19,47 +18,45 @@ const Product = () => {
       window.scroll({ top: 0 });
    }, []);
    return (
-      <LayoutApp title={product?.title} description={product?.description}>
-         <Card className="max-w-[1200px] mx-auto" isBlurred>
-            <GridContainer>
-               <Grid>
-                  {isLoading
-                     ? <div className="grid place-content-center h-[500px]"><Spinner /></div>
-                     : <ImageGallery showThumbnails showPlayButton={false} showFullscreenButton={false} items={images} additionalClass="opacity-slow min-h-[500px]" />
-                  }
-               </Grid>
-               <Grid>
-                  <CardBody>
+      <Card className="max-w-[1200px] mx-auto" isBlurred>
+         <GridContainer>
+            <Grid>
+               {isLoading
+                  ? <div className="grid place-content-center h-[500px]"><Spinner /></div>
+                  : <ImageGallery showThumbnails showPlayButton={false} showFullscreenButton={false} items={images} additionalClass="opacity-slow min-h-[500px]" />
+               }
+            </Grid>
+            <Grid>
+               <CardBody>
+                  <Skeleton className="rounded-md" isLoaded={!isLoading} >
+                     <Title>{product?.title}</Title>
+                  </Skeleton>
+                  <Divider />
+                  <Spacer y={4} />
+                  <Between>
                      <Skeleton className="rounded-md" isLoaded={!isLoading} >
-                        <Title>{product?.title}</Title>
+                        <Title>${product?.price}</Title>
                      </Skeleton>
-                     <Divider />
-                     <Spacer y={4} />
-                     <Between>
-                        <Skeleton className="rounded-md" isLoaded={!isLoading} >
-                           <Title>${product?.price}</Title>
-                        </Skeleton>
-                        <Skeleton className="rounded-md" isLoaded={!isLoading} >
-                           <ChipCategory>{product?.category}</ChipCategory>
-                        </Skeleton>
-                     </Between>
-                     <Spacer y={4} />
                      <Skeleton className="rounded-md" isLoaded={!isLoading} >
-                        <Title>Descripción</Title>
+                        <ChipCategory>{product?.category}</ChipCategory>
                      </Skeleton>
-                     <Spacer y={4} />
-                     <Skeleton className="rounded-md" isLoaded={!isLoading} >
-                        <Subtitle>{product?.description}</Subtitle>
-                     </Skeleton>
-                     <Spacer y={4} />
-                     <Skeleton className="rounded-md" isLoaded={!isLoading} >
-                        <Button fullWidth color="primary" size="sm" startContent={<FiShoppingCart />} onPress={handleAddToCart}>Agregar al carrito</Button>
-                     </Skeleton>
-                  </CardBody>
-               </Grid>
-            </GridContainer>
-         </Card>
-      </LayoutApp>
+                  </Between>
+                  <Spacer y={4} />
+                  <Skeleton className="rounded-md" isLoaded={!isLoading} >
+                     <Title>Descripción</Title>
+                  </Skeleton>
+                  <Spacer y={4} />
+                  <Skeleton className="rounded-md" isLoaded={!isLoading} >
+                     <Subtitle>{product?.description}</Subtitle>
+                  </Skeleton>
+                  <Spacer y={4} />
+                  <Skeleton className="rounded-md" isLoaded={!isLoading} >
+                     <Button fullWidth color="primary" size="sm" startContent={<FiShoppingCart />} onPress={handleAddToCart}>Agregar al carrito</Button>
+                  </Skeleton>
+               </CardBody>
+            </Grid>
+         </GridContainer>
+      </Card>
    )
 }
 

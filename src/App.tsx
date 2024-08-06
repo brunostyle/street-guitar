@@ -4,7 +4,7 @@ import { client } from '@query-client';
 import { RouterApp } from "@routes";
 import { useTheme } from '@state';
 import { Toast } from '@components';
-// import { LayoutMain } from '@components';
+import { LayoutMain } from '@components';
 
 export const App = () => {
   const { isLight } = useTheme();
@@ -12,9 +12,9 @@ export const App = () => {
     <QueryClientProvider client={client}>
       <NextUIProvider>
         <main className={isLight ? 'light text-foreground bg-background' : 'dark text-foreground bg-background'}>
-          {/* <LayoutMain> */}
+          <LayoutMain>
             <RouterApp />
-          {/* </LayoutMain> */}
+          </LayoutMain>
         </main>
         <Toast />
       </NextUIProvider>

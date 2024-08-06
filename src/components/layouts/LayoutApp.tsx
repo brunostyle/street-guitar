@@ -1,26 +1,11 @@
-// import Head from 'next/head';
 import { Footer, Menu } from '@components';
+import { Outlet } from 'react-router-dom';
 
-interface ILayout {
-	children: JSX.Element | JSX.Element[];
-	title: string;
-	description: string;
-	imageFullUrl?: string;
-}
-
-export const LayoutApp = ({ children }: ILayout) => (
+export const LayoutApp = () => (
 	<>
-		{/* <Head>
-			<title>{title}</title>
-			<meta name="description" content={description} />
-			<meta name="og:title" content={title} />
-			<meta name="og:description" content={description} />
-			{imageFullUrl && <meta name="og:image" content={imageFullUrl} />}
-		</Head> */}
-
 		<Menu />
 		<div className="container mx-auto p-4 min-h-screen">
-			{children}
+			<Outlet />
 		</div>
 		<Footer />
 	</>

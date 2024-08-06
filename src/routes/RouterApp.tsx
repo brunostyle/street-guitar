@@ -19,16 +19,19 @@ import Users from '../app/admin/users';
 
 import Login from '../app/auth/login';
 import Register from '../app/auth/register';
+import { LayoutApp } from '@components';
 
 export const RouterApp = () => (
   <Routes>
-    <Route index element={<Home />} />
-    <Route path="/category/:category" element={<Category />} />
-    <Route path="/search/:query" element={<Search />} />
-    <Route path="/product/:id" element={<Product />} />
-    <Route path="/cart" element={<Cart />} />
-    <Route path="/cart/empty" element={<Empty />} />
-    <Route path="/checkout/:id" element={<Checkout />} />
+    <Route path="/" element={<LayoutApp />}>
+      <Route index element={<Home />} />
+      <Route path="category/:category" element={<Category />} />
+      <Route path="search/:query" element={<Search />} />
+      <Route path="product/:id" element={<Product />} />
+      <Route path="cart" element={<Cart />} />
+      <Route path="cart/empty" element={<Empty />} />
+      <Route path="checkout/:id" element={<Checkout />} />
+    </Route>
 
     <Route path="/admin/*" element={
       <Private>
