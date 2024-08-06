@@ -2,11 +2,12 @@ import { Spacer } from "@nextui-org/react";
 import { DashboardCards, Sells, LayoutAdmin, Chart, FullScreenLoading } from "@components";
 import { SectionTitle } from "@styles";
 import { useDashboard } from "@hooks";
+import { BiGridAlt } from "@icons";
 
 const Dashboard = () => {
    const { numberOfClients, numberOfProducts, numberOfOrders, lastSells, clients, sells, isLoading } = useDashboard();
    return (
-      <LayoutAdmin title="Dashboard">
+      <LayoutAdmin title="Dashboard" icon={<BiGridAlt />}>
          {isLoading
             ? <FullScreenLoading />
             :

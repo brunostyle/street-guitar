@@ -1,18 +1,17 @@
 import { Button, Divider, NavbarMenuItem, NavbarMenu } from '@nextui-org/react';
 import { useNavigate as useRouter, useLocation } from 'react-router-dom'
 import { Formik, Form } from 'formik'
-import { IoMdSearch, AiOutlineHome, BsKey, FiUsers, BiGridAlt, AiOutlineTags, MdOutlineChangeHistory, BiSun, MdOutlineNightlight, BiExit } from '@icons'
+import { IoMdSearch, AiOutlineHome, BsKey, FiUsers, BiGridAlt, AiOutlineTags, MdOutlineChangeHistory, BiExit } from '@icons'
 import { InputBordered } from '@components';
-import { Between, Subtitle } from '@styles';
+import { Subtitle } from '@styles';
 import { searchSchema } from '@validations';
-import { useCart, useTheme, useUser } from '@state';
+import { useCart, useUser } from '@state';
 
 interface ISearch { query: string }
 const values: ISearch = { query: '' }
 
 export const Collapse = () => {
    const router = useRouter();
-   const { isLight, changeTheme } = useTheme();
    const { user, isLogged } = useUser();
 
    const handleSubmit = ({ query }: ISearch) => {
@@ -43,16 +42,6 @@ export const Collapse = () => {
                <Item text="Usuarios" to="/admin/users" icon={<FiUsers />} />
             </>
          }
-
-         <Divisor text="Tema" />
-         <Between>
-            <NavbarMenuItem>
-               <Button size="sm" variant={isLight ? 'bordered' : 'light'} startContent={<BiSun />} onPress={() => changeTheme(true)}>Claro</Button>
-            </NavbarMenuItem>
-            <NavbarMenuItem>
-               <Button size="sm" variant={isLight ? 'light' : 'bordered'} startContent={<MdOutlineNightlight />} onPress={() => changeTheme(false)}>Oscuro</Button>
-            </NavbarMenuItem>
-         </Between>
       </NavbarMenu>
    )
 };

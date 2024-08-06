@@ -20,9 +20,9 @@ export const User = () => {
                <Avatar size="sm" color="primary" showFallback name={user?.name.charAt(0).toUpperCase()} src={user?.avatar} />
             </Button>
          </PopoverTrigger>
-         <PopoverContent className="px-3 py-2">
+         <PopoverContent className="px-4 py-3">
             <NextUser
-               avatarProps={{ size: 'sm', isBordered: true, showFallback: true, src: user?.avatar, color: 'primary', name: user?.name.charAt(0).toUpperCase() }}
+               avatarProps={{ size: 'sm', showFallback: true, src: user?.avatar, color: 'primary', name: user?.name.charAt(0).toUpperCase() }}
                name={user?.name}
                description={user?.email}
             />
