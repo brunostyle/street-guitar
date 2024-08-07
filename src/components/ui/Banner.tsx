@@ -25,5 +25,4 @@ export const Banner = () => (
          </div>
       </div>
    </Gradient>
-
 )

@@ -19,7 +19,7 @@ import Users from '../app/admin/users';
 
 import Login from '../app/auth/login';
 import Register from '../app/auth/register';
-import { LayoutApp } from '@components';
+import { LayoutAdmin, LayoutApp } from '@components';
 
 export const RouterApp = () => (
   <Routes>
@@ -36,15 +36,17 @@ export const RouterApp = () => (
     <Route path="/admin/*" element={
       <Private>
         <Routes>
-          <Route index element={<Dashboard />} />
-          <Route path="products" element={<Products />} />
-          <Route path="products/new" element={<NewProduct />} />
-          <Route path="products/:id" element={<UpdateProduct />} />
-          <Route path="orders" element={<Orders />} />
-          <Route path="users" element={<Users />} />
+          <Route path="/" element={<LayoutAdmin />}>
+            <Route index element={<Dashboard />} />
+            <Route path="products" element={<Products />} />
+            <Route path="products/new" element={<NewProduct />} />
+            <Route path="products/:id" element={<UpdateProduct />} />
+            <Route path="orders" element={<Orders />} />
+            <Route path="users" element={<Users />} />
+          </Route>
         </Routes>
       </Private>
-    }/>
+    } />
     <Route path="/auth/*" element={
       <Public>
         <Routes>
@@ -52,6 +54,6 @@ export const RouterApp = () => (
           <Route path="register" element={<Register />} />
         </Routes>
       </Public>
-    }/>
+    } />
   </Routes>
 )

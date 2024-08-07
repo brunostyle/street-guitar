@@ -1,7 +1,7 @@
 import { Button, Checkbox, Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, User } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineFolderOpen, MdOutlineChangeHistory } from '@icons';
-import { FullScreenLoading, LayoutAdmin, Nothing } from "@components";
+import { FullScreenLoading, Admin, Nothing } from "@components";
 import { usePaginateOrders, usePaginate } from "@hooks";
 
 const Orders = () => {
@@ -9,7 +9,7 @@ const Orders = () => {
    const { orders = [], isEmpty, isLoading } = usePaginateOrders(page, limit);
    const router = useNavigate();
    return (
-      <LayoutAdmin showTitle={!isEmpty} title="Ordenes" icon={<MdOutlineChangeHistory />}>
+      <Admin showTitle={!isEmpty} title="Ordenes" icon={<MdOutlineChangeHistory />}>
          {isLoading
             ? <FullScreenLoading />
             : isEmpty
@@ -39,7 +39,7 @@ const Orders = () => {
                   </TableBody>
                </Table>
          }
-      </LayoutAdmin>
+      </Admin>
    )
 }
 

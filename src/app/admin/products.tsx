@@ -1,7 +1,7 @@
 import { Avatar, Button, Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineTags, BiPencil, FaRegEye } from "@icons";
-import { FullScreenLoading, LayoutAdmin, Nothing } from "@components";
+import { FullScreenLoading, Admin, Nothing } from "@components";
 import { HiddenTitle, HiddenSubtitle, ChipCategory } from "@styles";
 import { usePaginate, usePaginateProducts } from "@hooks";
 
@@ -10,7 +10,7 @@ const Products = () => {
    const { page, limit, total, setPage } = usePaginate('products');
    const { products = [], isEmpty, isLoading } = usePaginateProducts(page, limit);
    return (
-      <LayoutAdmin funtional title="Productos" icon={<AiOutlineTags />}>
+      <Admin funtional title="Productos" icon={<AiOutlineTags />}>
          {isLoading
             ? <FullScreenLoading />
             : isEmpty
@@ -42,7 +42,7 @@ const Products = () => {
                   </TableBody>
                </Table>
          }
-      </LayoutAdmin>
+      </Admin>
    )
 }
 

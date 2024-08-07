@@ -1,6 +1,6 @@
 import { Card, CardBody, Button, Spacer } from "@nextui-org/react";
 import { Form, Formik } from "formik";
-import { Images, Input, LayoutAdmin, Category, Tags, Textarea, PDF } from "@components";
+import { Images, Input, Admin, Category, Tags, Textarea, PDF } from "@components";
 import { AiOutlineSave, FaPlus } from "@icons";
 import { productSchema } from "@validations";
 import { Grid, GridContainer, SectionTitle } from "@styles";
@@ -15,7 +15,7 @@ const NewProduct = () => {
     };
 
     return (
-        <LayoutAdmin isProductPage title="Agregar" icon={<FaPlus />}>
+        <Admin isProductPage title="Agregar" icon={<FaPlus />}>
             <SectionTitle>Agregar un producto</SectionTitle>
             <Spacer y={4} />
             <Card><CardBody>
@@ -38,7 +38,7 @@ const NewProduct = () => {
                     )}
                 </Formik>
             </CardBody></Card>
-        </LayoutAdmin>
+        </Admin>
     )
 };
 

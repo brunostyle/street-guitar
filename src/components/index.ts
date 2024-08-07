@@ -1,3 +1,4 @@
+export * from './ui/Admin';
 export * from './ui/Banner';
 export * from './ui/Chart';
 export * from './ui/Collapse';

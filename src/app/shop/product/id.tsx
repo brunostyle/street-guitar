@@ -28,29 +28,29 @@ const Product = () => {
             </Grid>
             <Grid>
                <CardBody>
-                  <Skeleton className="rounded-md" isLoaded={!isLoading} >
-                     <Title>{product?.title}</Title>
+                  <Skeleton className="rounded-md" isLoaded={!isLoading}>
+                     <Title>{product?.title}.</Title>
                   </Skeleton>
                   <Divider />
                   <Spacer y={4} />
                   <Between>
-                     <Skeleton className="rounded-md" isLoaded={!isLoading} >
+                     <Skeleton className="rounded-md w-10" isLoaded={!isLoading}>
                         <Title>${product?.price}</Title>
                      </Skeleton>
-                     <Skeleton className="rounded-md" isLoaded={!isLoading} >
+                     <Skeleton className="rounded-md w-10" isLoaded={!isLoading}>
                         <ChipCategory>{product?.category}</ChipCategory>
                      </Skeleton>
                   </Between>
                   <Spacer y={4} />
-                  <Skeleton className="rounded-md" isLoaded={!isLoading} >
+                  <Skeleton className="rounded-md" isLoaded={!isLoading}>
                      <Title>Descripción</Title>
                   </Skeleton>
                   <Spacer y={4} />
-                  <Skeleton className="rounded-md" isLoaded={!isLoading} >
+                  <Skeleton className="rounded-md" isLoaded={!isLoading}>
                      <Subtitle>{product?.description}</Subtitle>
                   </Skeleton>
                   <Spacer y={4} />
-                  <Skeleton className="rounded-md" isLoaded={!isLoading} >
+                  <Skeleton className="rounded-md" isLoaded={!isLoading}>
                      <Button fullWidth color="primary" size="sm" startContent={<FiShoppingCart />} onPress={handleAddToCart}>Agregar al carrito</Button>
                   </Skeleton>
                </CardBody>

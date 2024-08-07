@@ -1,5 +1,5 @@
 import { Avatar, Pagination, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
-import { FullScreenLoading, LayoutAdmin, Nothing } from "@components";
+import { FullScreenLoading, Admin, Nothing } from "@components";
 import { FiUsers } from "@icons";
 import { HiddenTitle, HiddenSubtitle, ChipUser } from "@styles";
 import { usePaginateUsers, usePaginate } from "@hooks";
@@ -8,7 +8,7 @@ const Users = () => {
    const { page, limit, total, setPage } = usePaginate('users');
    const { users = [], isEmpty, isLoading } = usePaginateUsers(page, limit);
    return (
-      <LayoutAdmin showTitle={!isEmpty} title="Usuarios" icon={<FiUsers />}>
+      <Admin showTitle={!isEmpty} title="Usuarios" icon={<FiUsers />}>
          {isLoading
             ? <FullScreenLoading />
             : isEmpty
@@ -34,7 +34,7 @@ const Users = () => {
                   </TableBody>
                </Table>
          }
-      </LayoutAdmin>
+      </Admin>
    )
 }
 

@@ -1,7 +1,7 @@
 import { Card, CardBody, Button, Spacer, Skeleton } from "@nextui-org/react";
 import { useParams } from "react-router-dom";
 import { Form, Formik } from "formik";
-import { Images, Input, LayoutAdmin, Category, Tags, Textarea, PDF } from "@components";
+import { Images, Input, Admin, Category, Tags, Textarea, PDF } from "@components";
 import { AiFillDelete, AiOutlineSave, BiPencil } from "@icons";
 import { productSchema } from "@validations";
 import { Grid, GridContainer, SectionTitle } from "@styles";
@@ -16,7 +16,7 @@ const UpdateProduct = () => {
     const handleSubmit = (values: any) => updateProduct({ ...values, id })
 
     return (
-        <LayoutAdmin isProductPage title="Actualizar" icon={<BiPencil />}>
+        <Admin isProductPage title="Actualizar" icon={<BiPencil />}>
             <SectionTitle>Actualizar un producto</SectionTitle>
             <Spacer y={4} />
             <Card><CardBody>
@@ -52,7 +52,7 @@ const UpdateProduct = () => {
                     )}
                 </Formik>
             </CardBody></Card>
-        </LayoutAdmin>
+        </Admin>
     )
 };
 
