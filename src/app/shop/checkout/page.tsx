@@ -16,12 +16,12 @@ const Checkout = () => {
       <section>
          <SectionTitle>Orden: {id}</SectionTitle>
          <SectionSubTitle>Resumen de la orden</SectionSubTitle>
+         {!isLoading && <ConfettiExplosion force={0.8} duration={3000} particleCount={250} width={1600} />}
          {isLoading ?
             <FullScreenLoading />
             :
             <GridContainer>
                <Grid>
-                  <ConfettiExplosion force={0.8} duration={3000} particleCount={250} width={1600} />
                   <ProductCard cart={products} paid={paid} />
                </Grid>
                <Grid>
