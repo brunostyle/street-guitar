@@ -43,7 +43,7 @@ const Product = () => {
                   </Between>
                   <Spacer y={4} />
                   <Skeleton className="rounded-md" isLoaded={!isLoading}>
-                     <Title>Descripción</Title>
+                     <Title>Artista</Title>
                   </Skeleton>
                   <Spacer y={4} />
                   <Skeleton className="rounded-md" isLoaded={!isLoading}>
