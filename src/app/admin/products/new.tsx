@@ -5,7 +5,7 @@ import { AiOutlineSave, FaPlus } from "@icons";
 import { productSchema } from "@validations";
 import { Grid, GridContainer, SectionTitle } from "@styles";
 import { useAddProduct } from "@hooks";
-const initial = { title: '', description: '', price: '', tab: '', pdf: '', category: 'rock', tags: [], images: [] }
+const initial = { title: '', description: '', price: '', spotify: '', tab: '', pdf: '', category: 'rock', tags: [], images: [] }
 
 const NewProduct = () => {
     const { addProduct, isAdding } = useAddProduct();
@@ -26,6 +26,7 @@ const NewProduct = () => {
                                 <Input name="title" label="Titulo" />
                                 <Textarea name="description" label="Descripción" />
                                 <Input type="number" name="price" label="Precio" />
+                                <Input name="spotify" label="Spotify" />
                                 <Tags />
                             </Grid>
                             <Grid>

@@ -10,6 +10,7 @@ export interface IProduct {
 	description: string;
 	images: string[];
 	category: TValidCategory;
+	spotify: string;
 	price: number;
 	tags: string[];
 	tab?: string;

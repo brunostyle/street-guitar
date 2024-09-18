@@ -15,7 +15,7 @@ export const Banner = () => (
             <Subtitle>Tablaturas gratis, tracks, covers, etc</Subtitle>
             <div className="flex gap-4">
                <Button color="primary" size="sm" startContent={<FaFacebookF />}>Facebook</Button>
-               <Button color="primary" size="sm" as="a" variant="bordered" startContent={<BsInstagram />} href="https://www.instagram.com/lb_digitaloficial/" target="_blank">Instagram</Button>
+               <Button color="primary" size="sm" as="a" variant="bordered" startContent={<BsInstagram />} href="" target="_blank">Instagram</Button>
             </div>
          </div>
          <div className="hidden md:block mb-36 dark:opacity-80">

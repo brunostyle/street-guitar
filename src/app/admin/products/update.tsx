@@ -34,6 +34,9 @@ const UpdateProduct = () => {
                                     <Input type="number" name="price" label="Precio" />
                                 </Skeleton>
                                 <Skeleton isLoaded={!isLoading}>
+                                    <Input name="spotify" label="Spotify" />
+                                </Skeleton>
+                                <Skeleton isLoaded={!isLoading}>
                                     <Tags />
                                 </Skeleton>
                             </Grid>
